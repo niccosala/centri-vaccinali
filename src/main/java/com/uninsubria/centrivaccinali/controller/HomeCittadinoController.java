@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -17,7 +16,7 @@ public class HomeCittadinoController {
 
     @FXML
     private Button btnCerca, btnSegnala, btnLogout,
-            btnRegistrati, btnRegistraCentro, btnRegistraVaccinato;
+            btnRegistrati, btnRegistraCentro, btnRegistraVaccinato, btnBack;
 
     public static final String path = "com/uninsubria/layout/";
     private Stage stage;
@@ -38,7 +37,7 @@ public class HomeCittadinoController {
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path+ "Cerca.fxml")));
+                        path+ "Segnala.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -55,10 +54,21 @@ public class HomeCittadinoController {
         stage.show();
     }
 
+
+    public void switchToLoginScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
+                        path + "Login.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                         path + "Cerca.fxml")));
+                         path + "RegistraCittadino.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -85,4 +95,13 @@ public class HomeCittadinoController {
         stage.show();
     }
 
+    public void switchToVisualizzaScene(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
+                        path + "Visualizza.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
