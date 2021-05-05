@@ -53,7 +53,7 @@
     </Button>
     <Text fill="#d13981" layoutX="251.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="CERCA" textAlignment="CENTER" wrappingWidth="650.1627502441406">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="35.0" />
         </font>
     </Text>
     <Button id="btnVisualizza" fx:id="btnVisualizza" layoutX="493.0" layoutY="534.0" mnemonicParsing="false" onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="VISUALIZZA" textFill="WHITE">
