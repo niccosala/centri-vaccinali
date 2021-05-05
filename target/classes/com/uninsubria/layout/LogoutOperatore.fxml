@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.HomeCittadinoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.LogoutOperatoreController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -59,7 +59,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnOkLogout" fx:id="btnEseguiLogout" layoutX="464.0" layoutY="303.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="ESEGUI IL LOGOUT" textFill="WHITE">
+        <Button id="btnOkLogout" fx:id="btnEseguiLogout" layoutX="464.0" layoutY="303.0" mnemonicParsing="false" onAction="#switchToLoginScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="ESEGUI IL LOGOUT" textFill="WHITE">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>

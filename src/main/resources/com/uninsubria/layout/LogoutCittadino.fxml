@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
       prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.uninsubria.centrivaccinali.controller.HomeCittadinoController">
+      fx:controller="com.uninsubria.centrivaccinali.controller.LogoutCittadinoController">
     <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../img/sfondo.png"/>
     </ImageView>
@@ -49,8 +49,8 @@
         </cursor>
     </Button>
     <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false"
-            prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Logout"
-            textFill="WHITE">
+            onAction="#switchToLogoutScene" prefWidth="220.0"
+            style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Logout" textFill="WHITE">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>

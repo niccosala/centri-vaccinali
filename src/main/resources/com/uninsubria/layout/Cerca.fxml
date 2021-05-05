@@ -8,119 +8,143 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.HomeCittadinoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+      prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.uninsubria.centrivaccinali.controller.CercaController">
     <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../img/sfondo.png" />
+        <Image url="@../img/sfondo.png"/>
     </ImageView>
-    <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-    <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
+    <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
+               width="250.0"/>
+    <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER"
+          wrappingWidth="250.78929138183594">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
     </Text>
-    <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Cerca" textFill="WHITE">
+    <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false"
+            onAction="#switchToCercaScene" prefWidth="220.0"
+            style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Cerca" textFill="WHITE">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
         </padding>
         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
+            <Cursor fx:constant="CLOSED_HAND"/>
         </cursor>
     </Button>
-    <Button id="btnRegistrati" fx:id="btnRegistrati" alignment="CENTER" layoutX="15.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchToRegistratiScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Registrati" textFill="#d13981">
+    <Button id="btnRegistrati" fx:id="btnRegistrati" alignment="CENTER" layoutX="15.0" layoutY="140.0"
+            mnemonicParsing="false" onAction="#switchToRegistratiScene" prefWidth="220.0"
+            style="-fx-background-color: white; -fx-background-radius: 30;" text="Registrati" textFill="#d13981">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
-    <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
+    <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false"
+            onAction="#switchToLogoutScene" prefWidth="220.0"
+            style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
         </padding>
         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
+            <Cursor fx:constant="CLOSED_HAND"/>
         </cursor>
     </Button>
-    <Text fill="#d13981" layoutX="251.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="CERCA" textAlignment="CENTER" wrappingWidth="650.1627502441406">
+    <Text fill="#d13981" layoutX="251.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title"
+          text="CERCA" textAlignment="CENTER" wrappingWidth="650.1627502441406">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
     </Text>
-    <Button id="btnVisualizza" fx:id="btnVisualizza" layoutX="493.0" layoutY="534.0" mnemonicParsing="false" onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="VISUALIZZA" textFill="WHITE">
+    <Button id="btnVisualizza" fx:id="btnVisualizza" layoutX="493.0" layoutY="534.0" mnemonicParsing="false"
+            onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;"
+            text="VISUALIZZA" textFill="WHITE">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <padding>
-            <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+            <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
-    <Rectangle arcHeight="55.0" arcWidth="50.0" fill="#e3e3e38e" height="180.0" layoutX="300.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="550.0" />
-    <Button id="btnRisultati" layoutX="489.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="MOSTRA RISULTATI" textFill="WHITE">
+    <Rectangle arcHeight="55.0" arcWidth="50.0" fill="#e3e3e38e" height="180.0" layoutX="300.0" layoutY="62.0"
+               stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="550.0"/>
+    <Button id="btnRisultati" layoutX="489.0" layoutY="188.0" mnemonicParsing="false"
+            style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="MOSTRA RISULTATI" textFill="WHITE">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <padding>
-            <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+            <Insets bottom="10.0" left="25.0" right="25.0" top="10.0"/>
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
-    <RadioButton id="radNome" layoutX="331.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="Filtra per nome:">
+    <RadioButton id="radNome" layoutX="331.0" layoutY="83.0" mnemonicParsing="false" selected="true"
+                 text="Filtra per nome:">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <toggleGroup>
-            <ToggleGroup fx:id="filtra" />
+            <ToggleGroup fx:id="filtra"/>
         </toggleGroup>
     </RadioButton>
-    <RadioButton id="radComuneTipologia" layoutX="574.0" layoutY="83.0" mnemonicParsing="false" text="Filtra per comune e tipologia:" toggleGroup="$filtra">
+    <RadioButton id="radComuneTipologia" layoutX="574.0" layoutY="83.0" mnemonicParsing="false"
+                 text="Filtra per comune e tipologia:" toggleGroup="$filtra">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
     </RadioButton>
-    <TextField id="fieldNome" alignment="CENTER" layoutX="332.0" layoutY="121.0" prefWidth="200.0" promptText="Inserisci nome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+    <TextField id="fieldNome" alignment="CENTER" layoutX="332.0" layoutY="121.0" prefWidth="200.0"
+               promptText="Inserisci nome"
+               style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
         <padding>
-            <Insets bottom="13.0" left="6.0" right="6.0" top="13.0" />
+            <Insets bottom="13.0" left="6.0" right="6.0" top="13.0"/>
         </padding>
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <cursor>
-            <Cursor fx:constant="TEXT" />
+            <Cursor fx:constant="TEXT"/>
         </cursor>
     </TextField>
-    <ComboBox id="cmbTipologia" accessibleText="Seleziona tipologia" disable="true" layoutX="700.0" layoutY="121.0" maxHeight="43.0" prefHeight="43.0" prefWidth="110.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+    <ComboBox id="cmbTipologia" fx:id="tipologiaComboBox" accessibleText="Seleziona tipologia" disable="true"
+              layoutX="700.0" layoutY="121.0" maxHeight="43.0" prefHeight="43.0" prefWidth="110.0"
+              style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
         <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="HAND"/>
         </cursor>
         <padding>
-            <Insets bottom="10.0" left="6.0" right="6.0" top="10.0" />
+            <Insets bottom="10.0" left="6.0" right="6.0" top="10.0"/>
         </padding>
     </ComboBox>
-    <TextField id="fieldComune" alignment="CENTER" disable="true" layoutX="573.0" layoutY="121.0" prefWidth="105.0" promptText="Comune" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+    <TextField id="fieldComune" alignment="CENTER" disable="true" layoutX="573.0" layoutY="121.0" prefWidth="105.0"
+               promptText="Comune"
+               style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
         <padding>
-            <Insets bottom="13.0" left="6.0" right="6.0" top="13.0" />
+            <Insets bottom="13.0" left="6.0" right="6.0" top="13.0"/>
         </padding>
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0" />
+            <Font name="Microsoft Sans Serif" size="18.0"/>
         </font>
         <cursor>
-            <Cursor fx:constant="TEXT" />
+            <Cursor fx:constant="TEXT"/>
         </cursor>
     </TextField>
-    <ListView id="listCentri" layoutX="300.0" layoutY="251.0" prefHeight="272.0" prefWidth="550.0" style="-fx-background-radius: 23;" />
+    <ListView id="listCentri" layoutX="300.0" layoutY="251.0" prefHeight="272.0" prefWidth="550.0"
+              style="-fx-background-radius: 23;"/>
 </Pane>

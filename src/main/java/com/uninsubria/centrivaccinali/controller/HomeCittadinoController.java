@@ -1,107 +1,19 @@
 package com.uninsubria.centrivaccinali.controller;
 
-import com.uninsubria.centrivaccinali.CentriVaccinali;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Objects;
 
-public class HomeCittadinoController {
-
-    @FXML
-    private Button btnCerca, btnSegnala, btnLogout,
-            btnRegistrati, btnRegistraCentro, btnRegistraVaccinato, btnBack;
-
-    public static final String path = "com/uninsubria/layout/";
-    private Stage stage;
-    private Scene scene;
+public class HomeCittadinoController extends Controller{
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
-
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path + "Cerca.fxml")));
-
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToSegnalaScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path+ "Segnala.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        changeScene("Cerca.fxml", event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                         path + "LogoutCittadino.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-    public void switchToLoginScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path + "Login.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        changeScene("LogoutCittadino.fxml", event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                         path + "RegistraCittadino.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path + "RegistraCentro.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path + "RegistraVaccinato.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToVisualizzaScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        path + "Visualizza.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        changeScene("RegistraCittadino.fxml", event);
     }
 }
