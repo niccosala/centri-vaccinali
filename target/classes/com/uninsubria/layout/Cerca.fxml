@@ -64,7 +64,7 @@
     <Text fill="#d13981" layoutX="251.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title"
           text="CERCA" textAlignment="CENTER" wrappingWidth="650.1627502441406">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="35.0"/>
         </font>
     </Text>
     <Button id="btnVisualizza" fx:id="btnVisualizza" layoutX="493.0" layoutY="534.0" mnemonicParsing="false"
@@ -122,8 +122,8 @@
             <Cursor fx:constant="TEXT"/>
         </cursor>
     </TextField>
-    <ComboBox id="cmbTipologia" fx:id="tipologiaComboBox" accessibleText="Seleziona tipologia" disable="true"
-              layoutX="700.0" layoutY="121.0" maxHeight="43.0" prefHeight="43.0" prefWidth="110.0"
+    <ComboBox id="cmbTipologia" accessibleText="Seleziona tipologia" disable="true" layoutX="700.0" layoutY="121.0"
+              maxHeight="43.0" prefHeight="43.0" prefWidth="110.0"
               style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
         <cursor>
             <Cursor fx:constant="HAND"/>

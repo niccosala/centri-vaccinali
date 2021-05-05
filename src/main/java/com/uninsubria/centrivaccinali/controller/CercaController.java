@@ -10,10 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CercaController extends Controller implements Initializable {
-
-    @FXML
-    private ComboBox<String> tipologiaComboBox;
+public class CercaController extends Controller {
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeScene("Cerca.fxml", event);
@@ -31,9 +28,9 @@ public class CercaController extends Controller implements Initializable {
         changeScene("Visualizza.fxml", event);
     }
 
-    @Override
+    /*@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] tipologia = {Tipologia.OSPEDALIERO.toString(), Tipologia.HUB.toString(), Tipologia.AZIENDALE.toString()};
         tipologiaComboBox.getItems().addAll(tipologia);
-    }
+    }*/
 }
