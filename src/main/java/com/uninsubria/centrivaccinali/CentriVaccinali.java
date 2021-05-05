@@ -20,7 +20,8 @@ public class CentriVaccinali extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
-                        "com/uninsubria/layout/HomeOperatore.fxml")));
+                        "com/uninsubria/layout/HomeCittadino.fxml")));
+
         Scene scene = new Scene(root, 900, 600);
 
         stage.setScene(scene);

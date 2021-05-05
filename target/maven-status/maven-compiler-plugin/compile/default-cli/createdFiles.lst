@@ -1,12 +1,12 @@
 com\uninsubria\centrivaccinali\entity\Vaccino.class
+com\uninsubria\centrivaccinali\entity\Segnalazione.class
+com\uninsubria\cittadini\entity\CittadinoRegistrato.class
+com\uninsubria\centrivaccinali\entity\Vaccinato.class
 com\uninsubria\centrivaccinali\entity\Tipologia.class
+com\uninsubria\centrivaccinali\controller\HomeCittadinoController.class
 com\uninsubria\centrivaccinali\entity\EventoAvverso.class
 com\uninsubria\centrivaccinali\entity\Qualificatore.class
-com\uninsubria\centrivaccinali\entity\Segnalazione.class
 com\uninsubria\centrivaccinali\entity\Indirizzo.class
-com\uninsubria\cittadini\entity\CittadinoRegistrato.class
-com\uninsubria\centrivaccinali\controller\Controller.class
-com\uninsubria\centrivaccinali\entity\Vaccinato.class
 com\uninsubria\condivisa\entity\Persona.class
 com\uninsubria\centrivaccinali\entity\CentroVaccinale.class
 com\uninsubria\centrivaccinali\CentriVaccinali.class

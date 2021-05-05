@@ -1,0 +1,16 @@
+@font-face {
+    font-family : Exo;
+    src : url('../font/ExoRegular.ttf')
+}
+
+button {
+    -fx-font-family : 'Exo';
+}
+
+text {
+    -fx-font-family : 'Exo';
+}
+
+.title {
+    -fx-font-family : 'Exo';
+}

@@ -8,190 +8,190 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/sfondo.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-      <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Button id="btnRegistraCentro" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Centro" textFill="#d13981">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button id="btnRegistraVaccinato" alignment="CENTER" layoutX="15.0" layoutY="140.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Registra Vaccinato" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Text fill="#d13981" layoutX="250.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRA VACCINATO" textAlignment="CENTER" wrappingWidth="650.1627502441406">
-         <font>
-            <Font name="DIN Alternate Bold" size="35.0" />
-         </font>
-      </Text>
-      <TextField id="fieldNomeCognome" alignment="CENTER" layoutX="313.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci nome e cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextField>
-      <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome e cognome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="#000000b1" layoutX="662.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Button id="btnRegistraCentro" layoutX="542.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRA" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
-         </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <PasswordField id="fieldCodiceFsicale" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci codice fiscale" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </PasswordField>
-      <Button id="btnReset" layoutX="450.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;" text="X" textFill="#d13981">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <padding>
-            <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
-         </padding>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ComboBox id="cmbCentro" accessibleText="Seleziona tipologia" layoutX="313.0" layoutY="270.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-      </ComboBox>
-      <Text fill="#000000b1" layoutX="350.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centro vaccinale:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="#000000b1" layoutX="598.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data somminmistrazione:" textAlignment="CENTER" wrappingWidth="261.143261945733">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <PasswordField id="fieldGiorno" alignment="CENTER" layoutX="601.0" layoutY="270.0" prefWidth="80.0" promptText="GG" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </PasswordField>
-      <ComboBox id="cmbVaccino" accessibleText="Seleziona tipologia" layoutX="315.0" layoutY="385.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-      </ComboBox>
-      <Text fill="#000000b1" layoutX="335.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaccino somministrato:" textAlignment="CENTER" wrappingWidth="198.3680705936302">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text fill="#000000b1" layoutX="657.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID vaccinazione:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <PasswordField id="fieldIdVaccinazione" alignment="CENTER" layoutX="598.0" layoutY="385.0" prefWidth="250.0" promptText="Inserisci ID vacinazione" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </PasswordField>
-      <PasswordField id="fieldMese" alignment="CENTER" layoutX="686.0" layoutY="270.0" prefWidth="80.0" promptText="MM" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </PasswordField>
-      <PasswordField id="fieldAnno" alignment="CENTER" layoutX="772.0" layoutY="270.0" prefWidth="80.0" promptText="AAAA" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-         </padding>
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </PasswordField>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.HomeCittadinoController">
+    <children>
+        <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/sfondo.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <Button id="btnRegistraCentro" fx:id="btnRegistraCentro" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToRegistraCentroScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Centro" textFill="#d13981">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button id="btnRegistraVaccinato" fx:id="btnRegistraVaccinato" alignment="CENTER" layoutX="15.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchToRegistraVaccinatoScene" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Registra Vaccinato" textFill="WHITE">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="CLOSED_HAND" />
+            </cursor>
+        </Button>
+        <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Text fill="#d13981" layoutX="250.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="REGISTRA VACCINATO" textAlignment="CENTER" wrappingWidth="650.1627502441406">
+            <font>
+                <Font name="Impact" size="35.0" />
+            </font>
+        </Text>
+        <TextField id="fieldNomeCognome" alignment="CENTER" layoutX="313.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci nome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <Text fill="#000000b1" layoutX="375.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <Button id="btnRegistraCentro" layoutX="542.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRA" textFill="WHITE">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <PasswordField id="fieldCodiceFsicale" alignment="CENTER" layoutX="313.0" layoutY="270.0" prefWidth="250.0" promptText="Inserisci codice fiscale" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </PasswordField>
+        <Button id="btnReset" layoutX="450.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;" text="X" textFill="#d13981">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <ComboBox id="cmbCentro" accessibleText="Seleziona tipologia" layoutX="313.0" layoutY="385.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="13.0" />
+            </padding>
+        </ComboBox>
+        <Text fill="#000000b1" layoutX="350.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centro vaccinale:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <Text fill="#000000b1" layoutX="598.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data somminmistrazione:" textAlignment="CENTER" wrappingWidth="261.143261945733">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <PasswordField id="fieldGiorno" alignment="CENTER" layoutX="601.0" layoutY="385.0" prefWidth="80.0" promptText="GG" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </PasswordField>
+        <ComboBox id="cmbVaccino" accessibleText="Seleziona tipologia" layoutX="603.0" layoutY="270.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="13.0" />
+            </padding>
+        </ComboBox>
+        <Text fill="#000000b1" layoutX="635.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaccino somministrato:" textAlignment="CENTER" wrappingWidth="194.3680705936302">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+        <PasswordField id="fieldMese" alignment="CENTER" layoutX="686.0" layoutY="385.0" prefWidth="80.0" promptText="MM" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </PasswordField>
+        <PasswordField id="fieldAnno" alignment="CENTER" layoutX="772.0" layoutY="385.0" prefWidth="80.0" promptText="AAAA" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </PasswordField>
+        <TextField id="fieldCognome" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+            </padding>
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Text fill="#000000b1" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
+            <font>
+                <Font name="Corbel" size="18.0" />
+            </font>
+        </Text>
+    </children>
 </Pane>
