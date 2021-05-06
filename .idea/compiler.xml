@@ -9,5 +9,9 @@
         <module name="LaboratorioB" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="clientCV" target="11" />
+      <module name="serverCV" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.clientCV.centrivaccinali.controller.LoginController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0">
             <image>
@@ -63,12 +63,12 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text layoutX="477.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="o">
+        <Text layoutX="474.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="o">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text layoutX="572.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ora!">
+        <Text layoutX="563.0" layoutY="521.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ora!">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
@@ -108,7 +108,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button layoutX="482.0" layoutY="498.0" mnemonicParsing="false" onAction="#switchToRegistratiScene" style="-fx-border-style: none; -fx-background-color: transparent;" text="registrati" textFill="#d13981" underline="true">
+        <Button layoutX="477.0" layoutY="498.0" mnemonicParsing="false" onAction="#switchToRegistratiScene" style="-fx-border-style: none; -fx-background-color: transparent;" text="registrati" textFill="#d13981" underline="true">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
