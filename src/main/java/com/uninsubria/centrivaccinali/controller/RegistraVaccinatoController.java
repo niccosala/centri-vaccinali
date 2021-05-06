@@ -38,6 +38,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         fieldCognome.setText(null);
         fieldCodiceFiscale.setText(null);
         fieldData.setValue(null);
+        vaccinoComboBox.setValue(null);
     }
 
     @Override

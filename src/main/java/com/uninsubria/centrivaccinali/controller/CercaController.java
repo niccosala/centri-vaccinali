@@ -46,6 +46,7 @@ public class CercaController extends Controller implements Initializable{
     public void reset(ActionEvent event) {
         nomeTextField.setText(null);
         comuneTextField.setText(null);
+        tipologiaComboBox.setValue(null);
     }
 
     @Override

@@ -33,6 +33,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     public void reset(ActionEvent event) throws IOException {
         fieldNome.setText(null);
         fieldIndirizzo.setText(null);
+        tipologiaComboBox.setValue(null);
     }
 
     @Override
