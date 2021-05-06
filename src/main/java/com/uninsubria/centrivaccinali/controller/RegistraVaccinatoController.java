@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +16,10 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
     @FXML
     private ComboBox<String> vaccinoComboBox;
+    @FXML
+    private TextField fieldNome, fieldCognome, fieldCodiceFiscale;
+    @FXML
+    private DatePicker fieldData;
 
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
         changeScene("RegistraCentro.fxml", event);
@@ -25,6 +31,13 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         changeScene("LogoutCittadino.fxml", event);
+    }
+
+    public void reset(ActionEvent event) {
+        fieldNome.setText(null);
+        fieldCognome.setText(null);
+        fieldCodiceFiscale.setText(null);
+        fieldData.setValue(null);
     }
 
     @Override
