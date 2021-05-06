@@ -131,17 +131,6 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <PasswordField id="fieldGiorno" alignment="CENTER" layoutX="601.0" layoutY="385.0" prefWidth="80.0" promptText="GG" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-            <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-            </padding>
-            <font>
-                <Font name="Microsoft Sans Serif" size="18.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </PasswordField>
         <ComboBox id="cmbVaccino" fx:id="vaccinoComboBox" accessibleText="Seleziona tipologia" layoutX="603.0" layoutY="270.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
             <cursor>
                 <Cursor fx:constant="HAND" />
@@ -155,28 +144,6 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <PasswordField id="fieldMese" alignment="CENTER" layoutX="686.0" layoutY="385.0" prefWidth="80.0" promptText="MM" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-            <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-            </padding>
-            <font>
-                <Font name="Microsoft Sans Serif" size="18.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </PasswordField>
-        <PasswordField id="fieldAnno" alignment="CENTER" layoutX="772.0" layoutY="385.0" prefWidth="80.0" promptText="AAAA" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
-            <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
-            </padding>
-            <font>
-                <Font name="Microsoft Sans Serif" size="18.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </PasswordField>
         <TextField id="fieldCognome" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
@@ -193,5 +160,6 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
+      <DatePicker editable="false" layoutX="603.0" layoutY="385.0" prefHeight="56.0" prefWidth="250.0" style="-fx-border-style: 1.5px solid silver;" />
     </children>
 </Pane>

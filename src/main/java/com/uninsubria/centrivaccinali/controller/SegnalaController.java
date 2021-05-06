@@ -20,5 +20,8 @@ public class SegnalaController extends Controller {
 
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
         changeScene("Visualizza.fxml", event);
+
     }
+
+
 }
