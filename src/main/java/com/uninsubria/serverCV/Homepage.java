@@ -5,19 +5,17 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Scanner;
 
-
-class Homepage {
+public class Homepage {
 
     public static void main(String[] args) throws IOException, ParseException, InterruptedException, SQLException {
 
-        Scanner in= new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         boolean operatore;
         String query;
         Proxy proxy;
         String User;
 
         do {
-
             System.out.println("Username: ");
             User= in.nextLine();
             System.out.println("Password: ");
