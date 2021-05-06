@@ -14,7 +14,6 @@ public class Client {
         try {
             start();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -26,19 +25,15 @@ public class Client {
 
         while(true) {
             System.out.println("Cosa vuoi fare? Registra centro Vaccinale(1) oppure Registra vaccinato(2) oppure Tornare indietro(3)");
-
             String scelta= in.nextLine();
 
             if(scelta.equals("3"))
                 break;
-
             else {
-
                 String query;
                 Socket socket = proxy.initializeConnection();
 
                 if(scelta.equals("1")) {
-
                     System.out.println("Inserire nome: ");
                     String nome= in.nextLine();
                     System.out.println("Inserire indirizzo: ");
@@ -47,12 +42,9 @@ public class Client {
                     String tipologia= in.nextLine();
 
                     query=  "INSERT INTO centrivaccinali VALUES('"+nome+"','"+indirizzo+"','"+tipologia+"')";
-
                     proxy.uploadToDb1(socket, query, nome);
                 }
-
                 if(scelta.equals("2")) {
-
                     System.out.println("Inserire nome: ");
                     String nome= in.nextLine();
                     System.out.println("Inserire nome/cognome: ");
@@ -75,9 +67,7 @@ public class Client {
 
                     proxy.uploadToDb(socket, query);
                 }
-
                 proxy.close();
-
             }
         }
     }

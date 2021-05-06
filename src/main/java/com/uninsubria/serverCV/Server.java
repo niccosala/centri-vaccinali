@@ -11,11 +11,10 @@ import java.util.concurrent.Semaphore;
 
 public class Server {
 
-    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Scanner in = new Scanner(System.in);
         Semaphore sem= new Semaphore(100);
-        ServerSocket server = new ServerSocket(8888);
+        ServerSocket server = new ServerSocket(IComandiServer.PORT);
         String user;
         String password;
 
@@ -32,7 +31,7 @@ public class Server {
             while(true) {
                 Socket socket = server.accept();
                 System.out.println("Connection accepted: ");
-                new Skeleton(socket, sem);
+                new Skeleton(socket, sem, user, password);
             }
         }
         catch(Exception e)  {

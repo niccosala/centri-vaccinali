@@ -92,7 +92,7 @@ public class Cittadini {
                     System.out.println("User: ");
                     String User= in.nextLine();
                     query=  "SELECT * FROM cittadiniregistrati WHERE userid='"+User+"'";
-                    String info[]= proxy.searchUser(socket, query);
+                    String info[]= proxy.searchUser(query);
                     proxy.close();
                     String pass;
 

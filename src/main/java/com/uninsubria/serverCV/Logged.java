@@ -30,11 +30,10 @@ public class Logged {
 
             if(scelta.equals("1")) {
                 String query= "SELECT * FROM eventiavversi";
-                ArrayList<String> sintomi= proxy.getSintomi(socket, query);
+                ArrayList<String> sintomi= proxy.getSintomi(query);
 
                 for(int i=0; i<sintomi.size();i++)
                     System.out.println((i+1)+": " + sintomi.get(i));
-
 
                 System.out.println("Inserisci il numero corrispondente al sintomo: ");
                 String sintomo= in.nextLine();
@@ -45,12 +44,8 @@ public class Logged {
                 String query1= "INSERT INTO segnalano VALUES('"+c_fiscale+"','"+sintomo+"','"+severita+"')";
                 proxy.uploadToDb(socket, query1);
             }
-
             else
                 break;
-
-
-
         }
     }
 

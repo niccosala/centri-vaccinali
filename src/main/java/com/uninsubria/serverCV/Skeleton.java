@@ -16,35 +16,35 @@ import java.net.Socket;
 
 public class Skeleton extends Thread  {
 
-    BufferedReader in=null;
-    PrintWriter out=null;
-    Semaphore sem;
-    Socket socket;
-    Server server = new Server();
+    private BufferedReader in = null;
+    private PrintWriter out = null;
+    private Semaphore sem;
+    private Socket socket;
+    private String username, password;
 
-    public Skeleton(Socket socket, Semaphore semaphore) {
+    public Skeleton(Socket socket, Semaphore semaphore, String username, String password) {
         this.socket = socket;
-        sem=semaphore;
+        this.username = username;
+        this.password = password;
+        sem = semaphore;
         start();
     }
 
     public void run() {
-
         try {
             sem.acquire();
-        }
-        catch (InterruptedException e3) {
+        } catch (InterruptedException e3) {
             e3.printStackTrace();
         }
-
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e2) {
             e2.printStackTrace();
         }
         try (Connection c = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres","postgres", "pino")) {
+                "jdbc:postgresql://localhost:5432/postgres", username, password)) {
             System.out.println("Connessione riuscita!");
+
             try {
                 in = new BufferedReader(
                         new InputStreamReader(socket.getInputStream())
@@ -56,10 +56,8 @@ public class Skeleton extends Thread  {
                         true
                 );
                 serveClient(in, out, c);
-            }
-            catch(IOException e) {
-
-                if (out != null) {
+            } catch(IOException e) {
+                 if (out != null) {
                     out.close();
                 }
                 if (in != null) {
@@ -76,104 +74,28 @@ public class Skeleton extends Thread  {
         }
     }
 
-
     private void serveClient(BufferedReader in, PrintWriter out, Connection c) throws IOException, SQLException {
 
         String operation;
-        Statement stmt;
-        Statement stmt1;
+        DBhelper dBhelper = new DBhelper(in, out, c);
 
-        while ((operation = in.readLine()) != null) {
-            int result = 0;
-            if (operation.equals("insert")) {
+        while((operation = in.readLine())!= null) {
 
-                String query= in.readLine();
-                stmt = c.createStatement();
-                try {
-                    stmt.executeUpdate(query);
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-                close();
-
+            switch (operation) {
+                case "insert" : dBhelper.insertDb();
+                break;
+                case "insert1" : dBhelper.populateCentriVaccinali();
+                break;
+                case "search_user" : dBhelper.searchUser();
+                break;
+                case "find" : dBhelper.filter();
+                break;
+                case "searchSintomi" : dBhelper.getSintomi();
+                default: break;
             }
-            else if (operation.equals("insert1")) {
-
-                String query= in.readLine();
-                String query1= in.readLine();
-
-                stmt = c.createStatement();
-                stmt1= c.createStatement();
-                try {
-                    stmt.executeUpdate(query);
-                    stmt1.executeUpdate(query1);
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-                close();
-
-            }
-
-            else if(operation.equals("search_user")) {
-
-                String query= in.readLine();
-                System.out.println(query);
-                stmt= c.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()) {
-                    out.println(rs.getString("password"));
-                    out.println(rs.getString("codfisc"));
-                }
-                close();
-
-            }
-
-            else if(operation.equals("find")) {
-
-                String query= in.readLine();
-                System.out.println(query);
-                stmt= c.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()) {
-                    System.out.println("NOME: " + rs.getString("nome"));
-                    System.out.println("tipologia: " + rs.getString("tipologia"));
-                    System.out.println("indirizzo: " + rs.getString("indirizzo"));
-                }
-                close();
-            }
-
-            else if(operation.equals("searchSintomi")) {
-
-                String query= in.readLine();
-                System.out.println(query);
-                stmt= c.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                try {
-                    while (rs.next()) {
-                        out.println(rs.getString("sintomo"));
-                    }
-                    out.println("exit");
-                }
-                catch(Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
-                System.err.println("Operation not recognized: " + operation);
-            }
-            out.println(result);
-            close();
+            dBhelper.close(socket);
         }
-
         sem.release();
-
-    }
-
-    private void close() throws IOException {
-        in.close();
-        out.close();
-        socket.close();
-
     }
 }
 

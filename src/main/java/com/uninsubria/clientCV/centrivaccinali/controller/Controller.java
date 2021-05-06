@@ -8,14 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class Controller {
 
     private Persona user;
-
     public static final String path = "com/uninsubria/layout/";
 
     public void changeScene(String layout, ActionEvent event) throws IOException {
