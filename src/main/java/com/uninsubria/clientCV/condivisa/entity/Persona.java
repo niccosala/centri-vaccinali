@@ -1,6 +1,6 @@
 package com.uninsubria.clientCV.condivisa.entity;
 
-public class Persona {
+public abstract class Persona {
 
     private String nome;
     private String cognome;
