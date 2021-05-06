@@ -2,18 +2,18 @@ package com.uninsubria.centrivaccinali.entity;
 
 public class Segnalazione {
 
-    private int idVaccinazione, idEvento, severità;
+    private int idVaccinazione, idEvento, severita;
     private String descrizione;
 
     public Segnalazione(int idVaccinazione,
                         int idEvento,
-                        int severità,
+                        int severita,
                         String descrizione) {
 
         this.descrizione = descrizione;
         this.idEvento = idEvento;
         this.idVaccinazione = idVaccinazione;
-        this.severità = severità;
+        this.severita = severita;
     }
 
     public int getIdVaccinazione() {
@@ -24,8 +24,8 @@ public class Segnalazione {
         return idEvento;
     }
 
-    public int getSeverità() {
-        return severità;
+    public int getSeverita() {
+        return severita;
     }
 
     public String getDescrizione() {
@@ -40,8 +40,8 @@ public class Segnalazione {
         this.idEvento = idEvento;
     }
 
-    public void setSeverità(int severità) {
-        this.severità = severità;
+    public void setSeverita(int severita) {
+        this.severita = severita;
     }
 
     public void setDescrizione(String descrizione) {
