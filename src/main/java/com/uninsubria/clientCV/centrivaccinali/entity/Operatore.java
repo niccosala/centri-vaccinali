@@ -18,5 +18,4 @@ public class Operatore extends Persona {
     public void setUsername(String username) {
         this.username = username;
     }
-
 }
