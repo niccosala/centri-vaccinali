@@ -2,6 +2,7 @@ package com.uninsubria.serverCV;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,12 +14,12 @@ public class Client {
 
         try {
             start();
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private void start() throws IOException, ParseException {
+    private void start() throws IOException, ParseException, SQLException {
 
         Scanner in= new Scanner(System.in);
         Proxy proxy= new Proxy();
@@ -31,7 +32,6 @@ public class Client {
                 break;
             else {
                 String query;
-                Socket socket = proxy.initializeConnection();
 
                 if(scelta.equals("1")) {
                     System.out.println("Inserire nome: ");
@@ -42,7 +42,7 @@ public class Client {
                     String tipologia= in.nextLine();
 
                     query=  "INSERT INTO centrivaccinali VALUES('"+nome+"','"+indirizzo+"','"+tipologia+"')";
-                    proxy.uploadToDb1(socket, query, nome);
+                    proxy.populateCentriVaccinali(query, nome);
                 }
                 if(scelta.equals("2")) {
                     System.out.println("Inserire nome: ");
@@ -65,7 +65,7 @@ public class Client {
 
                     query=  "INSERT INTO vaccinati_"+nome+" VALUES('"+nome_cognome+"','"+c_fiscale+"','"+sqlDate+"','"+nome_vacc+"','"+id_vacc+"')";
 
-                    proxy.uploadToDb(socket, query);
+                    proxy.insertDb(query);
                 }
                 proxy.close();
             }
