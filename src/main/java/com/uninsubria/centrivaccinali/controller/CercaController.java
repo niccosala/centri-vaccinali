@@ -37,13 +37,13 @@ public class CercaController extends Controller implements Initializable{
         changeScene("Visualizza.fxml", event);
     }
 
-    public void enableFiltering (ActionEvent event) {
+    public void enableFiltering () {
         nomeTextField.setDisable(filtraComuneRadio.isSelected());
         comuneTextField.setDisable(filtraNomeRadio.isSelected());
         tipologiaComboBox.setDisable(filtraNomeRadio.isSelected());
     }
 
-    public void reset(ActionEvent event) {
+    public void reset() {
         nomeTextField.setText(null);
         comuneTextField.setText(null);
         tipologiaComboBox.setValue(null);

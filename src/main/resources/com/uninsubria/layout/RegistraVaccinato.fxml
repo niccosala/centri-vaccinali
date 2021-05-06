@@ -160,6 +160,6 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-      <DatePicker fx:id="fieldData" editable="false" layoutX="603.0" layoutY="385.0" prefHeight="56.0" prefWidth="250.0" style="-fx-border-style: 1.5px solid silver;" />
+      <DatePicker fx:id="fieldData" editable="false" layoutX="603.0" layoutY="385.0" prefHeight="56.0" prefWidth="250.0" />
     </children>
 </Pane>

@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class RegistraCittadinoController extends Controller{
+public class RegistraCittadinoController extends Controller {
 
     @FXML
     private TextField fieldNome, fieldCognome, fieldCodiceFiscale, fieldEmail, fieldID;
@@ -26,7 +26,7 @@ public class RegistraCittadinoController extends Controller{
         changeScene("LogoutCittadino.fxml", event);
     }
 
-    public void reset(ActionEvent event) {
+    public void reset() {
         fieldNome.setText(null);
         fieldCognome.setText(null);
         fieldCodiceFiscale.setText(null);

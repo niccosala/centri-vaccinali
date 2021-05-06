@@ -33,7 +33,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         changeScene("LogoutCittadino.fxml", event);
     }
 
-    public void reset(ActionEvent event) {
+    public void reset() {
         fieldNome.setText(null);
         fieldCognome.setText(null);
         fieldCodiceFiscale.setText(null);

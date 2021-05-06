@@ -30,7 +30,7 @@ public class RegistraCentroController extends Controller implements Initializabl
         changeScene("RegistraVaccinato.fxml", event);
     }
 
-    public void reset(ActionEvent event) throws IOException {
+    public void reset() {
         fieldNome.setText(null);
         fieldIndirizzo.setText(null);
         tipologiaComboBox.setValue(null);

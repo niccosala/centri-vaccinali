@@ -14,8 +14,6 @@ import java.util.Objects;
 
 public class Controller {
 
-    private Scene scene;
-    private Stage stage;
     private Persona user;
 
     public static final String path = "com/uninsubria/layout/";
@@ -24,8 +22,8 @@ public class Controller {
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
                         path + layout)));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
