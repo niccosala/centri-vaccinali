@@ -26,7 +26,7 @@
                 <Font name="Microsoft Sans Serif" size="32.0" />
             </font>
         </Text>
-        <TextField id="fieldUsername" alignment="CENTER" layoutX="325.0" layoutY="178.0" prefWidth="250.0" promptText="Inserisci username" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver;">
+        <TextField id="fieldUsername" fx:id="usernameTextField" alignment="CENTER" layoutX="325.0" layoutY="178.0" prefWidth="250.0" promptText="Inserisci username" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver;">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
@@ -73,7 +73,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <PasswordField id="fieldPassword" alignment="CENTER" layoutX="325.0" layoutY="289.0" prefWidth="250.0" promptText="Inserisci password" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver;">
+        <PasswordField id="fieldPassword" fx:id="passwordField" alignment="CENTER" layoutX="325.0" layoutY="289.0" prefWidth="250.0" promptText="Inserisci password" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver;">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
@@ -89,7 +89,7 @@
                 <Font size="18.0" />
             </font>
         </Text>
-        <Button id="btnReset" layoutX="335.0" layoutY="373.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;" text="X" textFill="#d13981">
+        <Button id="btnReset" layoutX="335.0" layoutY="373.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;" text="X" textFill="#d13981">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
