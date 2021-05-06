@@ -7,12 +7,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.concurrent.Semaphore;
 import java.io.*;
-import java.net.Socket;
 
 public class Skeleton extends Thread  {
 
@@ -91,6 +88,9 @@ public class Skeleton extends Thread  {
                 case "find" : dBhelper.filter();
                 break;
                 case "searchSintomi" : dBhelper.getSintomi();
+                break;
+                case "login" : dBhelper.login();
+                break;
                 default: break;
             }
             dBhelper.close(socket);

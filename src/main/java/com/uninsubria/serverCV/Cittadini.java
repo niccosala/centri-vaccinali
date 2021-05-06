@@ -1,24 +1,17 @@
 package com.uninsubria.serverCV;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Cittadini {
 
-    public Cittadini() throws IOException {
-
+    public Cittadini() throws IOException, SQLException {
         start();
-
     }
 
-    private void start() throws IOException {
+    private void start() throws IOException, SQLException {
 
         Scanner in= new Scanner(System.in);
         Proxy proxy= new Proxy();
@@ -48,7 +41,7 @@ public class Cittadini {
                         System.out.println("Inserisci il nome da cercare: ");
                         String name= in.nextLine();
                         query= "SELECT * FROM centrivaccinali WHERE nome='"+name+"'";
-                        proxy.findByName(socket, query);
+                        proxy.filter(query);
                         proxy.close();
                     }
 
@@ -58,7 +51,7 @@ public class Cittadini {
                         System.out.println("Inserisci la tipologia: ");
                         String tipologia= in.nextLine();
                         query= "SELECT * FROM centrivaccinali WHERE indirizzo='"+comune+"' AND tipologia='"+tipologia+"'";
-                        proxy.findbyComune_Tipologia(socket, query);
+                        proxy.filter(query);
                         proxy.close();
                     }
 
@@ -82,7 +75,7 @@ public class Cittadini {
                     String id_vacc= in.nextLine();
 
                     query=  "INSERT INTO cittadiniregistrati VALUES('"+nome_cognome+"','"+id_vacc+"','"+c_fisc+"','"+user_id+"','"+email+"','"+passwd+"')";
-                    proxy.uploadToDb(socket, query);
+                    proxy.insertDb(query);
                     proxy.close();
 
                 }
@@ -101,7 +94,7 @@ public class Cittadini {
                         pass= in.nextLine();
 
                     } while(!pass.equals(info[0]));
-                    Logged l= new Logged(info[1], socket);
+                    Logged l = new Logged(info[1], socket);
 
                 }
             }

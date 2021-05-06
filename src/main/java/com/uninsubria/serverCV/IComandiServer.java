@@ -14,6 +14,7 @@ public interface IComandiServer {
     void insertDb() throws IOException, SQLException;
     void populateCentriVaccinali() throws IOException, SQLException;
     void filter() throws IOException, SQLException;
+    void login() throws IOException, SQLException;
     void close(Socket socket) throws IOException;
 
 }

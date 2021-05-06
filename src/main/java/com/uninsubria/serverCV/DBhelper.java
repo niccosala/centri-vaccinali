@@ -79,6 +79,35 @@ public class DBhelper implements IComandiServer {
     }
 
     @Override
+    public void login() throws IOException, SQLException {
+        String query= in.readLine();
+        String User=in.readLine();
+        Statement stmt= connection.createStatement();
+
+        ResultSet rs = stmt.executeQuery(query);
+        boolean isRegistered = false;
+        if (rs.getRow() != 0) {
+            isRegistered = true;
+            System.out.println(rs.getRow());
+        }
+
+        if(isRegistered) {
+            String query1= "select userid from utentiregistrati where userid='"+User+"' intersect select userid from cittadiniregistrati where userid='"+User+"'";
+            Statement st= connection.createStatement();
+            ResultSet r= st.executeQuery(query1);
+            boolean isOperatore = false;
+
+            if (r.getRow() != 0) {
+                isOperatore = true;
+            }
+            out.println("true");
+            out.println(isOperatore);
+        }
+        else
+            out.println("false");
+    }
+
+    @Override
     public void filter() throws IOException, SQLException {
         String query= in.readLine();
         System.out.println(query);

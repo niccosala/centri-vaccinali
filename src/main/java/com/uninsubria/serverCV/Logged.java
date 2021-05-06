@@ -1,11 +1,8 @@
 package com.uninsubria.serverCV;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,12 +10,12 @@ public class Logged {
 
     public Socket socket;
 
-    public Logged(String c_fiscale, Socket socket) throws IOException {
+    public Logged(String CF, Socket socket) throws IOException, SQLException {
         this.socket=socket;
-        start(c_fiscale);
+        start(CF);
     }
 
-    private void start(String c_fiscale) throws IOException {
+    private void start(String CF) throws IOException, SQLException {
 
         Scanner in = new Scanner(System.in);
         Proxy proxy= new Proxy();
@@ -37,12 +34,11 @@ public class Logged {
 
                 System.out.println("Inserisci il numero corrispondente al sintomo: ");
                 String sintomo= in.nextLine();
-                Socket socket=  proxy.initializeConnection();
                 System.out.println("Inserisci una valutazione numerica da 1 a 5");
                 String severita= in.nextLine();
 
-                String query1= "INSERT INTO segnalano VALUES('"+c_fiscale+"','"+sintomo+"','"+severita+"')";
-                proxy.uploadToDb(socket, query1);
+                String query1= "INSERT INTO segnalano VALUES('"+CF+"','"+sintomo+"','"+severita+"')";
+                proxy.insertDb(query1);
             }
             else
                 break;

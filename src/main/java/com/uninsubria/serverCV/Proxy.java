@@ -3,13 +3,15 @@ package com.uninsubria.serverCV;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Proxy {
+public class Proxy implements IComandiClient{
 
-    private Socket socket = null;
+    private final Socket socket;
     private BufferedReader in = null;
     private PrintWriter out = null;
+    private boolean isOperatore = false;
 
     public Proxy() throws IOException {
 
@@ -35,29 +37,8 @@ public class Proxy {
         }
     }
 
-    public void close() throws IOException {
-        out.close();
-        in.close();
-        socket.close();
-    }
 
-    public Socket getSocket() {
-        return socket;
-    }
-
-    public PrintWriter getOut() {
-        return out;
-    }
-
-    public BufferedReader getIn() {
-        return in;
-    }
-
-    public Socket initializeConnection() throws IOException {
-        InetAddress serverAddr = InetAddress.getByName(null);
-        return new Socket(serverAddr, 8888);
-    }
-
+    @Override
     public String[] searchUser(String query) throws IOException {
         out.println("search_user");
         out.println(query);
@@ -67,31 +48,8 @@ public class Proxy {
         return new String[]{password, CF};
     }
 
-    public void uploadToDb(String query) throws IOException {
-        out.println("insert");
-        out.println(query);
-    }
-
-    public void uploadToDb1(String query, String nomeTabella) throws IOException {
-        out.println("insert1");
-        out.println(query);
-        out.println("create table vaccinati_" + nomeTabella + " ( nomecognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino char(1), idvaccino smallint)");
-    }
-
-    public void filterByName(String query) throws IOException {
-        out.println("find");
-        out.println(query);
-    }
-
-
-    public void filterByComuneTipologia(String query) throws IOException {
-        out.println("find");
-        out.println(query);
-    }
-
-    @SuppressWarnings("unchecked")
-    public ArrayList<String> getSintomi(String query) throws IOException {
-
+    @Override
+    public ArrayList<String> getSintomi(String query) throws IOException, SQLException {
         ArrayList<String> sintomi = new ArrayList<>();
 
         out.println("searchSintomi");
@@ -106,6 +64,57 @@ public class Proxy {
             }
         }
         return sintomi;
+    }
+
+    @Override
+    public void insertDb(String query) throws IOException, SQLException {
+        out.println("insert");
+        out.println(query);
+    }
+
+    @Override
+    public void populateCentriVaccinali(String query, String nomeTabella) throws IOException, SQLException {
+        out.println("insert1");
+        out.println(query);
+        out.println("create table vaccinati_" + nomeTabella + " ( nomecognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino char(1), idvaccino smallint)");
+    }
+
+    @Override
+    public void filter(String query) throws IOException, SQLException {
+        out.println("find");
+        out.println(query);
+    }
+
+    @Override
+    public Boolean login(String query, String User) throws IOException {
+
+        out.println("login");
+        out.println(query);
+        out.println(User);
+
+        boolean find = Boolean.parseBoolean(in.readLine());
+
+        if(!find)
+            return false;
+        else {
+            isOperatore = Boolean.parseBoolean(in.readLine());
+            return true;
+        }
+    }
+
+    @Override
+    public void close() throws IOException {
+        out.close();
+        in.close();
+        socket.close();
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public boolean getOperatore() {
+        return isOperatore;
     }
 }
 
