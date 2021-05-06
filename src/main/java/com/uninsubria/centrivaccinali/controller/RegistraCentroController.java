@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,8 @@ public class RegistraCentroController extends Controller implements Initializabl
 
     @FXML
     private ComboBox<String> tipologiaComboBox;
+    @FXML
+    private TextField fieldNome, fieldIndirizzo;
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         changeScene("LogoutOperatore.fxml", event);
@@ -25,6 +28,11 @@ public class RegistraCentroController extends Controller implements Initializabl
 
     public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
         changeScene("RegistraVaccinato.fxml", event);
+    }
+
+    public void reset(ActionEvent event) throws IOException {
+        fieldNome.setText(null);
+        fieldIndirizzo.setText(null);
     }
 
     @Override

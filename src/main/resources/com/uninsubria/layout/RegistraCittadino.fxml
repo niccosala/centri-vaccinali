@@ -8,202 +8,173 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-      prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.uninsubria.centrivaccinali.controller.RegistraCittadinoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.centrivaccinali.controller.RegistraCittadinoController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../img/sfondo.png"/>
+                <Image url="@../img/sfondo.png" />
             </image>
         </ImageView>
-        <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
-                   width="250.0"/>
-        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER"
-              wrappingWidth="250.78929138183594">
+        <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnRegistraCentro" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0"
-                mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0"
-                style="-fx-background-color: white; -fx-background-radius: 30;" text="Cerca" textFill="#d13981">
+        <Button id="btnRegistraCentro" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Cerca" textFill="#d13981">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button id="btnRegistraVaccinato" fx:id="btnRegistrati" alignment="CENTER" layoutX="15.0" layoutY="140.0"
-                mnemonicParsing="false" onAction="#switchToRegistratiScene" prefWidth="220.0"
-                style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Registrati" textFill="WHITE">
+        <Button id="btnRegistraVaccinato" fx:id="btnRegistrati" alignment="CENTER" layoutX="15.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchToRegistratiScene" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Registrati" textFill="WHITE">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <cursor>
-                <Cursor fx:constant="CLOSED_HAND"/>
+                <Cursor fx:constant="CLOSED_HAND" />
             </cursor>
         </Button>
-        <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0"
-                mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0"
-                style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
+        <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Text fill="#d13981" layoutX="250.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRATI"
-              textAlignment="CENTER" wrappingWidth="650.1627502441406">
+        <Text fill="#d13981" layoutX="250.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REGISTRATI" textAlignment="CENTER" wrappingWidth="650.1627502441406">
             <font>
-                <Font name="Microsoft Sans Serif" size="35.0"/>
+                <Font name="Microsoft Sans Serif" size="35.0" />
             </font>
         </Text>
-        <TextField alignment="CENTER" layoutX="313.0" layoutY="153.0" prefHeight="56.0" prefWidth="250.0"
-                   promptText="Inserisci nome"
-                   style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldNome" alignment="CENTER" layoutX="313.0" layoutY="153.0" prefHeight="56.0" prefWidth="250.0" promptText="Inserisci nome" style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:"
-              textAlignment="CENTER" wrappingWidth="181.3680705936302">
+        <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="375.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
+        <Text fill="#000000b1" layoutX="375.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnRegistraCentro" layoutX="540.0" layoutY="482.0" mnemonicParsing="false"
-                style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRAMI" textFill="WHITE">
+        <Button id="btnRegistraCentro" layoutX="540.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRAMI" textFill="WHITE">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <padding>
-                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
+                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
             </padding>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button id="btnReset" layoutX="448.0" layoutY="482.0" mnemonicParsing="false"
-                style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;"
-                text="X" textFill="#d13981">
+        <Button id="btnReset" layoutX="448.0" layoutY="482.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5;" text="X" textFill="#d13981">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <padding>
-                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
+                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
             </padding>
             <cursor>
-                <Cursor fx:constant="HAND"/>
+                <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Text fill="#000000b1" layoutX="350.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:"
-              textAlignment="CENTER" wrappingWidth="181.3680705936302">
+        <Text fill="#000000b1" layoutX="350.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="598.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Id univoco vaccinazione:" textAlignment="CENTER" wrappingWidth="261.143261945733">
+        <Text fill="#000000b1" layoutX="598.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id univoco vaccinazione:" textAlignment="CENTER" wrappingWidth="261.143261945733">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="620.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Indirizzo posta eletronica:" textAlignment="CENTER" wrappingWidth="222.4468059451927">
+        <Text fill="#000000b1" layoutX="620.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo posta eletronica:" textAlignment="CENTER" wrappingWidth="222.4468059451927">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <TextField alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci cognome"
-                   style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldCognome" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Text fill="#000000b1" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:"
-              textAlignment="CENTER" wrappingWidth="181.3680705936302">
+        <Text fill="#000000b1" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <PasswordField alignment="CENTER" layoutX="313.0" layoutY="383.0" prefWidth="250.0"
-                       promptText="Inserisci password"
-                       style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+        <PasswordField fx:id="fieldPassword" alignment="CENTER" layoutX="313.0" layoutY="383.0" prefWidth="250.0" promptText="Inserisci password" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,.75); -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </PasswordField>
-        <TextField alignment="CENTER" layoutX="313.0" layoutY="266.0" prefHeight="56.0" prefWidth="250.0"
-                   promptText="Inserisci codice fiscale"
-                   style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldCodiceFiscale" alignment="CENTER" layoutX="313.0" layoutY="266.0" prefHeight="56.0" prefWidth="250.0" promptText="Inserisci codice fiscale" style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <TextField alignment="CENTER" layoutX="603.0" layoutY="266.0" prefWidth="250.0" promptText="Inserisci cognome"
-                   style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldEmail" alignment="CENTER" layoutX="603.0" layoutY="266.0" prefWidth="250.0" promptText="Inserisci cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <TextField alignment="CENTER" layoutX="603.0" layoutY="383.0" prefWidth="250.0" promptText="Inserisci ID"
-                   style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldID" alignment="CENTER" layoutX="603.0" layoutY="383.0" prefWidth="250.0" promptText="Inserisci ID" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
             <font>
-                <Font name="Microsoft Sans Serif" size="18.0"/>
+                <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
             <cursor>
-                <Cursor fx:constant="TEXT"/>
+                <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
     </children>
