@@ -1,8 +1,9 @@
 package com.uninsubria.clientCV.cittadini.entity;
 
 import com.uninsubria.clientCV.condivisa.entity.Persona;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
-public class CittadinoRegistrato extends Persona {
+public class CittadinoRegistrato extends UtenteRegistrato {
 
     private String email, username, password;
     private int idVaccinazione;
@@ -16,10 +17,8 @@ public class CittadinoRegistrato extends Persona {
             String password,
             int idVaccinazione) {
 
-        super(nome, cognome, CF);
+        super(nome, cognome, CF, username, password);
         this.email = email;
-        this.username = username;
-        this.password = password;
         this.idVaccinazione = idVaccinazione;
     }
 
