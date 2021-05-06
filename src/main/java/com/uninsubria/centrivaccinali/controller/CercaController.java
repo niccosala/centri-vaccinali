@@ -43,6 +43,11 @@ public class CercaController extends Controller implements Initializable{
         tipologiaComboBox.setDisable(filtraNomeRadio.isSelected());
     }
 
+    public void reset(ActionEvent event) {
+        nomeTextField.setText(null);
+        comuneTextField.setText(null);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] tipologia = {Tipologia.OSPEDALIERO.toString(), Tipologia.HUB.toString(), Tipologia.AZIENDALE.toString()};
