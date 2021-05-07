@@ -94,7 +94,7 @@ public class DBhelper implements IComandiServer {
         System.out.println("registrato: " + isRegistered);
 
         if(isRegistered) {
-            String query1 = "select * from cittadiniregistrati where userid = '" + user + "'";
+            String query1 = "select * from cittadiniregistrati join utentiregistrati on cittadiniregistrati.userid = utentiregistrati.userid where utentiregistrati.userid = '" + user + "'";
             Statement st = connection.createStatement();
             ResultSet r = st.executeQuery(query1);
             boolean isCittadino = false;
@@ -115,7 +115,7 @@ public class DBhelper implements IComandiServer {
             if(isCittadino)
                 out.println(r.getString("email"));
             out.println(r.getString("userid"));
-            out.println(r.getString("password"));
+            out.println(r.getString("pword"));
             if(isCittadino)
                 out.println(r.getString("idvacc"));
         }

@@ -44,7 +44,7 @@ public class LoginController extends Controller {
             return;
 
         Proxy proxy = new Proxy();
-        String query = "select * from utentiregistrati where userid='" + username+ "'and password='" + password +"'";
+        String query = "select * from utentiregistrati where userid = '" + username+ "'and pword = '" + password +"'";
         UtenteRegistrato utente = proxy.login(query, username);
 
         if(utente == null) {

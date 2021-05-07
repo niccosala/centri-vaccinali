@@ -19,9 +19,9 @@ public class Server {
         String password;
 
         do {
-            System.out.println("Inserire credenziali di accesso al db/nUser: ");
+            System.out.print("Inserire credenziali di accesso al db\nUser: ");
             user = in.nextLine();
-            System.out.println("Password: ");
+            System.out.print("Password: ");
             password = in.nextLine();
         } while(!tryConnection(user, password));
 
@@ -43,7 +43,7 @@ public class Server {
         Class.forName("org.postgresql.Driver");
         try {
             Connection c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres", user, password);
+                    "jdbc:postgresql://localhost:7070/cv", user, password);
         }
         catch (SQLException e) {
             return false;
