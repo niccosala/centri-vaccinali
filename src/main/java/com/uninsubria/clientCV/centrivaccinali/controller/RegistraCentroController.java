@@ -28,15 +28,15 @@ public class RegistraCentroController extends Controller implements Initializabl
 
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutOperatore.fxml", event);
+        changeSceneAndSetValues("LogoutOperatore.fxml", utente, event);
     }
 
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
-       changeScene("RegistraCentro.fxml", event);
+       changeSceneAndSetValues("RegistraCentro.fxml", utente, event);
     }
 
     public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
-        changeScene("RegistraVaccinato.fxml", event);
+        changeSceneAndSetValues("RegistraVaccinato.fxml", utente, event);
     }
 
     public void registraCentro(ActionEvent event) throws IOException, SQLException {
