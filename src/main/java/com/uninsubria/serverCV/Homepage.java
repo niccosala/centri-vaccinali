@@ -26,7 +26,7 @@ class Homepage {
             System.out.println("ok");
             query= "select * from utentiregistrati where userid='"+User+"'and password='"+Password+"'";
 
-        } while(!proxy.login(query, User));
+        } while(proxy.login(query, User) != null);
 
         operatore= proxy.getOperatore();
         System.out.println("ok");

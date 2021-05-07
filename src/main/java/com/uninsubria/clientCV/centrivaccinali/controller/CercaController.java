@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,4 +80,8 @@ public class CercaController extends Controller implements Initializable{
         tipologiaComboBox.getItems().addAll(tipologia);
     }
 
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }

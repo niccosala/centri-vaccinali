@@ -1,5 +1,7 @@
 package com.uninsubria.serverCV;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+
 import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;

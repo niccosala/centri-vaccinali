@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Vaccino;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,5 +73,10 @@ public class RegistraVaccinatoController extends Controller implements Initializ
                 Vaccino.MODERNA.toString(), Vaccino.PFIZER.toString()};
 
         vaccinoComboBox.getItems().addAll(vaccino);
+    }
+
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
     }
 }

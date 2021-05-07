@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,5 +56,10 @@ public class RegistraCentroController extends Controller implements Initializabl
         String[] tipologia = {Tipologia.AZIENDALE.toString(), Tipologia.HUB.toString(),
                 Tipologia.OSPEDALIERO.toString()};
         tipologiaComboBox.getItems().addAll(tipologia);
+    }
+
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
     }
 }

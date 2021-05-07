@@ -1,5 +1,7 @@
 package com.uninsubria.serverCV;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -92,17 +94,30 @@ public class DBhelper implements IComandiServer {
         System.out.println("registrato: " + isRegistered);
 
         if(isRegistered) {
-            String query1 = "select userid from cittadiniregistrati where userid = '" + user + "'";
+            String query1 = "select * from cittadiniregistrati where userid = '" + user + "'";
             Statement st = connection.createStatement();
             ResultSet r = st.executeQuery(query1);
-            boolean isOperatore = true;
+            boolean isCittadino = false;
+            out.println("true");
 
             if (r.next()) {
-                isOperatore = false;
-            }
-            System.out.println("operatore: " + isOperatore);
-            out.println("true");
-            out.println(isOperatore);
+                // Operatore? > No
+                out.println("false");
+                isCittadino = true;
+
+            } else
+                // Operatore? > Si
+                out.println("true");
+
+            out.println(r.getString("nome"));
+            out.println(r.getString("cognome"));
+            out.println(r.getString("codicefiscale"));
+            if(isCittadino)
+                out.println(r.getString("email"));
+            out.println(r.getString("userid"));
+            out.println(r.getString("password"));
+            if(isCittadino)
+                out.println(r.getString("idvacc"));
         }
         else
             out.println("false");

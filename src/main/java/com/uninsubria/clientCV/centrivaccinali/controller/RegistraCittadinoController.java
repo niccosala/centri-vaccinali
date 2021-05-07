@@ -1,11 +1,14 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class RegistraCittadinoController extends Controller {
 
@@ -27,6 +30,26 @@ public class RegistraCittadinoController extends Controller {
         changeScene("LogoutCittadino.fxml", event);
     }
 
+    public void registraCittadino(ActionEvent event) throws IOException, SQLException {
+        String nome = fieldNome.getText();
+        String cognome = fieldCognome.getText();
+        String CF = fieldCodiceFiscale.getText();
+        String user = fieldUsername.getText();
+        String password = fieldPassword.getText();
+        String email = fieldEmail.getText();
+        String IDvaccinazione = fieldID.getText();
+
+        String insertAsUtente = "INSERT INTO utentiregistrati VALUES('"+user+"','"+password+"','"+CF+"','"+nome+"','"+cognome+"')";
+        Proxy proxyUtenti = new Proxy();
+        proxyUtenti.insertDb(insertAsUtente);
+
+        String insertAsCittadino = "INSERT INTO cittadiniregistrati VALUES('"+IDvaccinazione+"','"+user+"','"+email+"')";;
+        Proxy proxyCittadini = new Proxy();
+        proxyCittadini.insertDb(insertAsCittadino);
+
+        reset();
+    }
+
     public void reset() {
         fieldNome.setText(null);
         fieldCognome.setText(null);
@@ -37,4 +60,8 @@ public class RegistraCittadinoController extends Controller {
         fieldPassword.setText(null);
     }
 
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }

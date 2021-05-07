@@ -1,5 +1,6 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -23,4 +24,8 @@ public class SegnalaController extends Controller {
     }
 
 
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }
