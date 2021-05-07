@@ -1,10 +1,12 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
 public class VisualizzaController extends Controller {
+
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeScene("Cerca.fxml", event);
     }
@@ -19,5 +21,10 @@ public class VisualizzaController extends Controller {
 
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
         changeScene("Segnala.fxml", event);
+    }
+
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
     }
 }

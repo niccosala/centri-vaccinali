@@ -1,6 +1,9 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
+import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,29 +31,67 @@ public class LoginController extends Controller {
         changeScene("RegistraCittadino.fxml", event);
     }
 
-    public void switchToHomeScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new
-                FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeCittadino.fxml"));
+    public void switchToHomeOperatoreScene(ActionEvent event) throws IOException{
+        changeScene("HomeOperatore.fxml", event);
+    }
 
-        //scene of HomeCittadino/HomeOperatore, mancano i controlli per sapere se è operatore o cittadino
-        Parent root = loader.load();
+    public void verifyLogin(ActionEvent event) throws IOException {
+        String username = usernameTextField.getText();
+        String password = passwordField.getText();
 
-        //instance of HomeCittadinoController controller/HomeOperatoreController
-        HomeCittadinoController controller = loader.getController();
+        if (username.isBlank() || password.isBlank())
+            return;
 
-        //calling method of HomeCittadinoController/HomeOperatoreController
-        controller.setFields(usernameTextField.getText());
+        Proxy proxy = new Proxy();
+        String query = "select * from utentiregistrati where userid='" + username+ "'and password='" + password +"'";
+        UtenteRegistrato utente = proxy.login(query, username);
 
-        //change scene
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(utente == null) {
+            //credenziali sono errate show dialog
+        } else {
+            if(utente instanceof CittadinoRegistrato) {
 
+                /*FXMLLoader loader = new
+                        FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeCittadino.fxml"));
+
+                Parent root = loader.load();
+
+                HomeCittadinoController controller = loader.getController();
+                controller.setUtente(utente);
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();*/
+
+                changeSceneAndSetValues("HomeCittadino.fxml", utente, event);
+            }
+            else {
+                /*switchToHomeOperatoreScene(event);
+                FXMLLoader loader = new
+                        FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeOperatore.fxml"));
+
+                Parent root = loader.load();
+
+                //instance of HomeCittadinoController controller/HomeOperatoreController
+                HomeOperatoreController controller = loader.getController();
+                controller.setUtente(utente);
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();*/
+                changeSceneAndSetValues("HomeOperatore.fxml", utente, event);
+
+            }
+        }
     }
 
     public void reset() {
         usernameTextField.setText(null);
         passwordField.setText(null);
     }
+
+    @Override
+    public void setUtente(UtenteRegistrato utente) { }
 }

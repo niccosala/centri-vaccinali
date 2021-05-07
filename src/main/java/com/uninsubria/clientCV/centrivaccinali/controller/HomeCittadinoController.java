@@ -1,5 +1,6 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
@@ -7,6 +8,8 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class HomeCittadinoController extends Controller{
+
+    private UtenteRegistrato utente;
 
     @FXML
     private Text welcomeTextField;
@@ -23,7 +26,7 @@ public class HomeCittadinoController extends Controller{
         changeScene("RegistraCittadino.fxml", event);
     }
 
-    public void setFields(String welcomeText) {
-        welcomeTextField.setText("Ciao " + welcomeText);
+    public void setUtente(UtenteRegistrato utente) {
+        this.utente = utente;
     }
 }

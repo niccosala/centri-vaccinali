@@ -1,6 +1,8 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,8 +10,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CercaController extends Controller implements Initializable{
@@ -37,6 +41,27 @@ public class CercaController extends Controller implements Initializable{
         changeScene("Visualizza.fxml", event);
     }
 
+    public void mostraCentriVaccinali(ActionEvent event) throws IOException, SQLException {
+
+        Proxy proxy = new Proxy();
+
+        if(filtraNomeRadio.isSelected()) {
+            String nome = nomeTextField.getText();
+            String query = "SELECT * FROM centrivaccinali WHERE nome ='" + nome + "'";
+            //ricerca per nome
+            proxy.filter(query);
+            //update listview
+        }
+        else if(filtraComuneRadio.isSelected()) {
+            String comune = comuneTextField.getText();
+            String tipologia = tipologiaComboBox.getValue();
+            //ricerca per comune e tipologia
+            String query = "SELECT * FROM centrivaccinali WHERE indirizzo='"+ comune +"' AND tipologia='"+ tipologia +"'";
+            proxy.filter(query);
+            //update listview
+        }
+    }
+
     public void enableFiltering () {
         nomeTextField.setDisable(filtraComuneRadio.isSelected());
         comuneTextField.setDisable(filtraNomeRadio.isSelected());
@@ -55,4 +80,8 @@ public class CercaController extends Controller implements Initializable{
         tipologiaComboBox.getItems().addAll(tipologia);
     }
 
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }

@@ -1,5 +1,8 @@
 package com.uninsubria.serverCV;
 
+import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -82,10 +85,18 @@ public class Proxy implements IComandiClient{
     public void filter(String query) throws IOException, SQLException {
         out.println("find");
         out.println(query);
+
+        //creo array per popolare list view in Cerca.fxml
+        /*String nome = in.readLine();
+        String tipologia = in.readLine();
+        String indirizzo = in.readLine();
+        String[] centroVaccinale = {nome, tipologia, indirizzo};
+
+        return centroVaccinale;  */
     }
 
     @Override
-    public Boolean login(String query, String User) throws IOException {
+    public UtenteRegistrato login(String query, String User) throws IOException {
 
         out.println("login");
         out.println(query);
@@ -95,10 +106,27 @@ public class Proxy implements IComandiClient{
         System.out.println(find);
 
         if(!find)
-            return false;
+            return null;
         else {
             isOperatore = Boolean.parseBoolean(in.readLine());
-            return true;
+            if(isOperatore)
+                return new UtenteRegistrato(
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine()
+                );
+            else
+                return new CittadinoRegistrato(
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        in.readLine(),
+                        Integer.parseInt(in.readLine())
+                );
         }
     }
 

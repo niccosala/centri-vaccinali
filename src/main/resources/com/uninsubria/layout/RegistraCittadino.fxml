@@ -80,7 +80,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnRegistraCentro" layoutX="540.0" layoutY="482.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRAMI" textFill="WHITE">
+        <Button id="btnRegistraCentro" layoutX="540.0" layoutY="482.0" mnemonicParsing="false" onAction="#registraCittadino" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="REGISTRAMI" textFill="WHITE">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>

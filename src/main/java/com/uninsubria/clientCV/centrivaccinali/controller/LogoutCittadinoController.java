@@ -1,5 +1,6 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -22,4 +23,8 @@ public class LogoutCittadinoController extends Controller {
         changeScene("Login.fxml", event);
     }
 
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }

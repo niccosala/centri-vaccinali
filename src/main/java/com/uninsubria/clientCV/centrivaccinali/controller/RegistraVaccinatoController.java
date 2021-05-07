@@ -1,6 +1,8 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Vaccino;
+import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,12 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class RegistraVaccinatoController extends Controller implements Initializable {
@@ -33,6 +41,23 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         changeScene("LogoutCittadino.fxml", event);
     }
 
+    public void registraVaccinato(ActionEvent event) throws ParseException, IOException, SQLException {
+        String nome = fieldNome.getText();
+        String cognome = fieldCognome.getText();
+        String CF = fieldCodiceFiscale.getText();
+        String vaccino = vaccinoComboBox.getValue();
+        LocalDate date = fieldData.getValue();
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String data = date.toString();
+        Date myDate = formatter.parse(data);
+        java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+
+        String query = "INSERT INTO vaccinati_"+nome+" VALUES('"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"')";
+        Proxy proxy = new Proxy();
+        proxy.insertDb(query);
+        reset();
+    }
+
     public void reset() {
         fieldNome.setText(null);
         fieldCognome.setText(null);
@@ -48,5 +73,10 @@ public class RegistraVaccinatoController extends Controller implements Initializ
                 Vaccino.MODERNA.toString(), Vaccino.PFIZER.toString()};
 
         vaccinoComboBox.getItems().addAll(vaccino);
+    }
+
+    @Override
+    public void setUtente(UtenteRegistrato utente) {
+
     }
 }
