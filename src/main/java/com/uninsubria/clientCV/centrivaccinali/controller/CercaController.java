@@ -6,17 +6,22 @@ import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.UndeclaredThrowableException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CercaController extends Controller implements Initializable{
+
+    private UtenteRegistrato utente;
 
     @FXML
     private ComboBox<String> tipologiaComboBox;
@@ -24,6 +29,10 @@ public class CercaController extends Controller implements Initializable{
     private RadioButton filtraComuneRadio, filtraNomeRadio;
     @FXML
     private TextField nomeTextField, comuneTextField;
+    @FXML
+    private Text welcomeTextField;
+    @FXML
+    private Button btnRegistrati, btnLogout;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeScene("Cerca.fxml", event);
@@ -34,7 +43,10 @@ public class CercaController extends Controller implements Initializable{
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-       changeScene("LogoutCittadino.fxml", event);
+        if(utente == null)
+            changeScene("Login.fxml", event);
+        else
+            changeScene("LogoutCittadino.fxml", event);
     }
 
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
@@ -82,6 +94,15 @@ public class CercaController extends Controller implements Initializable{
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        this.utente = utente;
+        if (utente == null) {
+            welcomeTextField.setText("Accesso come ospite");
+            btnRegistrati.setDisable(false);
+            btnLogout.setText("Accedi");
+        }
+        else {
+            welcomeTextField.setText("Ciao, " + utente.getUsername());
+            btnRegistrati.setDisable(true);
+        }
     }
 }

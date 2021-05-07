@@ -15,20 +15,22 @@ public class HomeCittadinoController extends Controller{
     private Text welcomeTextField;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
-        changeScene("Cerca.fxml", event);
+        changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutCittadino.fxml", event);
+        changeSceneAndSetValues("Logout.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
         if (utente == null)
-            welcomeTextField.setText("Ospite");
+            welcomeTextField.setText("Accesso come ospite");
+        else
+            welcomeTextField.setText("Ciao, " + utente.getUsername());
     }
 }

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +29,10 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     private TextField fieldNome, fieldCognome, fieldCodiceFiscale;
     @FXML
     private DatePicker fieldData;
+    @FXML
+    private Text welcomeTextField;
+
+    private UtenteRegistrato utente;
 
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
         changeScene("RegistraCentro.fxml", event);
@@ -77,6 +82,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        this.utente = utente;
+        welcomeTextField.setText(utente.getUsername());
     }
 }

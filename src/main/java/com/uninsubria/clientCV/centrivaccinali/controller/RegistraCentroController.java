@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,11 @@ public class RegistraCentroController extends Controller implements Initializabl
     private ComboBox<String> tipologiaComboBox;
     @FXML
     private TextField fieldNome, fieldIndirizzo;
+    @FXML
+    private Text welcomeTextField;
+
+    private UtenteRegistrato utente;
+
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         changeScene("LogoutOperatore.fxml", event);
@@ -60,6 +66,7 @@ public class RegistraCentroController extends Controller implements Initializabl
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        this.utente = utente;
+        welcomeTextField.setText(utente.getUsername());
     }
 }

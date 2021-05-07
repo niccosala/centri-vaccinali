@@ -16,7 +16,7 @@
             </image>
         </ImageView>
         <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
+        <Text fx:id="welcomeTextField" fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
