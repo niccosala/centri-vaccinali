@@ -10,7 +10,8 @@ import java.io.IOException;
 public class RegistraCittadinoController extends Controller {
 
     @FXML
-    private TextField fieldNome, fieldCognome, fieldCodiceFiscale, fieldEmail, fieldID;
+    private TextField fieldNome, fieldCognome, fieldCodiceFiscale,
+            fieldUsername, fieldEmail, fieldID;
     @FXML
     private PasswordField fieldPassword;
 
@@ -29,6 +30,7 @@ public class RegistraCittadinoController extends Controller {
     public void reset() {
         fieldNome.setText(null);
         fieldCognome.setText(null);
+        fieldUsername.setText(null);
         fieldCodiceFiscale.setText(null);
         fieldEmail.setText(null);
         fieldID.setText(null);
