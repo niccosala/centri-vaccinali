@@ -68,7 +68,7 @@
         </cursor>
     </Button>
     <Rectangle arcHeight="55.0" arcWidth="50.0" fill="#e3e3e38e" height="180.0" layoutX="300.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="550.0" />
-    <Button id="btnRisultati" layoutX="503.0" layoutY="186.0" mnemonicParsing="false" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="MOSTRA RISULTATI" textFill="WHITE">
+    <Button id="btnRisultati" layoutX="503.0" layoutY="186.0" mnemonicParsing="false" onAction="#mostraCentriVaccinali" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="MOSTRA RISULTATI" textFill="WHITE">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>

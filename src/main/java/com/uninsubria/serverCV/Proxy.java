@@ -83,6 +83,14 @@ public class Proxy implements IComandiClient{
     public void filter(String query) throws IOException, SQLException {
         out.println("find");
         out.println(query);
+
+        //creo array per popolare list view in Cerca.fxml
+        /*String nome = in.readLine();
+        String tipologia = in.readLine();
+        String indirizzo = in.readLine();
+        String[] centroVaccinale = {nome, tipologia, indirizzo};
+
+        return centroVaccinale;  */
     }
 
     @Override

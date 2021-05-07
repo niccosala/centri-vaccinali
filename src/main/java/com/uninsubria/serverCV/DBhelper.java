@@ -118,6 +118,12 @@ public class DBhelper implements IComandiServer {
             System.out.println("NOME: " + rs.getString("nome"));
             System.out.println("tipologia: " + rs.getString("tipologia"));
             System.out.println("indirizzo: " + rs.getString("indirizzo"));
+
+            //Mando in output al Proxy.filter i campi per CentroVaccinale
+            /*out.println(rs.getString("nome"));
+            out.println(rs.getString("tipologia"));
+            out.println(rs.getString("indirizzo"));*/
+
         }
     }
 

@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class RegistraCentroController extends Controller implements Initializable {
@@ -28,6 +30,18 @@ public class RegistraCentroController extends Controller implements Initializabl
 
     public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
         changeScene("RegistraVaccinato.fxml", event);
+    }
+
+    public void registraCentro(ActionEvent event) throws IOException, SQLException {
+        String nomeCentro = fieldNome.getText();
+        String indirizzo = fieldIndirizzo.getText();
+        String tipologia = tipologiaComboBox.getValue();
+
+        String query=  "INSERT INTO centrivaccinali VALUES('"+nomeCentro+"','"+indirizzo+"','"+tipologia+"')";
+        Proxy proxy = new Proxy();
+        proxy.populateCentriVaccinali(query, nomeCentro);
+
+        reset();
     }
 
     public void reset() {
