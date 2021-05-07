@@ -10,15 +10,15 @@ import java.io.IOException;
 
 public class VisualizzaController extends Controller {
 
+    private UtenteRegistrato utente;
+
     @FXML
-    private Text welcomeTextField;
+    private Text welcomeText;
     @FXML
     private Button btnSegnala;
 
-    private UtenteRegistrato utente;
-
     public void switchToCercaScene(ActionEvent event) throws IOException {
-        changeScene("Cerca.fxml", event);
+        changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
@@ -30,21 +30,20 @@ public class VisualizzaController extends Controller {
     }
 
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
-
-        if (utente == null)
-            btnSegnala.setDisable(true);
-        else {
-            btnSegnala.setDisable(false);
-            changeScene("Segnala.fxml", event);
-        }
+        changeScene("Segnala.fxml", event);
     }
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
-        if (utente == null)
-            welcomeTextField.setText("Accesso come ospite");
-        else
-            welcomeTextField.setText("Ciao, " + utente.getUsername());
+        if (utente == null) {
+            welcomeText.setText("Accesso come ospite");
+            btnSegnala.setDisable(true);
+        }
+        else {
+            welcomeText.setText("Ciao, " + utente.getUsername());
+            btnSegnala.setDisable(false);
+
+        }
     }
 }

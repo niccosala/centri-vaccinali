@@ -56,7 +56,7 @@
             <Font name="Microsoft Sans Serif" size="35.0" />
         </font>
     </Text>
-    <Button id="btnVisualizza" fx:id="btnVisualizza" disable="true" layoutX="493.0" layoutY="534.0" mnemonicParsing="false" onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="VISUALIZZA" textFill="WHITE">
+    <Button id="btnVisualizza" fx:id="btnVisualizza" layoutX="493.0" layoutY="534.0" mnemonicParsing="false" onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="VISUALIZZA" textFill="WHITE">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>

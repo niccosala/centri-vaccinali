@@ -35,11 +35,11 @@ public class CercaController extends Controller implements Initializable{
     private Button btnRegistrati, btnLogout;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
-        changeScene("Cerca.fxml", event);
+        changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
@@ -50,7 +50,7 @@ public class CercaController extends Controller implements Initializable{
     }
 
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
-        changeScene("Visualizza.fxml", event);
+        changeSceneAndSetValues("Visualizza.fxml", utente, event);
     }
 
     public void mostraCentriVaccinali(ActionEvent event) throws IOException, SQLException {

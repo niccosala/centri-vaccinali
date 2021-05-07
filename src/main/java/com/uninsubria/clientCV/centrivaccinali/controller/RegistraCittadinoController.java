@@ -4,11 +4,13 @@ import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.temporal.UnsupportedTemporalTypeException;
 
 public class RegistraCittadinoController extends Controller {
 
@@ -18,16 +20,21 @@ public class RegistraCittadinoController extends Controller {
     @FXML
     private PasswordField fieldPassword;
 
+    @FXML
+    private Button btnAccedi;
+
+    private UtenteRegistrato utente;
+
     public void switchToCercaScene(ActionEvent event) throws IOException {
-        changeScene("Cerca.fxml", event);
+        changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
-    public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutCittadino.fxml", event);
+    public void switchToLoginScene(ActionEvent event) throws IOException {
+        changeScene("Login.fxml", event);
     }
 
     public void registraCittadino(ActionEvent event) throws IOException, SQLException {
@@ -62,6 +69,6 @@ public class RegistraCittadinoController extends Controller {
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        utente = null;
     }
 }

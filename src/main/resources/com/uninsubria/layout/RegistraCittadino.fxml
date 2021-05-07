@@ -16,7 +16,7 @@
             </image>
         </ImageView>
         <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
-        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
+        <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accesso come ospite" textAlignment="CENTER" wrappingWidth="250.78929138183594">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
@@ -43,7 +43,7 @@
                 <Cursor fx:constant="CLOSED_HAND" />
             </cursor>
         </Button>
-        <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
+        <Button id="btnLogout" fx:id="btnAccedi" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLoginScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Accedi" textFill="#d13981">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
