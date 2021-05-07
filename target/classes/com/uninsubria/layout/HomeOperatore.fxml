@@ -8,82 +8,66 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-      prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.uninsubria.clientCV.centrivaccinali.controller.HomeOperatoreController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uninsubria.clientCV.centrivaccinali.controller.HomeOperatoreController">
     <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../img/sfondo.png"/>
+        <Image url="@../img/sfondo.png" />
     </ImageView>
-    <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="533.0" layoutY="155.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../img/primula.png"/>
+    <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="533.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../img/primula.png" />
     </ImageView>
-    <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"
-               width="250.0"/>
-    <Text fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER"
-          wrappingWidth="250.78929138183594">
+    <Rectangle arcWidth="5.0" fill="#0061bd" height="600.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="250.0" />
+    <Text fx:id="welcomeTextField" fill="WHITE" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciao, " textAlignment="CENTER" wrappingWidth="250.78929138183594">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Button id="btnRegistraCentro" fx:id="btnRegistraCentro" alignment="CENTER" layoutX="15.0" layoutY="65.0"
-            mnemonicParsing="false" onAction="#switchToRegistraCentroScene" prefWidth="220.0"
-            style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Centro" textFill="#d13981">
+    <Button id="btnRegistraCentro" fx:id="btnRegistraCentro" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToRegistraCentroScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Centro" textFill="#d13981">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Button id="btnRegistraVaccinato" fx:id="btnRegistraVaccinato" alignment="CENTER" layoutX="15.0" layoutY="140.0"
-            mnemonicParsing="false" onAction="#switchToRegistraVaccinatoScene" prefWidth="220.0"
-            style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Vaccinato"
-            textFill="#d13981">
+    <Button id="btnRegistraVaccinato" fx:id="btnRegistraVaccinato" alignment="CENTER" layoutX="15.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchToRegistraVaccinatoScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Registra Vaccinato" textFill="#d13981">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false"
-            onAction="#switchToLogoutScene" prefWidth="220.0"
-            style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
+    <Button id="btnLogout" fx:id="btnLogout" alignment="CENTER" layoutX="15.0" layoutY="520.0" mnemonicParsing="false" onAction="#switchToLogoutScene" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 30;" text="Logout" textFill="#d13981">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
         <padding>
-            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0"/>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
         </padding>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Line endX="-100.0" endY="-60.64225387573242" layoutX="719.0" layoutY="322.0" startX="-99.99996948242188"
-          startY="-7.7320098876953125" stroke="#0000003a" strokeLineCap="ROUND" strokeLineJoin="ROUND"
-          strokeWidth="2.0"/>
+    <Line endX="-100.0" endY="-60.64225387573242" layoutX="719.0" layoutY="322.0" startX="-99.99996948242188" startY="-7.7320098876953125" stroke="#0000003a" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="2.0" />
     <Text fill="#0066cc" layoutX="334.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CENTRI VACCINALI">
         <font>
-            <Font name="Microsoft Sans Serif" size="28.0"/>
+            <Font name="Microsoft Sans Serif" size="28.0" />
         </font>
     </Text>
     <Text fill="#d13981" layoutX="634.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPERATORI">
         <font>
-            <Font name="Microsoft Sans Serif" size="28.0"/>
+            <Font name="Microsoft Sans Serif" size="28.0" />
         </font>
     </Text>
-    <Text layoutX="325.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Utilizza il menù di sinistra per registrare un nuovo centro vaccinale, un nuovo vaccinato o per eseguire il logout dal sistema."
-          textAlignment="CENTER" wrappingWidth="477.3622131347656">
+    <Text layoutX="325.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilizza il menù di sinistra per registrare un nuovo centro vaccinale, un nuovo vaccinato o per eseguire il logout dal sistema." textAlignment="CENTER" wrappingWidth="477.3622131347656">
         <font>
-            <Font name="Microsoft Sans Serif" size="18.0"/>
+            <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
 </Pane>

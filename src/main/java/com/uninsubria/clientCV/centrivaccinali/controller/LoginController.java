@@ -23,6 +23,8 @@ public class LoginController extends Controller {
     @FXML
     private PasswordField passwordField;
 
+    private UtenteRegistrato utenteRegistrato;
+
     public void accediComeOspite (ActionEvent event) throws IOException {
         //changeScene("HomeCittadino.fxml", event);
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
@@ -99,5 +101,7 @@ public class LoginController extends Controller {
     }
 
     @Override
-    public void setUtente(UtenteRegistrato utente) { }
+    public void setUtente(UtenteRegistrato utente) {
+
+    }
 }
