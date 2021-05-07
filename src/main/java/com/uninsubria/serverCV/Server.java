@@ -19,10 +19,14 @@ public class Server {
         String password;
 
         do {
+            /*
             System.out.print("Inserire credenziali di accesso al db\nUser: ");
             user = in.nextLine();
             System.out.print("Password: ");
             password = in.nextLine();
+            */
+            user = "postgres";
+            password = "pass";
         } while(!tryConnection(user, password));
 
         try {
