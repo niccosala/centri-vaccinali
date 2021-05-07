@@ -109,13 +109,13 @@ public class DBhelper implements IComandiServer {
                 // Operatore? > Si
                 out.println("true");
 
-            out.println(r.getString("nome"));
-            out.println(r.getString("cognome"));
-            out.println(r.getString("codicefiscale"));
+            out.println(rs.getString("nome"));
+            out.println(rs.getString("cognome"));
+            out.println(rs.getString("codicefiscale"));
+            out.println(rs.getString("userid"));
+            out.println(rs.getString("pword"));
             if(isCittadino)
                 out.println(r.getString("email"));
-            out.println(r.getString("userid"));
-            out.println(r.getString("pword"));
             if(isCittadino)
                 out.println(r.getString("idvacc"));
         }

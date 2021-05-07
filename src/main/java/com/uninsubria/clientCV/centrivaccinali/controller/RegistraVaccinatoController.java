@@ -35,15 +35,15 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     private UtenteRegistrato utente;
 
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCentro.fxml", event);
+        changeSceneAndSetValues("RegistraCentro.fxml", utente, event);
     }
 
     public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
-        changeScene("RegistraVaccinato.fxml", event);
+        changeSceneAndSetValues("RegistraVaccinato.fxml", utente, event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutCittadino.fxml", event);
+        changeSceneAndSetValues("LogoutOperatore.fxml", utente, event);
     }
 
     public void registraVaccinato(ActionEvent event) throws ParseException, IOException, SQLException {
@@ -83,6 +83,6 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     @Override
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
-        welcomeTextField.setText(utente.getUsername());
+        welcomeTextField.setText("Ciao, " + utente.getUsername());
     }
 }

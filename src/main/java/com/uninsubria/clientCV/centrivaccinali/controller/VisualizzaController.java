@@ -15,22 +15,25 @@ public class VisualizzaController extends Controller {
     @FXML
     private Text welcomeText;
     @FXML
-    private Button btnSegnala;
+    private Button btnSegnala, btnRegistrati, btnLogout;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutCittadino.fxml", event);
+        if(utente == null)
+            changeSceneAndSetValues("Login.fxml", null, event);
+        else
+            changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
-        changeScene("Segnala.fxml", event);
+        changeSceneAndSetValues("Segnala.fxml", utente, event);
     }
 
     @Override
@@ -43,7 +46,15 @@ public class VisualizzaController extends Controller {
         else {
             welcomeText.setText("Ciao, " + utente.getUsername());
             btnSegnala.setDisable(false);
-
+            if (utente == null) {
+                welcomeText.setText("Accesso come ospite");
+                btnRegistrati.setDisable(false);
+                btnLogout.setText("Accedi");
+            }
+            else {
+                welcomeText.setText("Ciao, " + utente.getUsername());
+                btnRegistrati.setDisable(true);
+            }
         }
     }
 }

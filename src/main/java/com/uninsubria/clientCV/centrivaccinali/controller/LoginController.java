@@ -23,7 +23,7 @@ public class LoginController extends Controller {
     @FXML
     private PasswordField passwordField;
 
-    private UtenteRegistrato utenteRegistrato;
+    private UtenteRegistrato utente;
 
     public void accediComeOspite (ActionEvent event) throws IOException {
         //changeScene("HomeCittadino.fxml", event);
@@ -31,7 +31,7 @@ public class LoginController extends Controller {
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException{
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", null, event);
     }
 
     public void switchToHomeOperatoreScene(ActionEvent event) throws IOException{
@@ -47,7 +47,7 @@ public class LoginController extends Controller {
 
         Proxy proxy = new Proxy();
         String query = "select * from utentiregistrati where userid = '" + username+ "'and pword = '" + password +"'";
-        UtenteRegistrato utente = proxy.login(query, username);
+        utente = proxy.login(query, username);
 
         if(utente == null) {
             //credenziali sono errate show dialog
@@ -102,6 +102,6 @@ public class LoginController extends Controller {
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        this.utente = utente;
     }
 }
