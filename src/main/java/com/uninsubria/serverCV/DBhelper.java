@@ -24,7 +24,7 @@ public class DBhelper implements IComandiServer {
 
     @Override
     public void searchUser() throws IOException, SQLException {
-        String query= in.readLine();
+        String query = in.readLine();
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -80,26 +80,27 @@ public class DBhelper implements IComandiServer {
 
     @Override
     public void login() throws IOException, SQLException {
-        String query= in.readLine();
-        String User=in.readLine();
-        Statement stmt= connection.createStatement();
+        String query = in.readLine();
+        String user = in.readLine();
+        Statement stmt = connection.createStatement();
 
         ResultSet rs = stmt.executeQuery(query);
+        System.out.println("query-rset: " + query);
         boolean isRegistered = false;
-        if (rs.getRow() != 0) {
+        if(rs.next())
             isRegistered = true;
-            System.out.println(rs.getRow());
-        }
+        System.out.println("registrato: " + isRegistered);
 
         if(isRegistered) {
-            String query1= "select userid from utentiregistrati where userid='"+User+"' intersect select userid from cittadiniregistrati where userid='"+User+"'";
-            Statement st= connection.createStatement();
-            ResultSet r= st.executeQuery(query1);
-            boolean isOperatore = false;
+            String query1 = "select userid from cittadiniregistrati where userid = '" + user + "'";
+            Statement st = connection.createStatement();
+            ResultSet r = st.executeQuery(query1);
+            boolean isOperatore = true;
 
-            if (r.getRow() != 0) {
-                isOperatore = true;
+            if (r.next()) {
+                isOperatore = false;
             }
+            System.out.println("operatore: " + isOperatore);
             out.println("true");
             out.println(isOperatore);
         }

@@ -93,6 +93,7 @@ public class Proxy implements IComandiClient{
         out.println(User);
 
         boolean find = Boolean.parseBoolean(in.readLine());
+        System.out.println(find);
 
         if(!find)
             return false;

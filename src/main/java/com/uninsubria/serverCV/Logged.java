@@ -22,23 +22,25 @@ public class Logged {
 
         while(true) {
 
+            Proxy proxySegnalano = new Proxy();
+
             System.out.println("Vuoi dare una valutazione(1) oppure tornare indietro(2)? ");
             String scelta= in.nextLine();
 
             if(scelta.equals("1")) {
                 String query= "SELECT * FROM eventiavversi";
-                ArrayList<String> sintomi= proxy.getSintomi(query);
+                ArrayList<String> sintomi = proxy.getSintomi(query);
 
                 for(int i=0; i<sintomi.size();i++)
-                    System.out.println((i+1)+": " + sintomi.get(i));
+                    System.out.println((i)+": " + sintomi.get(i));
 
                 System.out.println("Inserisci il numero corrispondente al sintomo: ");
                 String sintomo= in.nextLine();
                 System.out.println("Inserisci una valutazione numerica da 1 a 5");
                 String severita= in.nextLine();
 
-                String query1= "INSERT INTO segnalano VALUES('"+CF+"','"+sintomo+"','"+severita+"')";
-                proxy.insertDb(query1);
+                String query1= "INSERT INTO segnalano VALUES('"+ CF +"'," + Integer.parseInt(sintomo) + ","+ Integer.parseInt(severita) +")";
+                proxySegnalano.insertDb(query1);
             }
             else
                 break;

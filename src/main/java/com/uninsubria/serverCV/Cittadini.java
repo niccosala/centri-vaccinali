@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Cittadini {
 
-    public Cittadini() throws IOException, SQLException {
+    public Cittadini() throws IOException, SQLException, InterruptedException {
         start();
     }
 
-    private void start() throws IOException, SQLException {
+    private void start() throws IOException, SQLException, InterruptedException {
 
         Scanner in= new Scanner(System.in);
         Proxy proxy= new Proxy();
@@ -61,10 +61,12 @@ public class Cittadini {
 
                 if(scelta.equals("2")) {
 
-                    System.out.println("Inserire nome/cognome: ");
-                    String nome_cognome= in.nextLine();
+                    System.out.println("Inserire nome: ");
+                    String nome = in.nextLine();
+                    System.out.println("Inserire cognome: ");
+                    String cognome = in.nextLine();
                     System.out.println("Inserire codice fiscale: ");
-                    String c_fisc= in.nextLine();
+                    String c_fisc = in.nextLine();
                     System.out.println("Inserire email: ");
                     String email= in.nextLine();
                     System.out.println("Inserire user_id: ");
@@ -74,28 +76,25 @@ public class Cittadini {
                     System.out.println("Inserire id_vacc: ");
                     String id_vacc= in.nextLine();
 
-                    query=  "INSERT INTO cittadiniregistrati VALUES('"+nome_cognome+"','"+id_vacc+"','"+c_fisc+"','"+user_id+"','"+email+"','"+passwd+"')";
-                    proxy.insertDb(query);
-                    proxy.close();
+                    query = "INSERT INTO utentiregistrati VALUES('"+user_id+"','"+passwd+"','"+c_fisc+"','"+nome+"','"+cognome+"')";
+                    Proxy proxyUtenti = new Proxy();
+                    proxyUtenti.insertDb(query);
 
+                    Thread.sleep(100);
+
+                    query=  "INSERT INTO cittadiniregistrati VALUES('"+id_vacc+"','"+user_id+"','"+email+"')";
+                    Proxy proxyCittadini = new Proxy();
+                    proxyCittadini.insertDb(query);
+
+                    proxyUtenti.close();
+                    proxyCittadini.close();
                 }
 
                 if(scelta.equals("3")) {
+                    String CF = "SAANCL99T06F205F";
+                    Logged logged = new Logged(CF, socket);
 
-                    System.out.println("User: ");
-                    String User= in.nextLine();
-                    query=  "SELECT * FROM cittadiniregistrati WHERE userid='"+User+"'";
-                    String info[]= proxy.searchUser(query);
                     proxy.close();
-                    String pass;
-
-                    do {
-                        System.out.println("Password: ");
-                        pass= in.nextLine();
-
-                    } while(!pass.equals(info[0]));
-                    Logged l = new Logged(info[1], socket);
-
                 }
             }
 
