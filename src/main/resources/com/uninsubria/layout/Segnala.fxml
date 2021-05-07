@@ -90,7 +90,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <TextArea layoutX="595.0" layoutY="139.0" prefHeight="337.0" prefWidth="265.0" promptText="Inserisci note aggiuntive" style="-fx-background-radius: 1; -fx-border-radius: 1;" wrapText="true">
+        <TextArea fx:id="textAreaAggiuntive" layoutX="595.0" layoutY="139.0" prefHeight="337.0" prefWidth="265.0" promptText="Inserisci note aggiuntive" style="-fx-background-radius: 1; -fx-border-radius: 1;" wrapText="true">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>

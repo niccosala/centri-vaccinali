@@ -37,7 +37,7 @@ public class RegistraCittadinoController extends Controller {
         String user = fieldUsername.getText();
         String password = fieldPassword.getText();
         String email = fieldEmail.getText();
-        String IDvaccinazione = fieldID.getText();
+        int IDvaccinazione = Integer.parseInt(fieldID.getText());
 
         String insertAsUtente = "INSERT INTO utentiregistrati VALUES('"+user+"','"+password+"','"+CF+"','"+nome+"','"+cognome+"')";
         Proxy proxyUtenti = new Proxy();

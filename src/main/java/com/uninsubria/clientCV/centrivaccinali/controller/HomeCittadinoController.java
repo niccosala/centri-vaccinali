@@ -28,5 +28,7 @@ public class HomeCittadinoController extends Controller{
 
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
+        if (utente == null)
+            welcomeTextField.setText("Ospite");
     }
 }

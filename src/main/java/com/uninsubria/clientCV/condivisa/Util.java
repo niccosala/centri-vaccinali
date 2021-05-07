@@ -1,4 +1,4 @@
-package com.uninsubria.clientCV.condivisa.entity;
+package com.uninsubria.clientCV.condivisa;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

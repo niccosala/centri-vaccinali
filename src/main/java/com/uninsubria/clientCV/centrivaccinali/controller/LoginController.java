@@ -23,8 +23,9 @@ public class LoginController extends Controller {
     @FXML
     private PasswordField passwordField;
 
-    public void switchToHomeCittadinoScene (ActionEvent event) throws IOException {
-        changeScene("HomeCittadino.fxml", event);
+    public void accediComeOspite (ActionEvent event) throws IOException {
+        //changeScene("HomeCittadino.fxml", event);
+        changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException{
@@ -51,6 +52,8 @@ public class LoginController extends Controller {
         } else {
             if(utente instanceof CittadinoRegistrato) {
 
+                //da testare con DB, il metodo ha stesso scopo del codice commentato
+
                 /*FXMLLoader loader = new
                         FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeCittadino.fxml"));
 
@@ -67,6 +70,9 @@ public class LoginController extends Controller {
                 changeSceneAndSetValues("HomeCittadino.fxml", utente, event);
             }
             else {
+
+                //da testare con DB, il metodo ha stesso scopo del codice commentato
+
                 /*switchToHomeOperatoreScene(event);
                 FXMLLoader loader = new
                         FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeOperatore.fxml"));
