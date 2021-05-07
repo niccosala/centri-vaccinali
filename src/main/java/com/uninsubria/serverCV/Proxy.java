@@ -37,7 +37,6 @@ public class Proxy implements IComandiClient{
         }
     }
 
-
     @Override
     public String[] searchUser(String query) throws IOException {
         out.println("search_user");

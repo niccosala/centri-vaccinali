@@ -59,7 +59,7 @@
                 <Font name="Microsoft Sans Serif" size="35.0" />
             </font>
         </Text>
-        <TextField fx:id="fieldNome" alignment="CENTER" layoutX="313.0" layoutY="153.0" prefHeight="56.0" prefWidth="250.0" promptText="Inserisci nome" style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldNome" alignment="CENTER" layoutX="313.0" layoutY="153.0" prefHeight="56.0" prefWidth="125.0" promptText="Nome" style="-fx-background-radius: 20; -fx-border-radius: 30 0 0 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
@@ -70,12 +70,12 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
+        <Text fill="#000000b1" layoutX="352.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome e cognome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Text fill="#000000b1" layoutX="375.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
+        <Text fill="#000000b1" layoutX="375.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" textAlignment="CENTER" wrappingWidth="131.1634035472955">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
@@ -117,7 +117,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <TextField fx:id="fieldCognome" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci cognome" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldCodiceFiscale" alignment="CENTER" layoutX="603.0" layoutY="153.0" prefWidth="250.0" promptText="Inserisci codice fiscale" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
@@ -128,7 +128,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
-        <Text fill="#000000b1" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cognome:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
+        <Text fill="#000000b1" layoutX="642.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice fiscale:" textAlignment="CENTER" wrappingWidth="181.3680705936302">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
@@ -144,7 +144,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </PasswordField>
-        <TextField fx:id="fieldCodiceFiscale" alignment="CENTER" layoutX="313.0" layoutY="266.0" prefHeight="56.0" prefWidth="250.0" promptText="Inserisci codice fiscale" style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+        <TextField fx:id="fieldUsername" alignment="CENTER" layoutX="313.0" layoutY="266.0" prefHeight="56.0" prefWidth="250.0" promptText="Inserisci username" style="-fx-background-radius: 20; -fx-border-radius: 30; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
             <padding>
                 <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
             </padding>
@@ -177,5 +177,16 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextField>
+      <TextField fx:id="fieldCognome" alignment="CENTER" layoutX="436.0" layoutY="153.0" prefHeight="56.0" prefWidth="125.0" promptText="Cognome" style="-fx-background-radius: 20; -fx-border-radius: 0 30 30 0; -fx-background-color: rgba(255,255,255,.75) rgba(255,255,255,.75); -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-color: rgba(255,255,255,0.75);">
+         <padding>
+            <Insets bottom="15.0" left="10.0" right="10.0" top="15.0" />
+         </padding>
+         <font>
+            <Font name="Microsoft Sans Serif" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
     </children>
 </Pane>
