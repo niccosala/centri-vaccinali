@@ -10,12 +10,12 @@ import java.io.IOException;
 
 public class HomeCittadinoController extends Controller{
 
-    private UtenteRegistrato utente;
-
     @FXML
     private Text welcomeTextField;
     @FXML
-    private Button btnLogout;
+    private Button btnLogout, btnRegistrati;
+
+    private UtenteRegistrato utente;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -23,23 +23,26 @@ public class HomeCittadinoController extends Controller{
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
-            changeSceneAndSetValues("Login.fxml", utente, event);
+            changeSceneAndSetValues("Login.fxml", null, event);
         else
             changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
+        changeScene("RegistraCittadino.fxml", event);
     }
 
+    @Override
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
         if (utente == null) {
             welcomeTextField.setText("Accesso come ospite");
+            btnRegistrati.setDisable(false);
             btnLogout.setText("Accedi");
         }
         else {
             welcomeTextField.setText("Ciao, " + utente.getUsername());
+            btnRegistrati.setDisable(true);
             btnLogout.setText("Logout");
         }
     }

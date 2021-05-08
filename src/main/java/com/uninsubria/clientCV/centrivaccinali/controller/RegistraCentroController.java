@@ -67,6 +67,6 @@ public class RegistraCentroController extends Controller implements Initializabl
     @Override
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
-        welcomeTextField.setText(utente.getUsername());
+        welcomeTextField.setText("Ciao, " + utente.getUsername());
     }
 }

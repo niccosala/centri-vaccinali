@@ -26,11 +26,16 @@ public class LoginController extends Controller {
     private UtenteRegistrato utente;
 
     public void accediComeOspite (ActionEvent event) throws IOException {
+        //changeScene("HomeCittadino.fxml", event);
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException{
-        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", null, event);
+    }
+
+    public void switchToHomeOperatoreScene(ActionEvent event) throws IOException{
+        changeScene("HomeOperatore.fxml", event);
     }
 
     public void verifyLogin(ActionEvent event) throws IOException {
@@ -97,6 +102,6 @@ public class LoginController extends Controller {
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-
+        this.utente = utente;
     }
 }

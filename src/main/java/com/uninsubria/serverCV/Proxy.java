@@ -97,36 +97,58 @@ public class Proxy implements IComandiClient{
 
     @Override
     public UtenteRegistrato login(String query, String User) throws IOException {
-
+        System.out.println("STEP 1");
         out.println("login");
         out.println(query);
         out.println(User);
 
         boolean find = Boolean.parseBoolean(in.readLine());
-        System.out.println(find);
+        System.out.println("Found? " + find);
 
         if(!find)
             return null;
         else {
             isOperatore = Boolean.parseBoolean(in.readLine());
-            if(isOperatore)
-                return new UtenteRegistrato(
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine()
+            if(isOperatore) {
+                String nome = in.readLine();
+                String cognome = in.readLine();
+                String CF = in.readLine();
+                String username = in.readLine();
+                String password = in.readLine();
+
+                UtenteRegistrato u = new UtenteRegistrato(
+                        nome,
+                        cognome,
+                        CF,
+                        username,
+                        password
                 );
-            else
-                return new CittadinoRegistrato(
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        in.readLine(),
-                        Integer.parseInt(in.readLine())
+                System.out.println("op: " + u.getUsername());
+                return u;
+            }
+            else {
+                String nome = in.readLine();
+                String cognome = in.readLine();
+                String CF = in.readLine();
+                String username = in.readLine();
+                String password = in.readLine();
+                String email = in.readLine();
+                int idvacc = Integer.parseInt(in.readLine());
+
+                System.out.println(nome + " " + cognome + " " + CF + " " + email + " " + username + " " + password);
+
+                CittadinoRegistrato u = new CittadinoRegistrato(
+                        nome,
+                        cognome,
+                        CF,
+                        email,
+                        username,
+                        password,
+                        idvacc
                 );
+                System.out.println("reg: " + u.getNome() + " " + u.getCognome() + " " + u.getCF() + " " + u.getEmail() + " " + u.getUsername() + " " + u.getPassword() + u.getIdVaccinazione());
+                return u;
+            }
         }
     }
 

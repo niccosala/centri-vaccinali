@@ -20,9 +20,6 @@ public class RegistraCittadinoController extends Controller {
     @FXML
     private PasswordField fieldPassword;
 
-    @FXML
-    private Button btnAccedi;
-
     private UtenteRegistrato utente;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
@@ -69,6 +66,6 @@ public class RegistraCittadinoController extends Controller {
 
     @Override
     public void setUtente(UtenteRegistrato utente) {
-        utente = null;
+        this.utente = utente;
     }
 }

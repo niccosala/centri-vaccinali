@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 public class CercaController extends Controller implements Initializable{
 
     private UtenteRegistrato utente;
-
     @FXML
     private ComboBox<String> tipologiaComboBox;
     @FXML
@@ -44,9 +43,9 @@ public class CercaController extends Controller implements Initializable{
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
-            changeScene("Login.fxml", event);
+            changeSceneAndSetValues("Login.fxml", null, event);
         else
-            changeScene("LogoutCittadino.fxml", event);
+            changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {

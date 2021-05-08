@@ -18,19 +18,19 @@ public class LogoutCittadinoController extends Controller {
     private UtenteRegistrato utente;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
-        changeScene("Cerca.fxml", event);
+        changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
-        changeScene("RegistraCittadino.fxml", event);
+        changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
-        changeScene("LogoutCittadino.fxml", event);
+        changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
     public void switchToLoginScene(ActionEvent event) throws IOException {
-        changeScene("Login.fxml", event);
+        changeSceneAndSetValues("Login.fxml", utente, event);
     }
 
     @Override

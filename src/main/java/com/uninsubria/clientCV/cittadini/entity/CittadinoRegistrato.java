@@ -1,11 +1,10 @@
 package com.uninsubria.clientCV.cittadini.entity;
 
-import com.uninsubria.clientCV.condivisa.entity.Persona;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
 public class CittadinoRegistrato extends UtenteRegistrato {
 
-    private String email, username, password;
+    private String email;
     private int idVaccinazione;
 
     public CittadinoRegistrato(
@@ -26,28 +25,12 @@ public class CittadinoRegistrato extends UtenteRegistrato {
         return email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public int getIdVaccinazione() {
         return idVaccinazione;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setIdVaccinazione(int idVaccinazione) {
