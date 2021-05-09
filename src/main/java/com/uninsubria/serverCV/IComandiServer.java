@@ -13,6 +13,7 @@ public interface IComandiServer {
     //Socket initializeConnection() throws IOException;
     void searchUser() throws IOException, SQLException;
     void getSintomi() throws IOException, SQLException;
+    void getCentri() throws IOException, SQLException;
     void insertDb() throws IOException, SQLException;
     void populateCentriVaccinali() throws IOException, SQLException;
     void filter() throws IOException, SQLException;

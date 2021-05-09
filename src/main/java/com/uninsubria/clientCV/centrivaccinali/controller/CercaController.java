@@ -54,20 +54,28 @@ public class CercaController extends Controller implements Initializable{
 
     public void mostraCentriVaccinali(ActionEvent event) throws IOException, SQLException {
 
-        Proxy proxy = new Proxy();
+        Proxy proxy;
 
         if(filtraNomeRadio.isSelected()) {
-            String nome = nomeTextField.getText();
+            String nome = nomeTextField.getText().toLowerCase().trim();
+            if(nome.isBlank())
+                return;
+
+            proxy = new Proxy();
             String query = "SELECT * FROM centrivaccinali WHERE nome ='" + nome + "'";
             //ricerca per nome
             proxy.filter(query);
             //update listview
         }
         else if(filtraComuneRadio.isSelected()) {
-            String comune = comuneTextField.getText();
+            String comune = comuneTextField.getText().toLowerCase().trim();
             String tipologia = tipologiaComboBox.getValue();
-            //ricerca per comune e tipologia
-            String query = "SELECT * FROM centrivaccinali WHERE indirizzo='"+ comune +"' AND tipologia='"+ tipologia +"'";
+
+            if(comune.isBlank() || tipologia == null)
+                return;
+
+            proxy = new Proxy();
+            String query = "SELECT * FROM centrivaccinali WHERE comune='"+ comune +"' AND tipologia='"+ tipologia.toLowerCase() +"'";
             proxy.filter(query);
             //update listview
         }
@@ -80,8 +88,8 @@ public class CercaController extends Controller implements Initializable{
     }
 
     public void reset() {
-        nomeTextField.setText(null);
-        comuneTextField.setText(null);
+        nomeTextField.clear();
+        comuneTextField.clear();
         tipologiaComboBox.setValue(null);
     }
 

@@ -44,6 +44,9 @@ public class RegistraCentroController extends Controller implements Initializabl
         String indirizzo = fieldIndirizzo.getText();
         String tipologia = tipologiaComboBox.getValue();
 
+        if(nomeCentro.isBlank() || indirizzo.isBlank() || tipologia == null)
+            return;
+
         String query=  "INSERT INTO centrivaccinali VALUES('"+nomeCentro+"','"+indirizzo+"','"+tipologia+"')";
         Proxy proxy = new Proxy();
         proxy.populateCentriVaccinali(query, nomeCentro);
@@ -52,8 +55,8 @@ public class RegistraCentroController extends Controller implements Initializabl
     }
 
     public void reset() {
-        fieldNome.setText(null);
-        fieldIndirizzo.setText(null);
+        fieldNome.clear();
+        fieldIndirizzo.clear();
         tipologiaComboBox.setValue(null);
     }
 

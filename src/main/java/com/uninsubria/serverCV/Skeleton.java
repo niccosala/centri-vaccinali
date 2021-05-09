@@ -89,6 +89,8 @@ public class Skeleton extends Thread  {
                 break;
                 case "searchSintomi" : dBhelper.getSintomi();
                 break;
+                case "searchCentri" : dBhelper.getCentri();
+                break;
                 case "login" : dBhelper.login();
                 break;
                 default: break;

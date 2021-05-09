@@ -69,16 +69,35 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
+    public ArrayList<String> getCentri(String query) throws IOException, SQLException {
+        ArrayList<String> centriVaccinali = new ArrayList<>();
+
+        out.println("searchCentri");
+        out.println(query);
+
+        while (true) {
+            String mex = in.readLine();
+            if (mex.equals("exit"))
+                break;
+            else {
+                centriVaccinali.add(mex);
+            }
+        }
+        return centriVaccinali;
+    }
+
+    @Override
     public void insertDb(String query) throws IOException, SQLException {
         out.println("insert");
         out.println(query);
     }
 
     @Override
-    public void populateCentriVaccinali(String query, String nomeTabella) throws IOException, SQLException {
+    public void populateCentriVaccinali(String query, String nomeCentro) throws IOException, SQLException {
         out.println("insert1");
+        out.println(nomeCentro);
+        out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvaccino SERIAL)");
         out.println(query);
-        out.println("create table vaccinati_" + nomeTabella + " ( nomecognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino char(1), idvaccino smallint)");
     }
 
     @Override
@@ -89,7 +108,13 @@ public class Proxy implements IComandiClient{
         //creo array per popolare list view in Cerca.fxml
         /*String nome = in.readLine();
         String tipologia = in.readLine();
-        String indirizzo = in.readLine();
+        String qualificatore = in.readLine();
+        String strada = in.readLine();
+        String civico = in.readLine();
+        String comune = in.readLine();
+        String provincia = in.readLine();
+        String cap = in.readLine();
+
         String[] centroVaccinale = {nome, tipologia, indirizzo};
 
         return centroVaccinale;  */

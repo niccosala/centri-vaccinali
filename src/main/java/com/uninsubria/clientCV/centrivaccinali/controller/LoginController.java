@@ -53,42 +53,9 @@ public class LoginController extends Controller {
             //credenziali sono errate show dialog
         } else {
             if(utente instanceof CittadinoRegistrato) {
-
-                //da testare con DB, il metodo ha stesso scopo del codice commentato
-
-                /*FXMLLoader loader = new
-                        FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeCittadino.fxml"));
-
-                Parent root = loader.load();
-
-                HomeCittadinoController controller = loader.getController();
-                controller.setUtente(utente);
-
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();*/
-
                 changeSceneAndSetValues("HomeCittadino.fxml", utente, event);
             }
             else {
-
-                //da testare con DB, il metodo ha stesso scopo del codice commentato
-
-                /*switchToHomeOperatoreScene(event);
-                FXMLLoader loader = new
-                        FXMLLoader(CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/HomeOperatore.fxml"));
-
-                Parent root = loader.load();
-
-                //instance of HomeCittadinoController controller/HomeOperatoreController
-                HomeOperatoreController controller = loader.getController();
-                controller.setUtente(utente);
-
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();*/
                 changeSceneAndSetValues("HomeOperatore.fxml", utente, event);
 
             }
@@ -96,8 +63,8 @@ public class LoginController extends Controller {
     }
 
     public void reset() {
-        usernameTextField.setText(null);
-        passwordField.setText(null);
+        usernameTextField.clear();
+        passwordField.clear();
     }
 
     @Override

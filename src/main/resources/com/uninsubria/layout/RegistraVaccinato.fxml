@@ -113,7 +113,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <ComboBox id="cmbCentro" accessibleText="Seleziona tipologia" layoutX="313.0" layoutY="385.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+        <ComboBox id="cmbCentro" fx:id="centrivaccinaliComboBox" accessibleText="Seleziona tipologia" layoutX="313.0" layoutY="385.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
