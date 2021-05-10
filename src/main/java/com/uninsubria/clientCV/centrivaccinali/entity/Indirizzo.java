@@ -12,7 +12,7 @@ public class Indirizzo {
                      String provincia,
                      String CAP) {
 
-        this.qualificatore =qualificatore;
+        this.qualificatore = qualificatore;
         this.strada = strada;
         this.civico = civico;
         this.comune = comune;
