@@ -2,6 +2,7 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Qualificatore;
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -27,6 +28,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     private Text welcomeTextField;
 
     private UtenteRegistrato utente;
+    private Util util = new Util();
 
 
     public void switchToLogoutScene(ActionEvent event) throws IOException {
@@ -41,12 +43,12 @@ public class RegistraCentroController extends Controller implements Initializabl
         changeSceneAndSetValues("RegistraVaccinato.fxml", utente, event);
     }
 
-    public void registraCentro(ActionEvent event) throws IOException, SQLException {
-        String nomeCentro = fieldNome.getText();
+    public void registraCentro() throws IOException, SQLException {
+        String nomeCentro = util.lowercaseNotFirst(fieldNome.getText().trim());
         String qualificatore = qualificatoreComboBox.getValue();
         String strada = fieldStrada.getText();
         String civico = fieldCivico.getText();
-        String comune = fieldComune.getText();
+        String comune = util.lowercaseNotFirst(fieldComune.getText());
         String provincia = fieldProvincia.getText();
         String cap = fieldCap.getText();
         String tipologia = tipologiaComboBox.getValue();
@@ -55,16 +57,23 @@ public class RegistraCentroController extends Controller implements Initializabl
         if(nomeCentro.isBlank() || qualificatore == null || strada.isBlank() ||
                 civico.isBlank() || comune.isBlank() || provincia.isBlank()
                 || tipologia == null) {
-            // TODO: Segnala errore
+            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
         // Specific controls by field
         if(cap.length() != 5 || cap.matches("^[a-zA-Z]+$"))
             if(Integer.parseInt(cap) < 10) {
-                // TODO: Segnala errore
+                showDialog("Errore nei dati inseriti", "Il CAP inserito è errato o non esistente");
                 return;
             }
+
+        //controllo provincia
+        if(provincia.length() != 2 || !provincia.matches("^[a-zA-Z]+$")) {
+            showDialog("Errore nei dati inseriti", "La provincia inserita è errata");
+            return;
+        }
+
 
         // TODO: Prima della query, controllare se il centro vaccinale (nome - PK) esiste già all'interno del DB. Se esiste, segnalare errore
         String query = "INSERT INTO centrivaccinali VALUES('"
@@ -76,8 +85,9 @@ public class RegistraCentroController extends Controller implements Initializabl
                 + comune + "', '"
                 + provincia + "', '"
                 + cap + "')";
+
         Proxy proxy = new Proxy();
-        proxy.populateCentriVaccinali(query, nomeCentro);
+        proxy.insertDb(query);
 
         reset();
     }

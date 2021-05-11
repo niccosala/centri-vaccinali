@@ -101,23 +101,29 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public void filter(String query) throws IOException, SQLException {
+    public ArrayList<String> filter(String query) throws IOException, SQLException {
         out.println("find");
         out.println(query);
+        ArrayList<String> centrivaccinali = new ArrayList<>();
 
         //creo array per popolare list view in Cerca.fxml
-        /*String nome = in.readLine();
-        String tipologia = in.readLine();
+        /*String tipologia = in.readLine();
         String qualificatore = in.readLine();
         String strada = in.readLine();
         String civico = in.readLine();
         String comune = in.readLine();
         String provincia = in.readLine();
-        String cap = in.readLine();
+        String cap = in.readLine();*/
 
-        String[] centroVaccinale = {nome, tipologia, indirizzo};
+        while (true) {
+            String mex = in.readLine();
+            if(mex.equals("exit"))
+                break;
+            else
+                centrivaccinali.add(mex);
+        }
 
-        return centroVaccinale;  */
+        return centrivaccinali;
     }
 
     @Override

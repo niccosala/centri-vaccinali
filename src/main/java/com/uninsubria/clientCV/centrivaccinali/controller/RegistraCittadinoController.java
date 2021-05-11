@@ -1,5 +1,6 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ public class RegistraCittadinoController extends Controller {
     private PasswordField fieldPassword;
 
     private UtenteRegistrato utente;
+    private Util util = new Util();
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -32,7 +34,7 @@ public class RegistraCittadinoController extends Controller {
         changeScene("Login.fxml", event);
     }
 
-    public void registraCittadino(ActionEvent event) throws IOException, SQLException, InterruptedException {
+    public void registraCittadino() throws IOException, SQLException, InterruptedException {
         String nome = fieldNome.getText();
         String cognome = fieldCognome.getText();
         String CF = fieldCodiceFiscale.getText();
@@ -43,6 +45,18 @@ public class RegistraCittadinoController extends Controller {
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank() ||
                 user.isBlank() || password.isBlank() || email.isBlank() || fieldID.getText().isBlank() )
             return;
+
+        //controllo codice fiscale
+        if(!util.cfIsValid(CF)) {
+            showDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
+            return;
+        }
+
+        //controllo email
+        if(!util.emailIsValid(email)) {
+            showDialog("Email errato", "L'email inserita è errata, riprovare");
+            return;
+        }
 
         int IDvaccinazione = Integer.parseInt(fieldID.getText());
 

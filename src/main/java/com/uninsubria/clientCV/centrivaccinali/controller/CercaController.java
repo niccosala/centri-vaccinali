@@ -1,27 +1,28 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.UndeclaredThrowableException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CercaController extends Controller implements Initializable{
 
     private UtenteRegistrato utente;
+    private Util util = new Util();
+
     @FXML
     private ComboBox<String> tipologiaComboBox;
     @FXML
@@ -32,6 +33,8 @@ public class CercaController extends Controller implements Initializable{
     private Text welcomeTextField;
     @FXML
     private Button btnRegistrati, btnLogout;
+    @FXML
+    private ListView<String> centriListView;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -52,32 +55,55 @@ public class CercaController extends Controller implements Initializable{
         changeSceneAndSetValues("Visualizza.fxml", utente, event);
     }
 
-    public void mostraCentriVaccinali(ActionEvent event) throws IOException, SQLException {
+    public void mostraCentriVaccinali() throws IOException, SQLException {
 
         Proxy proxy;
+        ArrayList<String> centrivaccinali;
+        ObservableList<String> data;
 
         if(filtraNomeRadio.isSelected()) {
-            String nome = nomeTextField.getText().toLowerCase().trim();
-            if(nome.isBlank())
-                return;
+            String nome = util.lowercaseNotFirst(nomeTextField.getText().trim());
 
+            if(nome.isBlank()) {
+                showDialog("Campi mancanti", "Inserire il nome del centro per effettuare la ricerca");
+                return;
+            }
+
+            //ricerca per nome
             proxy = new Proxy();
             String query = "SELECT * FROM centrivaccinali WHERE nome ='" + nome + "'";
-            //ricerca per nome
-            proxy.filter(query);
-            //update listview
+            centrivaccinali = proxy.filter(query);
+
+            if(centrivaccinali.size() == 0)
+                showDialog("Nessun centro trovato", "Non esistono centri vaccinali con questo nome");
+
+            data = FXCollections.observableArrayList();
+            data.addAll(centrivaccinali);
+
+            centriListView.setItems(data);
+
         }
         else if(filtraComuneRadio.isSelected()) {
-            String comune = comuneTextField.getText().toLowerCase().trim();
+            String comune = util.lowercaseNotFirst(comuneTextField.getText().trim());
             String tipologia = tipologiaComboBox.getValue();
 
-            if(comune.isBlank() || tipologia == null)
+            if(comune.isBlank() || tipologia == null) {
+                showDialog("Campi mancanti", "Inserire il comune e la tipologia per effettuare la ricerca");
                 return;
+            }
 
+            //ricerca per comune e tipologia
             proxy = new Proxy();
-            String query = "SELECT * FROM centrivaccinali WHERE comune='"+ comune +"' AND tipologia='"+ tipologia.toLowerCase() +"'";
-            proxy.filter(query);
-            //update listview
+            String query = "SELECT * FROM centrivaccinali WHERE comune='"+ comune +"' AND tipologia='"+ tipologia +"'";
+            centrivaccinali = proxy.filter(query);
+
+            if(centrivaccinali.size() == 0)
+                showDialog("Nessun centro trovato", "Non esistono centri vaccinali corrispondenti ai criteri di ricerca");
+
+            data = FXCollections.observableArrayList();
+            data.addAll(centrivaccinali);
+
+            centriListView.setItems(data);
         }
     }
 

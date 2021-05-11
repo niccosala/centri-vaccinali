@@ -1,7 +1,5 @@
 package com.uninsubria.serverCV;
 
-import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -136,8 +134,10 @@ public class DBhelper implements IComandiServer {
             out.println(rs.getString("codicefiscale"));
             out.println(rs.getString("userid"));
             out.println(rs.getString("pword"));
+
             if(isCittadino)
                 out.println(r.getString("email"));
+
             if(isCittadino)
                 out.println(r.getString("idvacc"));
         }
@@ -152,7 +152,9 @@ public class DBhelper implements IComandiServer {
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()) {
-            System.out.println("NOME: " + rs.getString("nome"));
+
+            //stampa il centro su terminale
+            /*System.out.println("NOME: " + rs.getString("nome"));
             System.out.println("tipologia: " + rs.getString("tipologia"));
             System.out.println("indirizzo: " +
                     rs.getString("qualificatore") + " " +
@@ -160,12 +162,13 @@ public class DBhelper implements IComandiServer {
                     rs.getString("civico") + " " +
                     rs.getString("comune") + " " +
                     rs.getString("provincia") + " " +
-                    rs.getString("cap"));
+                    rs.getString("cap"));*/
 
 
             //Mando in output al Proxy.filter i campi per CentroVaccinale
-            /*out.println(rs.getString("nome"));
-            out.println(rs.getString("tipologia"));
+            out.println(rs.getString("nome"));
+
+            /*out.println(rs.getString("tipologia"));
             out.println(rs.getString("qualificatore"))
             out.println(rs.getString("strada"))
             out.println(rs.getString("civico"))
@@ -174,6 +177,7 @@ public class DBhelper implements IComandiServer {
             out.println(rs.getString("cap"))*/
 
         }
+        out.println("exit");
     }
 
     @Override

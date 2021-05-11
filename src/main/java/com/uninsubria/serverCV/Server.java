@@ -25,6 +25,13 @@ public class Server {
             System.out.print("Password: ");
             password = in.nextLine();
             */
+
+
+            /*credenziali DB gio
+            user = "postgres";
+            password = "admin";
+            porta = "5432";*/
+
             user = "postgres";
             password = "pass";
         } while(!tryConnection(user, password));

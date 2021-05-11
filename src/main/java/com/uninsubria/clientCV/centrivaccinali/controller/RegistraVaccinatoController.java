@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.Vaccino;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     private Text welcomeTextField;
 
     private UtenteRegistrato utente;
+    private Util util = new Util();
 
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCentro.fxml", utente, event);
@@ -47,7 +49,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         changeSceneAndSetValues("LogoutOperatore.fxml", utente, event);
     }
 
-    public void registraVaccinato(ActionEvent event) throws ParseException, IOException, SQLException {
+    public void registraVaccinato() throws ParseException, IOException, SQLException {
         String nome = fieldNome.getText();
         String cognome = fieldCognome.getText();
         String CF = fieldCodiceFiscale.getText();
@@ -55,9 +57,24 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String centrovaccinale = centrivaccinaliComboBox.getValue();
         LocalDate date = fieldData.getValue();
 
+        //generic controls
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank()
-                || vaccino == null || centrovaccinale == null || date == null)
+                || vaccino == null || centrovaccinale == null || date == null) {
+            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
+        }
+
+        //check if date selected is after current date
+        if(date.isAfter(LocalDate.now())) {
+            showDialog("Data errata", "Inserire una data corretta");
+            return;
+        }
+
+        //TODO regex completo per un codice fiscale reale, se è overkill inseriamo solo un controllo sulla lunghezza
+        if(!util.cfIsValid(CF)) {
+            showDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
+            return;
+        }
 
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String data = date.toString();
@@ -80,6 +97,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         centrivaccinaliComboBox.setValue(null);
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Proxy proxy;
@@ -89,6 +107,8 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String[] vaccino = {Vaccino.ASTRAZENECA.toString(), Vaccino.JANDJ.toString(),
                 Vaccino.MODERNA.toString(), Vaccino.PFIZER.toString()};
 
+        vaccinoComboBox.getItems().addAll(vaccino);
+
         try {
             proxy = new Proxy();
             centrivaccinali = proxy.getCentri(query);
@@ -96,8 +116,6 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
-
-        vaccinoComboBox.getItems().addAll(vaccino);
     }
 
     @Override
