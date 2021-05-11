@@ -71,7 +71,7 @@ public class CercaController extends Controller implements Initializable{
 
             //ricerca per nome
             proxy = new Proxy();
-            String query = "SELECT * FROM centrivaccinali WHERE nome ='" + nome + "'";
+            String query = "SELECT * FROM centrivaccinali WHERE nome LIKE '%" + nome + "%'";
             centrivaccinali = proxy.filter(query);
 
             if(centrivaccinali.size() == 0)
@@ -117,6 +117,7 @@ public class CercaController extends Controller implements Initializable{
         nomeTextField.clear();
         comuneTextField.clear();
         tipologiaComboBox.setValue(null);
+        centriListView.setItems(null);
     }
 
     @Override

@@ -122,7 +122,7 @@
             <Cursor fx:constant="TEXT" />
         </cursor>
     </TextField>
-    <ListView id="listCentri" fx:id="centriListView" layoutX="300.0" layoutY="251.0" prefHeight="272.0" prefWidth="550.0" style="-fx-background-radius: 23;" />
+    <ListView id="listCentri" fx:id="centriListView" layoutX="300.0" layoutY="251.0" prefHeight="272.0" prefWidth="550.0" style="-fx-background-radius: 23; -fx-padding: 15;" stylesheets="@style/Generic.css" />
    <Button layoutX="428.0" layoutY="183.0" mnemonicParsing="false" onAction="#reset" style="-fx-background-color: white; -fx-border-width: 1.5; -fx-border-color: silver; -fx-background-radius: 30; -fx-border-radius: 30;" text="X" textFill="#d13981">
       <font>
          <Font name="Microsoft Sans Serif" size="18.0" />
