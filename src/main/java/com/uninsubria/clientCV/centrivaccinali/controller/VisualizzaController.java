@@ -2,11 +2,13 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
+import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,8 +18,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class VisualizzaController extends Controller {
+public class VisualizzaController extends Controller implements Initializable {
 
     private UtenteRegistrato utente;
     private CentroVaccinale centroVaccinale;
@@ -27,7 +33,7 @@ public class VisualizzaController extends Controller {
     @FXML
     private Button btnSegnala, btnRegistrati, btnLogout;
     @FXML
-    private Label indirizzoText;
+    private Label indirizzoText, labelSegnalazioni;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -96,4 +102,16 @@ public class VisualizzaController extends Controller {
         numeroSegnalazioni.setText("demo");
 
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //String query = "SELECT * FROM segnalazione WHERE centrovaccinale = '" + centroVaccinale.getNome() + "'";
+        ArrayList<Sintomo> segnalazioni;
+        Proxy proxy;
+
+        // ...
+
+        labelSegnalazioni.setText("Test");
+    }
+
 }

@@ -76,7 +76,7 @@ public class CercaController extends Controller implements Initializable{
         VisualizzaController visualizzaController = loader.getController();
 
         mController.setUtente(utente);
-        visualizzaController.setCentro(extractName(extractName(centriListView.getSelectionModel().getSelectedItem())));
+        visualizzaController.setCentro(extractName(centriListView.getSelectionModel().getSelectedItem()));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

@@ -99,14 +99,15 @@ public class SegnalaController extends Controller implements Initializable {
 
     public void showDescrizioneSintomo() {
         String sintomoCombo = sintomoComboBox.getValue();
-        String query = "SELECT * FROM eventiavversi WHERE sintomo = '"+sintomoCombo+"'";
+        String query = "SELECT * FROM eventiavversi WHERE sintomo = '" + sintomoCombo + "'";
         Proxy proxy;
         ArrayList<Sintomo> sintomi;
 
         try {
             proxy = new Proxy();
             sintomi = proxy.getSintomi(query);
-            descrizioneSintomo.setText(sintomi.get(0).getDescrizione());
+            if(sintomi.size() > 0)
+                descrizioneSintomo.setText(sintomi.get(0).getDescrizione());
 
         } catch (IOException | SQLException e) {
             e.printStackTrace();
