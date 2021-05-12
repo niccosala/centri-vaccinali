@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,9 +23,11 @@ public class VisualizzaController extends Controller {
     private CentroVaccinale centroVaccinale;
 
     @FXML
-    private Text welcomeText, nomeCentroText, tipologiaText, indirizzoText, numeroSegnalazioni, mediaSeverita;
+    private Text welcomeText, nomeCentroText, tipologiaText, numeroSegnalazioni, mediaSeverita;
     @FXML
     private Button btnSegnala, btnRegistrati, btnLogout;
+    @FXML
+    private Label indirizzoText;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -72,7 +75,6 @@ public class VisualizzaController extends Controller {
             btnRegistrati.setDisable(true);
             }
     }
-
 
     public void setCentro(String centro) {
         Proxy proxy;

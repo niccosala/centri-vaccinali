@@ -1,0 +1,6 @@
+.list-cell {
+    -fx-padding: 10;
+    -fx-background-radius: 23;
+    -fx-border-radius: 23;
+    -fx-font-size: 18;
+}

@@ -54,6 +54,7 @@ public class DBhelper implements IComandiServer {
         try {
             while (rs.next()) {
                 out.println(rs.getString("sintomo"));
+                out.println(rs.getString("descrizione"));
             }
             out.println("exit");
         }

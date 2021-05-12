@@ -81,7 +81,6 @@ public class RegistraCentroController extends Controller implements Initializabl
         }
 
 
-
         // TODO: Prima della query, controllare se il centro vaccinale (nome - PK) esiste già all'interno del DB. Se esiste, segnalare errore
         String query = "INSERT INTO centrivaccinali VALUES('"
                 + nomeCentro + "', '"

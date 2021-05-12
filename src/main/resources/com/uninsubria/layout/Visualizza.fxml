@@ -72,11 +72,11 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Text id="txtIndirizzo" fx:id="indirizzoText" layoutX="307.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo: ">
+    <Label id="txtIndirizzo" fx:id="indirizzoText" alignment="TOP_LEFT" layoutX="307.0" layoutY="113.0" maxHeight="50.0" maxWidth="400.0" prefHeight="50.0" text="Indirizzo: ">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
-    </Text>
+    </Label>
     <ListView id="listCentri" layoutX="303.0" layoutY="166.0" prefHeight="383.0" prefWidth="547.0" style="-fx-background-radius: 23;" />
     <Text fill="#000000a5" layoutX="727.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segnalazioni:">
         <font>
