@@ -46,7 +46,7 @@ public abstract class Controller {
         Alert warningDialog = new Alert(Alert.AlertType.WARNING, "", ButtonType.CLOSE);
         warningDialog.setHeaderText(title);
         warningDialog.setContentText(body);
-        warningDialog.showAndWait();
+        warningDialog.show();
     }
 
     public abstract void setUtente(UtenteRegistrato utente);

@@ -20,15 +20,29 @@ public class DBhelper implements IComandiServer {
 
 
     @Override
-    public void searchUser() throws IOException, SQLException {
+    public void pickCentro() throws IOException, SQLException {
         String query = in.readLine();
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            out.println(rs.getString("password"));
-            out.println(rs.getString("codfisc"));
+
+        try {
+            while (rs.next()) {
+                out.println(rs.getString("nome"));
+                out.println(rs.getString("tipologia"));
+                out.println(rs.getString("qualificatore"));
+                out.println(rs.getString("strada"));
+                out.println(rs.getString("civico"));
+                out.println(rs.getString("comune"));
+                out.println(rs.getString("provincia"));
+                out.println(rs.getString("cap"));
+            }
+            out.println("exit");
         }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -151,33 +165,25 @@ public class DBhelper implements IComandiServer {
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        while (rs.next()) {
 
-            //stampa il centro su terminale
-            /*System.out.println("NOME: " + rs.getString("nome"));
-            System.out.println("tipologia: " + rs.getString("tipologia"));
-            System.out.println("indirizzo: " +
-                    rs.getString("qualificatore") + " " +
-                    rs.getString("strada") + " " +
-                    rs.getString("civico") + " " +
-                    rs.getString("comune") + " " +
-                    rs.getString("provincia") + " " +
-                    rs.getString("cap"));*/
-
-
-            //Mando in output al Proxy.filter i campi per CentroVaccinale
-            out.println(rs.getString("nome"));
-
-            /*out.println(rs.getString("tipologia"));
-            out.println(rs.getString("qualificatore"))
-            out.println(rs.getString("strada"))
-            out.println(rs.getString("civico"))
-            out.println(rs.getString("comune"))
-            out.println(rs.getString("provincia"))
-            out.println(rs.getString("cap"))*/
-
+        try {
+            while (rs.next()) {
+                //Mando in output al Proxy.filter i campi per CentroVaccinale
+                out.println(rs.getString("nome"));
+                out.println(rs.getString("tipologia"));
+                out.println(rs.getString("qualificatore"));
+                out.println(rs.getString("strada"));
+                out.println(rs.getString("civico"));
+                out.println(rs.getString("comune"));
+                out.println(rs.getString("provincia"));
+                out.println(rs.getString("cap"));
+            }
+            out.println("exit");
         }
-        out.println("exit");
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

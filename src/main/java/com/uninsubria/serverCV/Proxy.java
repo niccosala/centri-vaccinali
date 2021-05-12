@@ -1,5 +1,9 @@
 package com.uninsubria.serverCV;
 
+import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
+import com.uninsubria.clientCV.centrivaccinali.entity.Indirizzo;
+import com.uninsubria.clientCV.centrivaccinali.entity.Qualificatore;
+import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
@@ -41,13 +45,44 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public String[] searchUser(String query) throws IOException {
-        out.println("search_user");
-        out.println(query);
-        String password = in.readLine();
-        String CF = in.readLine();
+    public CentroVaccinale pickCentro(String query) throws IOException {
 
-        return new String[]{password, CF};
+        CentroVaccinale centroVaccinale = null;
+
+        out.println("pickCentro");
+        out.println(query);
+
+        while (true) {
+
+            String mex = in.readLine();
+
+            if(mex.equals("exit"))
+                break;
+            else {
+                String nome = mex;
+                Tipologia tipologia = Tipologia.valueOf(in.readLine());
+                Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
+                String strada = in.readLine();
+                String civico = in.readLine();
+                String comune = in.readLine();
+                String provincia = in.readLine();
+                String cap = in.readLine();
+
+                centroVaccinale = new CentroVaccinale(
+                        nome,
+                        new Indirizzo(
+                                qualificatore,
+                                strada,
+                                civico,
+                                comune,
+                                provincia,
+                                cap
+                        ),
+                        tipologia
+                );
+            }
+        }
+        return centroVaccinale;
     }
 
     @Override
@@ -88,39 +123,53 @@ public class Proxy implements IComandiClient{
 
     @Override
     public void insertDb(String query) throws IOException, SQLException {
-        out.println("insert");
+        out.println("insertDb");
         out.println(query);
     }
 
     @Override
     public void populateCentriVaccinali(String query, String nomeCentro) throws IOException, SQLException {
-        out.println("insert1");
+        out.println("populateCentriVaccinali");
         out.println(nomeCentro);
         out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvaccino SERIAL)");
         out.println(query);
     }
 
     @Override
-    public ArrayList<String> filter(String query) throws IOException, SQLException {
-        out.println("find");
+    public ArrayList<CentroVaccinale> filter(String query) throws IOException, SQLException {
+        out.println("filter");
         out.println(query);
-        ArrayList<String> centrivaccinali = new ArrayList<>();
-
-        //creo array per popolare list view in Cerca.fxml
-        /*String tipologia = in.readLine();
-        String qualificatore = in.readLine();
-        String strada = in.readLine();
-        String civico = in.readLine();
-        String comune = in.readLine();
-        String provincia = in.readLine();
-        String cap = in.readLine();*/
+        ArrayList<CentroVaccinale> centrivaccinali = new ArrayList<>();
 
         while (true) {
+
             String mex = in.readLine();
+
             if(mex.equals("exit"))
                 break;
-            else
-                centrivaccinali.add(mex);
+            else {
+                String nome = mex;
+                Tipologia tipologia = Tipologia.valueOf(in.readLine());
+                Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
+                String strada = in.readLine();
+                String civico = in.readLine();
+                String comune = in.readLine();
+                String provincia = in.readLine();
+                String cap = in.readLine();
+
+                centrivaccinali.add(new CentroVaccinale(
+                        nome,
+                        new Indirizzo(
+                                qualificatore,
+                                strada,
+                                civico,
+                                comune,
+                                provincia,
+                                cap
+                        ),
+                        tipologia
+                ));
+            }
         }
 
         return centrivaccinali;

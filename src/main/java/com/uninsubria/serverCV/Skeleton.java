@@ -79,13 +79,13 @@ public class Skeleton extends Thread  {
         while((operation = in.readLine())!= null) {
 
             switch (operation) {
-                case "insert" : dBhelper.insertDb();
+                case "insertDb" : dBhelper.insertDb();
                 break;
-                case "insert1" : dBhelper.populateCentriVaccinali();
+                case "populateCentriVaccinali" : dBhelper.populateCentriVaccinali();
                 break;
-                case "search_user" : dBhelper.searchUser();
+                case "pickCentro" : dBhelper.pickCentro();
                 break;
-                case "find" : dBhelper.filter();
+                case "filter" : dBhelper.filter();
                 break;
                 case "searchSintomi" : dBhelper.getSintomi();
                 break;

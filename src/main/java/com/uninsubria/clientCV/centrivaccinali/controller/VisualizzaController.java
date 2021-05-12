@@ -1,19 +1,28 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
+import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
+import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class VisualizzaController extends Controller {
 
     private UtenteRegistrato utente;
+    private CentroVaccinale centroVaccinale;
 
     @FXML
-    private Text welcomeText;
+    private Text welcomeText, nomeCentroText, tipologiaText, indirizzoText, numeroSegnalazioni, mediaSeverita;
     @FXML
     private Button btnSegnala, btnRegistrati, btnLogout;
 
@@ -33,7 +42,20 @@ public class VisualizzaController extends Controller {
     }
 
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
-        changeSceneAndSetValues("Segnala.fxml", utente, event);
+        FXMLLoader loader = new
+                FXMLLoader(CentriVaccinali.class.getClassLoader().getResource(path + "Segnala.fxml"));
+        Parent root = loader.load();
+
+        Controller mController = loader.getController();
+        SegnalaController segnalaController = loader.getController();
+
+        mController.setUtente(utente);
+        segnalaController.setCentro(centroVaccinale);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override
@@ -42,19 +64,34 @@ public class VisualizzaController extends Controller {
         if (utente == null) {
             welcomeText.setText("Accesso come ospite");
             btnSegnala.setDisable(true);
+            btnLogout.setText("Accedi");
         }
         else {
             welcomeText.setText("Ciao, " + utente.getUsername());
             btnSegnala.setDisable(false);
-            if (utente == null) {
-                welcomeText.setText("Accesso come ospite");
-                btnRegistrati.setDisable(false);
-                btnLogout.setText("Accedi");
+            btnRegistrati.setDisable(true);
             }
-            else {
-                welcomeText.setText("Ciao, " + utente.getUsername());
-                btnRegistrati.setDisable(true);
-            }
+    }
+
+
+    public void setCentro(String centro) {
+        Proxy proxy;
+
+        String query = "SELECT * FROM centrivaccinali WHERE nome = '"+ centro +"'";
+
+        try {
+            proxy = new Proxy();
+            centroVaccinale = proxy.pickCentro(query);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        nomeCentroText.setText(centroVaccinale.getNome());
+        tipologiaText.setText(centroVaccinale.getTipologia().toString());
+        indirizzoText.setText(centroVaccinale.getIndirizzo().toString());
+        mediaSeverita.setText("demo");
+        numeroSegnalazioni.setText("demo");
+
     }
 }

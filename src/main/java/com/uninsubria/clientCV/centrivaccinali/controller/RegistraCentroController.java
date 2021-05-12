@@ -46,7 +46,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     public void registraCentro() throws IOException, SQLException {
         String nomeCentro = util.lowercaseNotFirst(fieldNome.getText().trim());
         String qualificatore = qualificatoreComboBox.getValue();
-        String strada = fieldStrada.getText();
+        String strada = util.lowercaseNotFirst(fieldStrada.getText());
         String civico = fieldCivico.getText();
         String comune = util.lowercaseNotFirst(fieldComune.getText());
         String provincia = fieldProvincia.getText();
@@ -73,6 +73,13 @@ public class RegistraCentroController extends Controller implements Initializabl
             showDialog("Errore nei dati inseriti", "La provincia inserita è errata");
             return;
         }
+
+        //controllo civico
+        if(civico.length()  > 3) {
+            showDialog("Errore nei dati inseriti", "Il numero civico inserito è errato");
+            return;
+        }
+
 
 
         // TODO: Prima della query, controllare se il centro vaccinale (nome - PK) esiste già all'interno del DB. Se esiste, segnalare errore

@@ -18,7 +18,7 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Cerca" textFill="WHITE">
+    <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;" text="Cerca" textFill="#d13981">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
@@ -51,12 +51,12 @@
             <Cursor fx:constant="CLOSED_HAND" />
         </cursor>
     </Button>
-    <Text id="txtNomeCV" layoutX="306.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome CV">
+    <Text id="txtNomeCV" fx:id="nomeCentroText" layoutX="306.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome CV">
         <font>
             <Font name="Microsoft Sans Serif" size="36.0" />
         </font>
     </Text>
-    <Button id="btnIndietro" fx:id="btnBack" layoutX="258.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchToCercaScene" style="-fx-background-color: #d13981; -fx-border-radius: 100; -fx-background-radius: 100;" text="&lt;" textFill="WHITE">
+    <Button id="btnIndietro" fx:id="btnBack" layoutX="258.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToCercaScene" style="-fx-background-color: #d13981; -fx-border-radius: 100; -fx-background-radius: 100;" text="&lt;" textFill="WHITE">
         <padding>
             <Insets bottom="3.0" left="10.0" right="12.0" top="3.0" />
         </padding>
@@ -67,12 +67,12 @@
             <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Text id="txtTipologia" layoutX="307.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipologia">
+    <Text id="txtTipologia" fx:id="tipologiaText" layoutX="305.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipologia: ">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Text id="txtIndirizzo" layoutX="307.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo">
+    <Text id="txtIndirizzo" fx:id="indirizzoText" layoutX="307.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo: ">
         <font>
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
@@ -83,7 +83,7 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Text id="txtSegnalazioni" fill="#d13981" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="138.3364004348697">
+    <Text id="txtSegnalazioni" fx:id="numeroSegnalazioni" fill="#d13981" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="138.3364004348697">
         <font>
             <Font name="Calibri" size="28.0" />
         </font>
@@ -93,7 +93,7 @@
             <Font name="Microsoft Sans Serif" size="18.0" />
         </font>
     </Text>
-    <Text id="txtSeverità" fill="#d13981" layoutX="727.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0 / 5" wrappingWidth="138.3364004348697">
+    <Text id="txtSeverità" fx:id="mediaSeverita" fill="#d13981" layoutX="727.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.0 / 5" wrappingWidth="138.3364004348697">
         <font>
             <Font name="Calibri" size="28.0" />
         </font>

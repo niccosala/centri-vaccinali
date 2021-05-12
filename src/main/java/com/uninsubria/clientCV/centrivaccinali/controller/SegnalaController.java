@@ -1,5 +1,6 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +13,14 @@ import java.io.IOException;
 public class SegnalaController extends Controller {
 
     private UtenteRegistrato utente;
+    private CentroVaccinale centroVaccinale;
 
     @FXML
     private TextArea textAreaAggiuntive;
     public static final int MAX_CHARS = 256;
 
     @FXML
-    private Text welcomeTextField;
+    private Text welcomeTextField, nomeCentroText;
     @FXML
     private Button btnRegistrati, btnLogout;
 
@@ -45,7 +47,11 @@ public class SegnalaController extends Controller {
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
-        if (utente == null) {
+        btnRegistrati.setDisable(true);
+
+        //inutile fare il controllo, ci può accedere solo utente registrato
+
+        /*if (utente == null) {
             welcomeTextField.setText("Accesso come ospite");
             btnRegistrati.setDisable(false);
             btnLogout.setText("Accedi");
@@ -53,6 +59,11 @@ public class SegnalaController extends Controller {
         else {
             welcomeTextField.setText("Ciao, " + utente.getUsername());
             btnRegistrati.setDisable(true);
-        }
+        }*/
+    }
+
+    public void setCentro(CentroVaccinale centroVaccinale) {
+        this.centroVaccinale = centroVaccinale;
+        nomeCentroText.setText(centroVaccinale.getNome());
     }
 }

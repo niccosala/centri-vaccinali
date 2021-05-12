@@ -1,6 +1,7 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
+import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
@@ -42,15 +43,17 @@ public class LoginController extends Controller {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
 
-        if (username.isBlank() || password.isBlank())
+        if (username.isBlank() || password.isBlank()) {
+            showDialog("Campi mancanti", "Inserire username e password per accedere");
             return;
+        }
 
         Proxy proxy = new Proxy();
         String query = "select * from utentiregistrati where userid = '" + username+ "'and pword = '" + password +"'";
         utente = proxy.login(query, username);
 
         if(utente == null) {
-            //credenziali sono errate show dialog
+            showDialog("Credenziali errate", "Username e password non corrispondono a nessun utente\nregistrato");
         } else {
             if(utente instanceof CittadinoRegistrato) {
                 changeSceneAndSetValues("HomeCittadino.fxml", utente, event);

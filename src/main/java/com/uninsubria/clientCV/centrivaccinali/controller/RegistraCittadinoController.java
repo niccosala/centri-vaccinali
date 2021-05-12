@@ -43,8 +43,10 @@ public class RegistraCittadinoController extends Controller {
         String email = fieldEmail.getText();
 
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank() ||
-                user.isBlank() || password.isBlank() || email.isBlank() || fieldID.getText().isBlank() )
+                user.isBlank() || password.isBlank() || email.isBlank() || fieldID.getText().isBlank()) {
+            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
+        }
 
         //controllo codice fiscale
         if(!util.cfIsValid(CF)) {
