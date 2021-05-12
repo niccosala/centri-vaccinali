@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -64,6 +63,11 @@ public class CercaController extends Controller implements Initializable{
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
         //changeSceneAndSetValues("Visualizza.fxml", utente, event);
 
+        if(centriListView.getSelectionModel().getSelectedItem() == null) {
+            showDialog("Seleziona un centro", "Per visualizzare le informazioni dettagliate di un centro, devi prima selezionarne uno dalla lista.");
+            return;
+        }
+
         FXMLLoader loader = new
                 FXMLLoader(CentriVaccinali.class.getClassLoader().getResource(path + "Visualizza.fxml"));
         Parent root = loader.load();
@@ -72,7 +76,7 @@ public class CercaController extends Controller implements Initializable{
         VisualizzaController visualizzaController = loader.getController();
 
         mController.setUtente(utente);
-        visualizzaController.setCentro(centriListView.getSelectionModel().getSelectedItem());
+        visualizzaController.setCentro(extractName(extractName(centriListView.getSelectionModel().getSelectedItem())));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -100,9 +104,13 @@ public class CercaController extends Controller implements Initializable{
                 showDialog("Nessun centro trovato", "Non esistono centri vaccinali con questo nome");
 
             data = FXCollections.observableArrayList();
-            for (CentroVaccinale centro: centrivaccinali) {
-                data.add(centro.getNome());
-            }
+            for (CentroVaccinale centro: centrivaccinali)
+                data.add(
+                        "\"" +
+                                centro.getNome() + "\"  •  " +
+                                centro.getIndirizzo().getComune() + "  •  " +
+                                centro.getTipologia()
+                );
 
             centriListView.setItems(data);
 
@@ -128,9 +136,13 @@ public class CercaController extends Controller implements Initializable{
                 showDialog("Nessun centro trovato", "Non esistono centri vaccinali corrispondenti ai criteri di ricerca");
 
             data = FXCollections.observableArrayList();
-            for (CentroVaccinale centro: centrivaccinali) {
-                data.add(centro.getNome());
-            }
+            for (CentroVaccinale centro: centrivaccinali)
+                data.add(
+                        "\"" +
+                                centro.getNome() + "\"  •  " +
+                                centro.getIndirizzo().getComune() + "  •  " +
+                                centro.getTipologia()
+                );
             centriListView.setItems(data);
         }
     }
@@ -158,9 +170,13 @@ public class CercaController extends Controller implements Initializable{
             proxy = new Proxy();
             centrivaccinali = proxy.filter(query);
             data = FXCollections.observableArrayList();
-            for (CentroVaccinale centro: centrivaccinali) {
-                data.add(centro.getNome());
-            }
+            for (CentroVaccinale centro: centrivaccinali)
+                data.add(
+                        "\"" +
+                                centro.getNome() + "\"  •  " +
+                                centro.getIndirizzo().getComune() + "  •  " +
+                                centro.getTipologia()
+                );
             //data.addAll(centrivaccinali);
 
         } catch (IOException | SQLException e) {
@@ -191,4 +207,18 @@ public class CercaController extends Controller implements Initializable{
             btnRegistrati.setDisable(true);
         }
     }
+
+    private String extractName(String centro) {
+        StringBuilder name = new StringBuilder();
+
+        for(int i = 0; i < centro.length(); i++) {
+            if(centro.charAt(i) == ' ' && centro.charAt(i + 1) == ' ' && centro.charAt(i + 2) == '•')
+                break;
+            else if(centro.charAt(i) != '"')
+                name.append(centro.charAt(i));
+        }
+
+        return name.toString();
+    }
+
 }

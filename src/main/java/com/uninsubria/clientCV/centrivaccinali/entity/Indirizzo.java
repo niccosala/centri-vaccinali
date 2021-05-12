@@ -27,6 +27,30 @@ public class Indirizzo {
             this.CAP = "00010";
     }
 
+    public String getStrada() {
+        return strada;
+    }
+
+    public String getComune() {
+        return comune;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public String getCivico() {
+        return civico;
+    }
+
+    public String getCAP() {
+        return CAP;
+    }
+
+    public Qualificatore getQualificatore() {
+        return qualificatore;
+    }
+
     @Override
     public String toString() {
         return util.lowercaseNotFirst(qualificatore.toString()) +
