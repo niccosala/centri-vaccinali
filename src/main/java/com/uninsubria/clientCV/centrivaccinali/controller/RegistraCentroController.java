@@ -62,25 +62,26 @@ public class RegistraCentroController extends Controller implements Initializabl
         }
 
         // Specific controls by field
-        if(cap.length() != 5 || cap.matches("^[a-zA-Z]+$"))
-            if(Integer.parseInt(cap) < 10) {
-                showDialog("Errore nei dati inseriti", "Il CAP inserito è errato o non esistente");
-                return;
-            }
+        // CAP
+        if(!cap.matches("[0-9]+")) {
+            showDialog("Errore nei dati inseriti", "Il CAP inserito non è valido");
+            return;
+        } else if(cap.length() != 5 || Integer.parseInt(cap) < 10) {
+            showDialog("Errore nei dati inseriti", "Il CAP inserito è errato o non esistente");
+            return;
+        }
 
-        //controllo provincia
+        // controllo provincia
         if(provincia.length() != 2 || !provincia.matches("^[a-zA-Z]+$")) {
             showDialog("Errore nei dati inseriti", "La provincia inserita è errata");
             return;
         }
 
-        //controllo civico
+        // controllo civico
         if(civico.length()  > 3) {
             showDialog("Errore nei dati inseriti", "Il numero civico inserito è errato");
             return;
         }
-
-
 
         // TODO: Prima della query, controllare se il centro vaccinale (nome - PK) esiste già all'interno del DB. Se esiste, segnalare errore
         String query = "INSERT INTO centrivaccinali VALUES('"

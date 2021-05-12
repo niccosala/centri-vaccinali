@@ -41,6 +41,7 @@ public class RegistraCittadinoController extends Controller {
         String user = fieldUsername.getText();
         String password = fieldPassword.getText();
         String email = fieldEmail.getText();
+        String id = fieldID.getText();
 
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank() ||
                 user.isBlank() || password.isBlank() || email.isBlank() || fieldID.getText().isBlank()) {
@@ -60,7 +61,13 @@ public class RegistraCittadinoController extends Controller {
             return;
         }
 
-        int IDvaccinazione = Integer.parseInt(fieldID.getText());
+        // controllo id univoco
+        if(id.matches("^[a-zA-Z]+$")) {
+            showDialog("ID univoco errato", "l'ID univoco di vaccinazione viene fornito dall'operatore ed è formato da sole cifre");
+            return;
+        }
+
+        int IDvaccinazione = Integer.parseInt(id);
 
         String insertAsUtente = "INSERT INTO utentiregistrati VALUES('"+user+"','"+password+"','"+CF+"','"+nome+"','"+cognome+"')";
         Proxy proxyUtenti = new Proxy();
