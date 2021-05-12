@@ -89,7 +89,7 @@ public class RegistraCentroController extends Controller implements Initializabl
                 + strada + "', '"
                 + civico + "', '"
                 + comune + "', '"
-                + provincia + "', '"
+                + provincia.toUpperCase() + "', '"
                 + cap + "')";
 
         Proxy proxy = new Proxy();
