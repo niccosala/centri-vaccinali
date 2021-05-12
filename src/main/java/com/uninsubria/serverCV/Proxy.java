@@ -1,9 +1,6 @@
 package com.uninsubria.serverCV;
 
-import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
-import com.uninsubria.clientCV.centrivaccinali.entity.Indirizzo;
-import com.uninsubria.clientCV.centrivaccinali.entity.Qualificatore;
-import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
+import com.uninsubria.clientCV.centrivaccinali.entity.*;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
@@ -86,18 +83,30 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public ArrayList<String> getSintomi(String query) throws IOException, SQLException {
-        ArrayList<String> sintomi = new ArrayList<>();
+    public ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException {
+
+        ArrayList<Sintomo> sintomi = new ArrayList<>();
 
         out.println("searchSintomi");
         out.println(query);
 
         while (true) {
+
             String mex = in.readLine();
+
             if (mex.equals("exit"))
                 break;
             else {
-                sintomi.add(mex);
+                String nomeSintomo = mex;
+                String descrizione = in.readLine();
+
+                System.out.println(nomeSintomo);
+                System.out.println(descrizione);
+
+                sintomi.add(new Sintomo(
+                        nomeSintomo,
+                        descrizione
+                ));
             }
         }
         return sintomi;

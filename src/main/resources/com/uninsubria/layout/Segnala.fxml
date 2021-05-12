@@ -64,7 +64,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <ComboBox id="cmbTipologia" fx:id="sintomoComboBox" accessibleText="Seleziona tipologia" layoutX="289.0" layoutY="139.0" maxHeight="43.0" prefHeight="43.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+        <ComboBox id="cmbTipologia" fx:id="sintomoComboBox" accessibleText="Seleziona tipologia" layoutX="289.0" layoutY="139.0" maxHeight="43.0" onAction="#showDescrizioneSintomo" prefHeight="43.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -72,12 +72,12 @@
                 <Insets bottom="12.0" left="10.0" right="10.0" top="13.0" />
             </padding>
         </ComboBox>
-        <Slider blockIncrement="1.0" layoutX="309.0" layoutY="448.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="42.0" prefWidth="206.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
+        <Slider fx:id="severitaSlider" blockIncrement="1.0" layoutX="309.0" layoutY="448.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="42.0" prefWidth="206.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
             <cursor>
                 <Cursor fx:constant="W_RESIZE" />
             </cursor>
         </Slider>
-        <Label alignment="TOP_LEFT" layoutX="295.0" layoutY="203.0" prefHeight="187.0" prefWidth="243.0" style="-fx-border-color: gainsboro; -fx-border-radius: 10;" text="Descrizione sintomo" textFill="#000000ad">
+        <Label fx:id="descrizioneSintomo" alignment="TOP_LEFT" layoutX="295.0" layoutY="203.0" prefHeight="187.0" prefWidth="243.0" style="-fx-border-color: gainsboro; -fx-border-radius: 10;" text="Descrizione sintomo" textFill="#000000ad">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
@@ -100,7 +100,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnVisualizza" layoutX="442.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchToVisualizzaScene" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="PUBBLICA SEGNALAZIONE" textFill="WHITE">
+        <Button id="btnVisualizza" fx:id="btnPubblica" layoutX="442.0" layoutY="523.0" mnemonicParsing="false" onAction="#pubblicaSegnalazione" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="PUBBLICA SEGNALAZIONE" textFill="WHITE">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>

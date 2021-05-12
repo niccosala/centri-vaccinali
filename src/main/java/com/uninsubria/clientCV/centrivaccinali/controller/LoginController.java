@@ -1,19 +1,12 @@
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
-import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
-import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 

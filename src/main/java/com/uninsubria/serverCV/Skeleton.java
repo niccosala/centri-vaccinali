@@ -39,7 +39,7 @@ public class Skeleton extends Thread  {
             e2.printStackTrace();
         }
         try (Connection c = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:7070/cv", username, password)) {
+                "jdbc:postgresql://localhost:5432/cv", username, password)) {
             System.out.println("Connessione riuscita!");
 
             try {
