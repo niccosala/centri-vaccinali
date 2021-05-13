@@ -1,4 +1,8 @@
-package com.uninsubria.clientCV.centrivaccinali.controller;
+/*
+Franchi   Matteo    740760   VA
+Magaudda  Giovanni  740962   VA
+Sala      Niccolò   742545   VA
+ */package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
