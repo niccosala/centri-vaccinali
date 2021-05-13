@@ -217,7 +217,7 @@ public class CercaController extends Controller implements Initializable{
         StringBuilder name = new StringBuilder();
 
         for(int i = 0; i < centro.length(); i++) {
-            if(centro.charAt(i) == ' ' && centro.charAt(i + 1) == ' ' && centro.charAt(i + 2) == '•')
+            if(centro.charAt(i + 2) == '•')
                 break;
             else if(centro.charAt(i) != '"')
                 name.append(centro.charAt(i));
