@@ -98,6 +98,8 @@ public class Skeleton extends Thread  {
                 break;
                 case "login" : dBhelper.login();
                 break;
+                case "getSegnalazione" : dBhelper.getSegnalazione();
+                break;
                 default: break;
             }
             dBhelper.close(socket);

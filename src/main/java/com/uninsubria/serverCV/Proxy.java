@@ -97,23 +97,25 @@ public class Proxy implements IComandiClient{
 
         while (true) {
 
-            String mex = in.readLine();
+            String nomeSintomo = in.readLine();
 
-            if (mex.equals("exit"))
+            if (nomeSintomo.equals("exit"))
                 break;
             else {
-                String nomeSintomo = mex;
+                int idevento = Integer.parseInt(in.readLine());
                 String descrizione = in.readLine();
-
-                System.out.println(nomeSintomo);
+                System.out.println(idevento);
                 System.out.println(descrizione);
-
                 sintomi.add(new Sintomo(
+                        idevento,
                         nomeSintomo,
                         descrizione
                 ));
             }
+
+            System.out.println(nomeSintomo);
         }
+
         return sintomi;
     }
 
@@ -133,6 +135,34 @@ public class Proxy implements IComandiClient{
             }
         }
         return centriVaccinali;
+    }
+
+    @Override
+    public ArrayList<Segnalazione> getSegnalazione(String query) throws IOException {
+        ArrayList<Segnalazione> segnalazioni = new ArrayList<>();
+
+        out.println("getSegnalazione");
+        out.println(query);
+
+        while (true) {
+            String centroVaccinale = in.readLine();
+
+            if (centroVaccinale.equals("exit"))
+                break;
+            else {
+                String sintomo = in.readLine();
+                int severita = Integer.parseInt(in.readLine());
+                String descrizione = in.readLine();
+
+                segnalazioni.add(new Segnalazione(
+                        centroVaccinale,
+                        sintomo,
+                        severita,
+                        descrizione
+                ));
+            }
+        }
+        return segnalazioni;
     }
 
     @Override

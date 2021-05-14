@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class SegnalaController extends Controller implements Initializable {
@@ -32,6 +34,7 @@ public class SegnalaController extends Controller implements Initializable {
     private UtenteRegistrato utente;
     private CentroVaccinale centroVaccinale;
     private Proxy proxy;
+    private Map<String, Integer> idevento;
 
     public static final int MAX_CHARS = 256;
 
@@ -83,6 +86,7 @@ public class SegnalaController extends Controller implements Initializable {
     public void pubblicaSegnalazione() throws IOException {
         String nomeCentro = centroVaccinale.getNome();
         String descrizione = textAreaAggiuntive.getText().trim();
+        String sintomo = sintomoComboBox.getValue();
         int severita = (int) severitaSlider.getValue();
 
         if(descrizione.isBlank() || sintomoComboBox.getValue() == null) {
@@ -90,7 +94,8 @@ public class SegnalaController extends Controller implements Initializable {
             return;
         }
 
-        String query = "INSERT INTO segnalazione(centrovaccinale, severita, descrizione) VALUES('"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
+
+        String query = "INSERT INTO segnalazione (idevento, centrovaccinale, severita, descrizione) VALUES('"+idevento.get(sintomo)+"', '"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
         proxy = new Proxy();
 
         try {
@@ -156,6 +161,8 @@ public class SegnalaController extends Controller implements Initializable {
         String query = "SELECT * FROM eventiavversi";
         ArrayList<Sintomo> sintomi;
         Proxy proxy;
+        idevento = new HashMap<>();
+
 
         try {
             proxy = new Proxy();
@@ -163,6 +170,7 @@ public class SegnalaController extends Controller implements Initializable {
 
             for (Sintomo sintomo: sintomi) {
                 sintomoComboBox.getItems().add(sintomo.getNome());
+                idevento.put(sintomo.getNome(), sintomo.getIdevento());
             }
 
         } catch (IOException | SQLException e) {

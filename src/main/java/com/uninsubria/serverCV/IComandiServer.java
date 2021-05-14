@@ -13,9 +13,9 @@ public interface IComandiServer {
 
     int PORT = 8888;
 
-    //Socket initializeConnection() throws IOException;
     void pickCentro() throws IOException, SQLException;
     void getSintomi() throws IOException, SQLException;
+    void getSegnalazione() throws IOException, SQLException;
     void getCentri() throws IOException, SQLException;
     void insertDb() throws IOException, SQLException;
     void populateCentriVaccinali() throws IOException, SQLException;

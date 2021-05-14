@@ -46,7 +46,7 @@ public class CercaController extends Controller implements Initializable{
     @FXML
     private Text welcomeTextField;
     @FXML
-    private Button btnRegistrati, btnLogout;
+    private Button btnRegistrati, btnLogout, btnVisualizza;
     @FXML
     private ListView<String> centriListView;
 
@@ -66,7 +66,6 @@ public class CercaController extends Controller implements Initializable{
     }
 
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
-        //changeSceneAndSetValues("Visualizza.fxml", utente, event);
 
         if(centriListView.getSelectionModel().getSelectedItem() == null) {
             showDialog("Seleziona un centro", "Per visualizzare le informazioni dettagliate di un centro, devi prima selezionarne uno dalla lista.");
@@ -131,7 +130,6 @@ public class CercaController extends Controller implements Initializable{
 
             //ricerca per comune e tipologia
             proxy = new Proxy();
-            //String query = "SELECT * FROM centrivaccinali WHERE comune ='"+ comune +"' AND tipologia='"+ tipologia +"'";
 
             String query = "SELECT * FROM centrivaccinali WHERE comune LIKE '%"+ comune +"%' AND tipologia='"+ tipologia +"'";
 

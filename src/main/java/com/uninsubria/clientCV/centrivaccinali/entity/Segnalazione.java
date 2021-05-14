@@ -7,26 +7,26 @@ package com.uninsubria.clientCV.centrivaccinali.entity;
 
 public class Segnalazione {
 
-    private int IDevento, severita;
-    private String descrizione, centroVaccinale;
+    private int severita;
+    private String descrizione, centroVaccinale, sintomo;
 
     public Segnalazione(String centroVaccinale,
-                        int IDevento,
+                        String sintomo,
                         int severita,
                         String descrizione) {
 
         this.descrizione = descrizione;
-        this.IDevento = IDevento;
+        this.sintomo = sintomo;
         this.centroVaccinale = centroVaccinale;
         this.severita = severita;
     }
 
-    public String getCentroVaccinale() {
-        return centroVaccinale;
+    public String getSintomo() {
+        return sintomo;
     }
 
-    public int getIDevento() {
-        return IDevento;
+    public String getCentroVaccinale() {
+        return centroVaccinale;
     }
 
     public int getSeverita() {
@@ -39,10 +39,6 @@ public class Segnalazione {
 
     public void setCentroVaccinale(String centroVaccinale) {
         this.centroVaccinale = centroVaccinale;
-    }
-
-    public void setIDevento(int IDevento) {
-        this.IDevento = IDevento;
     }
 
     public void setSeverita(int severita) {

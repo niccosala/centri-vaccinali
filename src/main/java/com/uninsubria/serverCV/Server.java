@@ -34,6 +34,7 @@ public class Server {
 
             /*credenziali DB gio
             user = "postgres";
+            nomedb = "postgres"
             password = "admin";
             porta = "5432";*/
 

@@ -59,6 +59,28 @@ public class DBhelper implements IComandiServer {
         try {
             while (rs.next()) {
                 out.println(rs.getString("sintomo"));
+                out.println(rs.getInt("idevento"));
+                out.println(rs.getString("descrizione"));
+            }
+            out.println("exit");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void getSegnalazione() throws IOException, SQLException {
+        String query= in.readLine();
+        System.out.println(query);
+        Statement stmt= connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        try {
+            while (rs.next()) {
+                out.println(rs.getString("centrovaccinale"));
+                out.println(rs.getString("sintomo"));
+                out.println(rs.getString("severita"));
                 out.println(rs.getString("descrizione"));
             }
             out.println("exit");

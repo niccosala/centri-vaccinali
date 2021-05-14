@@ -2,17 +2,18 @@
 Franchi   Matteo    740760   VA
 Magaudda  Giovanni  740962   VA
 Sala      Niccolò   742545   VA
- */package com.uninsubria.clientCV.centrivaccinali.controller;
+ */
+
+package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
-import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,12 +23,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-public class VisualizzaController extends Controller implements Initializable {
+public class VisualizzaController extends Controller  {
 
     private UtenteRegistrato utente;
     private CentroVaccinale centroVaccinale;
@@ -87,35 +85,39 @@ public class VisualizzaController extends Controller implements Initializable {
     }
 
     public void setCentro(String centro) {
-        Proxy proxy;
+        Proxy proxy, proxy1;
 
-        String query = "SELECT * FROM centrivaccinali WHERE nome = '"+ centro +"'";
+        String query = "SELECT * FROM centrivaccinali WHERE nome = '" + centro + "'";
+        String querySegnalazione = "SELECT * FROM segnalazione join eventiavversi on (eventiavversi.idevento = segnalazione.idevento) WHERE centrovaccinale = '" + centro + "'";
+        StringBuilder descrizioni = new StringBuilder();
+        int totaleSegnalazioni = 0;
+        ArrayList<Segnalazione> segnalazioni = new ArrayList<>();
 
         try {
             proxy = new Proxy();
+            proxy1 = new Proxy();
             centroVaccinale = proxy.pickCentro(query);
+            segnalazioni = proxy1.getSegnalazione(querySegnalazione);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        for (Segnalazione s : segnalazioni) {
+            descrizioni.append(s.getSintomo()).append("\nIntensità: ").append(s.getSeverita()).append("\n\n");
+            totaleSegnalazioni += s.getSeverita();
+        }
+
         nomeCentroText.setText(centroVaccinale.getNome());
         tipologiaText.setText(centroVaccinale.getTipologia().toString());
         indirizzoText.setText(centroVaccinale.getIndirizzo().toString());
-        mediaSeverita.setText("demo");
-        numeroSegnalazioni.setText("demo");
+        numeroSegnalazioni.setText(String.valueOf(segnalazioni.size()));
+        labelSegnalazioni.setText(String.valueOf(descrizioni));
 
+        double media = ((double) totaleSegnalazioni) / segnalazioni.size();
+        if (Double.isNaN(media))
+            mediaSeverita.setText("0");
+        else
+            mediaSeverita.setText(String.format("%.02f", media));
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //String query = "SELECT * FROM segnalazione WHERE centrovaccinale = '" + centroVaccinale.getNome() + "'";
-        ArrayList<Sintomo> segnalazioni;
-        Proxy proxy;
-
-        // ...
-
-        labelSegnalazioni.setText("Test");
-    }
-
 }

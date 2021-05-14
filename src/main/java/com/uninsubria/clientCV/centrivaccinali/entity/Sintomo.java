@@ -8,8 +8,10 @@ package com.uninsubria.clientCV.centrivaccinali.entity;
 public class Sintomo {
 
     private String nome, descrizione;
+    private int idevento;
 
-    public Sintomo(String nome, String descrizione) {
+    public Sintomo(int idevento, String nome, String descrizione) {
+        this.idevento = idevento;
         this.nome = nome;
         this.descrizione = descrizione;
     }
@@ -21,4 +23,9 @@ public class Sintomo {
     public String getDescrizione() {
         return descrizione;
     }
+
+    public int getIdevento() {
+        return idevento;
+    }
+
 }
