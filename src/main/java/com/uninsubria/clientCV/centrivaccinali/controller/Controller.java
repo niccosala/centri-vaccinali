@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
@@ -43,15 +44,38 @@ public abstract class Controller {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+
+        //per usare file css
+        /*scene.getStylesheets().add(Objects.requireNonNull(
+                CentriVaccinali.class.getClassLoader().getResource("com/uninsubria/layout/style/Generic.css"))
+                .toExternalForm());*/
+
         stage.setScene(scene);
         stage.show();
     }
 
-    public void showDialog(String title, String body) {
+    public void showWarningDialog(String title, String body) {
         Alert warningDialog = new Alert(Alert.AlertType.WARNING, "", ButtonType.CLOSE);
         warningDialog.setHeaderText(title);
         warningDialog.setContentText(body);
         warningDialog.show();
+    }
+
+    public void showSuccessDialog(String title, String body) {
+        Alert warningDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CLOSE);
+        warningDialog.setHeaderText(title);
+        warningDialog.setContentText(body);
+        warningDialog.show();
+    }
+
+    public void setUpComboBox(ComboBox<String> comboBox) {
+        comboBox.setStyle("-fx-font: 13px \"Microsoft Sans Serif\";" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-radius: 30;\n" +
+                "    -fx-border-style: solid;\n" +
+                "    -fx-border-color: silver;\n" +
+                "    -fx-border-width: 1.5;\n" +
+                "    -fx-background-color: rgba(255,255,255,0.75);");
     }
 
     public abstract void setUtente(UtenteRegistrato utente);

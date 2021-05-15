@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -17,6 +18,7 @@ public class CentriVaccinali extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
                         "com/uninsubria/layout/Login.fxml")));

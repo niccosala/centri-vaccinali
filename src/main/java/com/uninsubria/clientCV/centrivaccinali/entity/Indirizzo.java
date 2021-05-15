@@ -63,7 +63,7 @@ public class Indirizzo {
                 strada +
                 " " +
                 civico +
-                " " +
+                " - " +
                 comune +
                 " (" +
                 provincia +

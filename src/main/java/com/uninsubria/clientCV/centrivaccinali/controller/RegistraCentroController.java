@@ -5,6 +5,7 @@ Sala      Niccolò   742545   VA
  */
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Qualificatore;
 import com.uninsubria.clientCV.centrivaccinali.entity.Tipologia;
 import com.uninsubria.clientCV.condivisa.Util;
@@ -20,6 +21,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegistraCentroController extends Controller implements Initializable {
@@ -62,33 +64,33 @@ public class RegistraCentroController extends Controller implements Initializabl
         if(nomeCentro.isBlank() || qualificatore == null || strada.isBlank() ||
                 civico.isBlank() || comune.isBlank() || provincia.isBlank()
                 || tipologia == null) {
-            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
+            showWarningDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
         // Specific controls by field
         // CAP
         if(!cap.matches("[0-9]+")) {
-            showDialog("Errore nei dati inseriti", "Il CAP inserito non è valido");
+            showWarningDialog("Errore nei dati inseriti", "Il CAP inserito non è valido");
             return;
         } else if(cap.length() != 5 || Integer.parseInt(cap) < 10) {
-            showDialog("Errore nei dati inseriti", "Il CAP inserito è errato o non esistente");
+            showWarningDialog("Errore nei dati inseriti", "Il CAP inserito è errato o non esistente");
             return;
         }
 
         // controllo provincia
         if(provincia.length() != 2 || !provincia.matches("^[a-zA-Z]+$")) {
-            showDialog("Errore nei dati inseriti", "La provincia inserita è errata");
+            showWarningDialog("Errore nei dati inseriti", "La provincia inserita è errata");
             return;
         }
 
         // controllo civico
         if(civico.length()  > 3) {
-            showDialog("Errore nei dati inseriti", "Il numero civico inserito è errato");
+            showWarningDialog("Errore nei dati inseriti", "Il numero civico inserito è errato");
             return;
         }
 
-        // TODO: Prima della query, controllare se il centro vaccinale (nome - PK) esiste già all'interno del DB. Se esiste, segnalare errore
+
         String query = "INSERT INTO centrivaccinali VALUES('"
                 + nomeCentro + "', '"
                 + tipologia + "', '"
@@ -100,7 +102,11 @@ public class RegistraCentroController extends Controller implements Initializabl
                 + cap + "')";
 
         Proxy proxy = new Proxy();
-        proxy.insertDb(query);
+
+        if (centroExist())
+            showWarningDialog("Centro già esistente", "Il centro che si sta cercando di inserire è già stato registrato");
+        else
+            proxy.insertDb(query);
 
         reset();
     }
@@ -116,6 +122,23 @@ public class RegistraCentroController extends Controller implements Initializabl
         tipologiaComboBox.setValue(null);
     }
 
+    private boolean centroExist() {
+        Proxy proxy;
+        ArrayList<CentroVaccinale> centriVaccinali = new ArrayList<>();
+        String nomeCentro = util.lowercaseNotFirst(fieldNome.getText().trim());
+
+        String query = "SELECT * FROM centrivaccinali WHERE nome = '" + nomeCentro + "'";
+
+        try {
+             proxy = new Proxy();
+             centriVaccinali = proxy.filter(query);
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return !centriVaccinali.isEmpty();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String[] tipologia = {
@@ -124,12 +147,24 @@ public class RegistraCentroController extends Controller implements Initializabl
                 Tipologia.OSPEDALIERO.toString() };
         tipologiaComboBox.getItems().addAll(tipologia);
 
+        setUpComboBox(tipologiaComboBox);
+
         String[] qualificatore = {
                 Qualificatore.VIA.toString(),
                 Qualificatore.VIALE.toString(),
                 Qualificatore.PIAZZA.toString(),
                 Qualificatore.CORSO.toString() };
         qualificatoreComboBox.getItems().addAll(qualificatore);
+
+        qualificatoreComboBox.setStyle(
+                "-fx-font: 13px \"Microsoft Sans Serif\";" +
+                        "    -fx-border-radius:  30 0 0 30;\n" +
+                        "    -fx-background-radius:  30 0 0 30;\n" +
+                        "    -fx-border-style: solid;\n" +
+                        "    -fx-border-color: silver;\n" +
+                        "    -fx-border-width: 1.5;\n" +
+                        "    -fx-background-color: rgba(255,255,255,0.75)"
+        );
     }
 
     @Override

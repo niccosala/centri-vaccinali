@@ -42,7 +42,7 @@ public class LoginController extends Controller {
         String password = passwordField.getText();
 
         if (username.isBlank() || password.isBlank()) {
-            showDialog("Campi mancanti", "Inserire username e password per accedere");
+            showWarningDialog("Campi mancanti", "Inserire username e password per accedere");
             return;
         }
 
@@ -51,7 +51,7 @@ public class LoginController extends Controller {
         utente = proxy.login(query, username);
 
         if(utente == null) {
-            showDialog("Credenziali errate", "Username e password non corrispondono a nessun utente\nregistrato");
+            showWarningDialog("Credenziali errate", "Username e password non corrispondono a nessun utente\nregistrato");
         } else {
             if(utente instanceof CittadinoRegistrato) {
                 changeSceneAndSetValues("HomeCittadino.fxml", utente, event);

@@ -39,7 +39,7 @@ public class Server {
             porta = "5432";*/
 
             user = "postgres";
-            password = "pass";
+            password = "admin";
         } while(!tryConnection(user, password));
 
         try {
@@ -60,7 +60,7 @@ public class Server {
         Class.forName("org.postgresql.Driver");
         try {
             Connection c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:7070/cv", user, password);
+                    "jdbc:postgresql://localhost:5432/postgres", user, password);
         }
         catch (SQLException e) {
             return false;

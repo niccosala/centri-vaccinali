@@ -65,19 +65,18 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         //generic controls
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank()
                 || vaccino == null || centrovaccinale == null || date == null) {
-            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
+            showWarningDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
         //check if date selected is after current date
         if(date.isAfter(LocalDate.now())) {
-            showDialog("Data errata", "Inserire una data corretta");
+            showWarningDialog("Data errata", "Inserire una data corretta");
             return;
         }
 
-        //TODO regex completo per un codice fiscale reale, se è overkill inseriamo solo un controllo sulla lunghezza
         if(!util.cfIsValid(CF)) {
-            showDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
+            showWarningDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
             return;
         }
 
@@ -89,6 +88,8 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String query = "INSERT INTO vaccinati_"+centrovaccinale+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"')";
         Proxy proxy = new Proxy();
         proxy.populateCentriVaccinali(query, centrovaccinale);
+
+        showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato \ncon ID univoco " + util.randomUUID(16, 4, '-'));
         reset();
     }
 
@@ -113,6 +114,9 @@ public class RegistraVaccinatoController extends Controller implements Initializ
                 Vaccino.MODERNA.toString(), Vaccino.PFIZER.toString()};
 
         vaccinoComboBox.getItems().addAll(vaccino);
+
+        setUpComboBox(vaccinoComboBox);
+        setUpComboBox(centrivaccinaliComboBox);
 
         try {
             proxy = new Proxy();

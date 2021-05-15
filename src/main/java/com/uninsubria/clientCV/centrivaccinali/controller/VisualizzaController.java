@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -35,7 +36,9 @@ public class VisualizzaController extends Controller  {
     @FXML
     private Button btnSegnala, btnRegistrati, btnLogout;
     @FXML
-    private Label indirizzoText, labelSegnalazioni;
+    private Label indirizzoText;
+    @FXML
+    private TextArea labelSegnalazioni;
 
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
@@ -116,8 +119,8 @@ public class VisualizzaController extends Controller  {
 
         double media = ((double) totaleSegnalazioni) / segnalazioni.size();
         if (Double.isNaN(media))
-            mediaSeverita.setText("0");
+            mediaSeverita.setText("0.0 / 5");
         else
-            mediaSeverita.setText(String.format("%.02f", media));
+            mediaSeverita.setText(String.format("%.02f", media) + " / 5");
     }
 }

@@ -131,7 +131,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <ComboBox id="cmbVaccino" fx:id="vaccinoComboBox" accessibleText="Seleziona tipologia" layoutX="603.0" layoutY="270.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
+        <ComboBox id="cmbVaccino" fx:id="vaccinoComboBox" accessibleText="Seleziona tipologia" layoutX="603.0" layoutY="270.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="54.0" prefWidth="250.0" style="-fx-border-radius: 30; -fx-background-radius: 30; -fx-border-style: solid; -fx-border-color: silver; -fx-border-width: 1.5; -fx-background-color: rgba(255,255,255,0.75)rgba(255,255,255,0.75);">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

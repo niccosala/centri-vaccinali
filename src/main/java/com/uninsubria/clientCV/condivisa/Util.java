@@ -5,10 +5,15 @@ Sala      Niccolò   742545   VA
  */
 package com.uninsubria.clientCV.condivisa;
 
+import java.security.SecureRandom;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Util {
+
+    private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private final Random rng = new SecureRandom();
 
     public boolean emailIsValid(String email) {
 
@@ -32,6 +37,27 @@ public class Util {
             return "";
 
         return str.substring(0, 1).toUpperCase() + str.substring(1, str.length()).toLowerCase();
+    }
+
+
+
+    public char randomChar(){
+        return ALPHABET.charAt(rng.nextInt(ALPHABET.length()));
+    }
+
+    public String randomUUID(int length, int spacing, char spacerChar){
+        StringBuilder sb = new StringBuilder();
+        int spacer = 0;
+        while(length > 0){
+            if(spacer == spacing){
+                sb.append(spacerChar);
+                spacer = 0;
+            }
+            length--;
+            spacer++;
+            sb.append(randomChar());
+        }
+        return sb.toString();
     }
 
 

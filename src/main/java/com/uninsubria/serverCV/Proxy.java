@@ -56,12 +56,11 @@ public class Proxy implements IComandiClient{
 
         while (true) {
 
-            String mex = in.readLine();
+            String nome = in.readLine();
 
-            if(mex.equals("exit"))
+            if(nome.equals("exit"))
                 break;
             else {
-                String nome = mex;
                 Tipologia tipologia = Tipologia.valueOf(in.readLine());
                 Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
                 String strada = in.readLine();
@@ -187,12 +186,11 @@ public class Proxy implements IComandiClient{
 
         while (true) {
 
-            String mex = in.readLine();
+            String nome = in.readLine();
 
-            if(mex.equals("exit"))
+            if(nome.equals("exit"))
                 break;
             else {
-                String nome = mex;
                 Tipologia tipologia = Tipologia.valueOf(in.readLine());
                 Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
                 String strada = in.readLine();

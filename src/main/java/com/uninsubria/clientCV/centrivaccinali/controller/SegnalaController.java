@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,7 +34,6 @@ public class SegnalaController extends Controller implements Initializable {
 
     private UtenteRegistrato utente;
     private CentroVaccinale centroVaccinale;
-    private Proxy proxy;
     private Map<String, Integer> idevento;
 
     public static final int MAX_CHARS = 256;
@@ -90,21 +90,21 @@ public class SegnalaController extends Controller implements Initializable {
         int severita = (int) severitaSlider.getValue();
 
         if(descrizione.isBlank() || sintomoComboBox.getValue() == null) {
-            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
+            showWarningDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
-
         String query = "INSERT INTO segnalazione (idevento, centrovaccinale, severita, descrizione) VALUES('"+idevento.get(sintomo)+"', '"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
-        proxy = new Proxy();
+        Proxy proxy;
 
         try {
+            proxy = new Proxy();
             proxy.insertDb(query);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         reset();
-        showDialog("Successo", "Segnalazione avvenuta con successo!");
+        showSuccessDialog("Successo", "Segnalazione avvenuta con successo!");
     }
 
     public void showDescrizioneSintomo() {
@@ -129,18 +129,6 @@ public class SegnalaController extends Controller implements Initializable {
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
         btnRegistrati.setDisable(true);
-
-        //inutile fare il controllo, ci può accedere solo utente registrato
-
-        /*if (utente == null) {
-            welcomeTextField.setText("Accesso come ospite");
-            btnRegistrati.setDisable(false);
-            btnLogout.setText("Accedi");
-        }
-        else {
-            welcomeTextField.setText("Ciao, " + utente.getUsername());
-            btnRegistrati.setDisable(true);
-        }*/
     }
 
     public void setCentro(CentroVaccinale centroVaccinale) {
@@ -163,6 +151,8 @@ public class SegnalaController extends Controller implements Initializable {
         Proxy proxy;
         idevento = new HashMap<>();
 
+        //change ComboBox Font
+        setUpComboBox(sintomoComboBox);
 
         try {
             proxy = new Proxy();
@@ -176,5 +166,10 @@ public class SegnalaController extends Controller implements Initializable {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void checkCharNumber(KeyEvent event) {
+        textAreaAggiuntive.setTextFormatter(new TextFormatter<String>(change ->
+                change.getControlNewText().length() <= MAX_CHARS ? change : null));
     }
 }

@@ -68,7 +68,7 @@ public class CercaController extends Controller implements Initializable{
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
 
         if(centriListView.getSelectionModel().getSelectedItem() == null) {
-            showDialog("Seleziona un centro", "Per visualizzare le informazioni dettagliate di un centro, devi prima selezionarne uno dalla lista.");
+            showWarningDialog("Seleziona un centro", "Per visualizzare le informazioni dettagliate di un centro, devi prima selezionarne uno dalla lista.");
             return;
         }
 
@@ -95,7 +95,7 @@ public class CercaController extends Controller implements Initializable{
             String nome = util.lowercaseNotFirst(nomeTextField.getText().trim());
 
             if(nome.isBlank()) {
-                showDialog("Campi mancanti", "Inserire il nome del centro per effettuare la ricerca");
+                showWarningDialog("Campi mancanti", "Inserire il nome del centro per effettuare la ricerca");
                 return;
             }
 
@@ -105,7 +105,7 @@ public class CercaController extends Controller implements Initializable{
             centrivaccinali = proxy.filter(query);
 
             if(centrivaccinali.size() == 0)
-                showDialog("Nessun centro trovato", "Non esistono centri vaccinali con questo nome");
+                showWarningDialog("Nessun centro trovato", "Non esistono centri vaccinali con questo nome");
 
             data = FXCollections.observableArrayList();
             for (CentroVaccinale centro: centrivaccinali)
@@ -124,7 +124,7 @@ public class CercaController extends Controller implements Initializable{
             String tipologia = tipologiaComboBox.getValue();
 
             if(comune.isBlank() || tipologia == null) {
-                showDialog("Campi mancanti", "Inserire il comune e la tipologia per effettuare la ricerca");
+                showWarningDialog("Campi mancanti", "Inserire il comune e la tipologia per effettuare la ricerca");
                 return;
             }
 
@@ -136,7 +136,7 @@ public class CercaController extends Controller implements Initializable{
             centrivaccinali = proxy.filter(query);
 
             if(centrivaccinali.size() == 0)
-                showDialog("Nessun centro trovato", "Non esistono centri vaccinali corrispondenti ai criteri di ricerca");
+                showWarningDialog("Nessun centro trovato", "Non esistono centri vaccinali corrispondenti ai criteri di ricerca");
 
             data = FXCollections.observableArrayList();
             for (CentroVaccinale centro: centrivaccinali)

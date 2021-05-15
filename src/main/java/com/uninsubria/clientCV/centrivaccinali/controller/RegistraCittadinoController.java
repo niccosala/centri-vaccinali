@@ -50,25 +50,25 @@ public class RegistraCittadinoController extends Controller {
 
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank() ||
                 user.isBlank() || password.isBlank() || email.isBlank() || fieldID.getText().isBlank()) {
-            showDialog("Campi mancanti", "Inserire tutti i campi richiesti");
+            showWarningDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
         //controllo codice fiscale
         if(!util.cfIsValid(CF)) {
-            showDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
+            showWarningDialog("Codice fiscale errato", "Il codice fiscale inserito è errato, riprovare");
             return;
         }
 
         //controllo email
         if(!util.emailIsValid(email)) {
-            showDialog("Email errato", "L'email inserita è errata, riprovare");
+            showWarningDialog("Email errato", "L'email inserita è errata, riprovare");
             return;
         }
 
         // controllo id univoco
         if(id.matches("^[a-zA-Z]+$")) {
-            showDialog("ID univoco errato", "l'ID univoco di vaccinazione viene fornito dall'operatore ed è formato da sole cifre");
+            showWarningDialog("ID univoco errato", "l'ID univoco di vaccinazione viene fornito dall'operatore ed è formato da sole cifre");
             return;
         }
 
