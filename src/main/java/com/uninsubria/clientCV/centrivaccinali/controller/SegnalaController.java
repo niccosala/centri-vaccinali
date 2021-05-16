@@ -100,7 +100,7 @@ public class SegnalaController extends Controller implements Initializable {
         if(isNew)
             query = "INSERT INTO segnalazione (idevento, userid, centrovaccinale, severita, descrizione) VALUES("+idevento.get(sintomo)+", '"+utente.getUsername()+"', '"+nomeCentro+"', "+severita+",'"+descrizione+"')";
         else
-            query = "UDATE segnalazione SET idevento = "+idevento.get(sintomo)+", severita = "+severita+", descrizione = '"+descrizione+"' WHERE userid = '"+utente.getUsername()+"'";
+            query = "UPDATE segnalazione SET idevento = "+idevento.get(sintomo)+", severita = "+severita+", descrizione = '"+descrizione+"' WHERE userid = '"+utente.getUsername()+"'";
 
         System.out.println(query);
         Proxy proxy;

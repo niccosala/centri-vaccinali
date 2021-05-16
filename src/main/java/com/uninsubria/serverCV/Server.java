@@ -11,36 +11,23 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
 public class Server {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Scanner in = new Scanner(System.in);
+
+        final int PORT = 7070;
+        final String PG_USERNAME = "postgres";
+        final String PG_PASSWORD = "pass";
+        final String DB_NAME = "cv";
+
         Semaphore sem= new Semaphore(100);
         ServerSocket server = new ServerSocket(IComandiServer.PORT);
-        String user;
-        String password;
 
         do {
-            /*
-            System.out.print("Inserire credenziali di accesso al db\nUser: ");
-            user = in.nextLine();
-            System.out.print("Password: ");
-            password = in.nextLine();
-            */
-
-
-            /*credenziali DB gio
-            user = "postgres";
-            nomedb = "postgres"
-            password = "admin";
-            porta = "5432";*/
-
-            user = "postgres";
-            password = "pass";
-        } while(!tryConnection(user, password));
+            System.out.println("Connessione al server in corso...");
+        } while(!tryConnection(PG_USERNAME, PG_PASSWORD, PORT, DB_NAME));
 
         try {
             System.out.println("Started " + server);
@@ -48,19 +35,18 @@ public class Server {
             while(true) {
                 Socket socket = server.accept();
                 System.out.println("Connection accepted: ");
-                new Skeleton(socket, sem, user, password);
+                new Skeleton(socket, sem, PG_USERNAME, PG_PASSWORD);
             }
-        }
-        catch(Exception e)  {
+        } catch(Exception e)  {
             e.printStackTrace();
         }
     }
 
-    private static Boolean tryConnection(String user, String password) throws ClassNotFoundException {
+    private static Boolean tryConnection(String user, String password, int port, String dbname) throws ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         try {
             Connection c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:7070/cv", user, password);
+                    "jdbc:postgresql://localhost:" + port + "/" + dbname + "?&useUnicode=true&characterEncoding=utf8", user, password);
         }
         catch (SQLException e) {
             return false;
