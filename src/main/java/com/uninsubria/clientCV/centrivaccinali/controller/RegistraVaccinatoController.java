@@ -5,6 +5,7 @@ Sala      Niccolò   742545   VA
  */
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Vaccino;
 import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
@@ -26,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class RegistraVaccinatoController extends Controller implements Initializable {
@@ -84,12 +86,18 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String data = date.toString();
         Date myDate = formatter.parse(data);
         java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+        Random r = new Random();
+        int idunivoco = r.nextInt(Short.MAX_VALUE);
 
-        String query = "INSERT INTO vaccinati_"+centrovaccinale+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"')";
+        String query = "INSERT INTO vaccinati_"+centrovaccinale.toLowerCase()+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idunivoco+"')";
         Proxy proxy = new Proxy();
-        proxy.populateCentriVaccinali(query, centrovaccinale);
+        proxy.populateCentriVaccinali(query, centrovaccinale.toLowerCase());
 
-        showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato \ncon ID univoco " + util.randomUUID(16, 4, '-'));
+        String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idunivoco+"','"+sqlDate+"', '"+CF+"')";
+        Proxy proxy1 = new Proxy();
+        proxy1.insertDb(insertIntoIdunivoci);
+
+        showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato con ID univoco " + idunivoco);
         reset();
     }
 
@@ -103,12 +111,11 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         centrivaccinaliComboBox.setValue(null);
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Proxy proxy;
-        ArrayList<String> centrivaccinali;
-        String query = "SELECT nome FROM centrivaccinali";
+        ArrayList<String> nomiCentri;
+        String query = "SELECT * FROM centrivaccinali";
 
         String[] vaccino = {Vaccino.ASTRAZENECA.toString(), Vaccino.JANDJ.toString(),
                 Vaccino.MODERNA.toString(), Vaccino.PFIZER.toString()};
@@ -120,9 +127,9 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
         try {
             proxy = new Proxy();
-            centrivaccinali = proxy.getCentri(query);
-            centrivaccinaliComboBox.getItems().addAll(centrivaccinali);
-        } catch (IOException | SQLException e) {
+            nomiCentri = proxy.getSingleValues(query, "nome");
+            centrivaccinaliComboBox.getItems().addAll(nomiCentri);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

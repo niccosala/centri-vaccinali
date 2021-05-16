@@ -44,7 +44,7 @@ public class Skeleton extends Thread  {
             e2.printStackTrace();
         }
         try (Connection c = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres", username, password)) {
+                "jdbc:postgresql://localhost:5432/cv", username, password)) {
             System.out.println("Connessione riuscita!");
 
             try {
@@ -88,13 +88,11 @@ public class Skeleton extends Thread  {
                 break;
                 case "populateCentriVaccinali" : dBhelper.populateCentriVaccinali();
                 break;
-                case "pickCentro" : dBhelper.pickCentro();
-                break;
                 case "filter" : dBhelper.filter();
                 break;
                 case "searchSintomi" : dBhelper.getSintomi();
                 break;
-                case "searchCentri" : dBhelper.getCentri();
+                case "getSingleValues" : dBhelper.getSingleValues();
                 break;
                 case "login" : dBhelper.login();
                 break;

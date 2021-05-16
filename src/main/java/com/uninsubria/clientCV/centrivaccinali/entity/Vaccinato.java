@@ -32,5 +32,35 @@ public class Vaccinato extends Persona {
         this.vaccino = vaccino;
     }
 
+    public String getCentroVaccinale() {
+        return centroVaccinale;
+    }
 
+    public Vaccino getVaccino() {
+        return vaccino;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public int getIdVaccinazione() {
+        return idVaccinazione;
+    }
+
+    public void setCentroVaccinale(String centroVaccinale) {
+        this.centroVaccinale = centroVaccinale;
+    }
+
+    public void setVaccino(Vaccino vaccino) {
+        this.vaccino = vaccino;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public void setIdVaccinazione(int idVaccinazione) {
+        this.idVaccinazione = idVaccinazione;
+    }
 }

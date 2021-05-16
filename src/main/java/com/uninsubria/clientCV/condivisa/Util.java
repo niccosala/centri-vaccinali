@@ -45,6 +45,8 @@ public class Util {
         return ALPHABET.charAt(rng.nextInt(ALPHABET.length()));
     }
 
+
+    //possibilità di generare sempre due ID diversi è dello 99.99999999999999999987%
     public String randomUUID(int length, int spacing, char spacerChar){
         StringBuilder sb = new StringBuilder();
         int spacer = 0;
@@ -58,6 +60,23 @@ public class Util {
             sb.append(randomChar());
         }
         return sb.toString();
+    }
+
+    public String randomUUID16() {
+        byte[] unique = new byte[2];
+        new SecureRandom().nextBytes(unique);
+
+        converBytesToHex(unique);
+
+        return unique.toString();
+    }
+
+    private String converBytesToHex(byte[] bytes) {
+        StringBuilder result = new StringBuilder();
+        for (byte tmp : bytes)
+            result.append(String.format("%02x", tmp));
+
+        return result.toString();
     }
 
 

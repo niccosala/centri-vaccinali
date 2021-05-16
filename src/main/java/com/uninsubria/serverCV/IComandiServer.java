@@ -13,10 +13,11 @@ public interface IComandiServer {
 
     int PORT = 8888;
 
-    void pickCentro() throws IOException, SQLException;
+    //void pickCentro() throws IOException, SQLException;
     void getSintomi() throws IOException, SQLException;
     void getSegnalazione() throws IOException, SQLException;
-    void getCentri() throws IOException, SQLException;
+    //void getVaccinati() throws IOException, SQLException;
+    void getSingleValues() throws IOException, SQLException;
     void insertDb() throws IOException, SQLException;
     void populateCentriVaccinali() throws IOException, SQLException;
     void filter() throws IOException, SQLException;

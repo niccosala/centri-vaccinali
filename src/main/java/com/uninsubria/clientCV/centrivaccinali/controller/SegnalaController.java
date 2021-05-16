@@ -8,6 +8,7 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.multi.MultiToolTipUI;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -94,7 +96,7 @@ public class SegnalaController extends Controller implements Initializable {
             return;
         }
 
-        String query = "INSERT INTO segnalazione (idevento, centrovaccinale, severita, descrizione) VALUES('"+idevento.get(sintomo)+"', '"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
+        String query = "INSERT INTO segnalazione (idevento, userid, centrovaccinale, severita, descrizione) VALUES('"+idevento.get(sintomo)+"', '"+utente.getUsername()+"', '"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
         Proxy proxy;
 
         try {
@@ -132,8 +134,9 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     public void setCentro(CentroVaccinale centroVaccinale) {
+        Util util = new Util();
         this.centroVaccinale = centroVaccinale;
-        nomeCentroText.setText(centroVaccinale.getNome());
+        nomeCentroText.setText(util.lowercaseNotFirst(centroVaccinale.getNome()));
     }
 
     private void reset() {

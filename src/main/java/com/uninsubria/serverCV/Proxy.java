@@ -47,46 +47,6 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public CentroVaccinale pickCentro(String query) throws IOException {
-
-        CentroVaccinale centroVaccinale = null;
-
-        out.println("pickCentro");
-        out.println(query);
-
-        while (true) {
-
-            String nome = in.readLine();
-
-            if(nome.equals("exit"))
-                break;
-            else {
-                Tipologia tipologia = Tipologia.valueOf(in.readLine());
-                Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
-                String strada = in.readLine();
-                String civico = in.readLine();
-                String comune = in.readLine();
-                String provincia = in.readLine();
-                String cap = in.readLine();
-
-                centroVaccinale = new CentroVaccinale(
-                        nome,
-                        new Indirizzo(
-                                qualificatore,
-                                strada,
-                                civico,
-                                comune,
-                                provincia,
-                                cap
-                        ),
-                        tipologia
-                );
-            }
-        }
-        return centroVaccinale;
-    }
-
-    @Override
     public ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException {
 
         ArrayList<Sintomo> sintomi = new ArrayList<>();
@@ -103,8 +63,6 @@ public class Proxy implements IComandiClient{
             else {
                 int idevento = Integer.parseInt(in.readLine());
                 String descrizione = in.readLine();
-                System.out.println(idevento);
-                System.out.println(descrizione);
                 sintomi.add(new Sintomo(
                         idevento,
                         nomeSintomo,
@@ -118,11 +76,11 @@ public class Proxy implements IComandiClient{
         return sintomi;
     }
 
-    @Override
-    public ArrayList<String> getCentri(String query) throws IOException, SQLException {
-        ArrayList<String> centriVaccinali = new ArrayList<>();
+    /*@Override
+    public ArrayList<Vaccinato> getVaccinati(String query) throws IOException, SQLException {
+        ArrayList<Vaccinato> vaccinati = new ArrayList<>();
 
-        out.println("searchCentri");
+        out.println("getVaccinati");
         out.println(query);
 
         while (true) {
@@ -130,10 +88,29 @@ public class Proxy implements IComandiClient{
             if (mex.equals("exit"))
                 break;
             else {
-                centriVaccinali.add(mex);
+                //vaccinati.add(mex);
             }
         }
-        return centriVaccinali;
+        return vaccinati;
+    }*/
+
+    @Override
+    public ArrayList<String> getSingleValues(String query, String columnLabel) throws IOException {
+        ArrayList<String> values = new ArrayList<>();
+
+        out.println("getSingleValues");
+        out.println(query);
+        out.println(columnLabel);
+
+        while (true) {
+            String value = in.readLine();
+            if (value.equals("exit"))
+                break;
+            else {
+                values.add(value);
+            }
+        }
+        return values;
     }
 
     @Override
@@ -171,10 +148,10 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public void populateCentriVaccinali(String query, String nomeCentro) throws IOException, SQLException {
+    public void populateCentriVaccinali(String query, String nomeCentro) /*throws IOException, SQLException*/ {
         out.println("populateCentriVaccinali");
         out.println(nomeCentro);
-        out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvaccino SERIAL)");
+        out.println("create table vaccinati_" + nomeCentro + " (nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvaccino SERIAL)");
         out.println(query);
     }
 

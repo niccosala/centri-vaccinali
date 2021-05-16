@@ -60,7 +60,7 @@ public class Server {
         Class.forName("org.postgresql.Driver");
         try {
             Connection c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres", user, password);
+                    "jdbc:postgresql://localhost:5432/cv", user, password);
         }
         catch (SQLException e) {
             return false;
