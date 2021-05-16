@@ -9,7 +9,7 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
-import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.centrivaccinali.entity.Vaccinato;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
@@ -25,11 +25,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class VisualizzaController extends Controller  {
 
@@ -97,6 +95,7 @@ public class VisualizzaController extends Controller  {
     @Override
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
+
         if (utente == null) {
             welcomeText.setText("Accesso come ospite");
             btnSegnala.setDisable(true);
@@ -111,9 +110,10 @@ public class VisualizzaController extends Controller  {
 
     public void setCentro(String centro) {
         Proxy proxy, proxy1;
+        Util util = new Util();
 
-        String query = "SELECT * FROM centrivaccinali WHERE nome = '" + centro + "'";
-        String querySegnalazione = "SELECT * FROM segnalazione join eventiavversi on (eventiavversi.idevento = segnalazione.idevento) WHERE centrovaccinale = '" + centro + "'";
+        String query = "SELECT * FROM centrivaccinali WHERE nome = '" + centro.toLowerCase() + "'";
+        String querySegnalazione = "SELECT * FROM segnalazione join eventiavversi on (eventiavversi.idevento = segnalazione.idevento) WHERE centrovaccinale = '" + centro.toLowerCase() + "'";
         StringBuilder descrizioni = new StringBuilder();
         StringBuilder severita = new StringBuilder();
         int totaleSegnalazioni = 0;
@@ -122,10 +122,10 @@ public class VisualizzaController extends Controller  {
         try {
             proxy = new Proxy();
             proxy1 = new Proxy();
-            centroVaccinale = proxy.pickCentro(query);
+            centroVaccinale = proxy.filter(query).get(0);
             segnalazioni = proxy1.getSegnalazione(querySegnalazione);
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
 
@@ -150,7 +150,7 @@ public class VisualizzaController extends Controller  {
             severita.delete(0, severita.length());
         }
 
-        nomeCentroText.setText(centroVaccinale.getNome());
+        nomeCentroText.setText(util.lowercaseNotFirst(centroVaccinale.getNome()));
         tipologiaText.setText(centroVaccinale.getTipologia().toString());
         indirizzoText.setText(centroVaccinale.getIndirizzo().toString());
         numeroSegnalazioni.setText(String.valueOf(segnalazioni.size()));

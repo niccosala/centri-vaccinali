@@ -51,7 +51,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     }
 
     public void registraCentro() throws IOException, SQLException {
-        String nomeCentro = util.lowercaseNotFirst(fieldNome.getText().trim());
+        String nomeCentro = fieldNome.getText().trim();
         String qualificatore = qualificatoreComboBox.getValue();
         String strada = util.lowercaseNotFirst(fieldStrada.getText());
         String civico = fieldCivico.getText();
@@ -91,7 +91,7 @@ public class RegistraCentroController extends Controller implements Initializabl
         }
 
         String query = "INSERT INTO centrivaccinali VALUES('"
-                + nomeCentro + "', '"
+                + nomeCentro.toLowerCase() + "', '"
                 + tipologia + "', '"
                 + qualificatore + "', '"
                 + strada + "', '"
@@ -127,7 +127,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     private boolean centroExist() {
         Proxy proxy;
         ArrayList<CentroVaccinale> centriVaccinali = new ArrayList<>();
-        String nomeCentro = util.lowercaseNotFirst(fieldNome.getText().trim());
+        String nomeCentro = fieldNome.getText().trim().toLowerCase();
 
         String query = "SELECT * FROM centrivaccinali WHERE nome = '" + nomeCentro + "'";
 

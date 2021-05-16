@@ -9,6 +9,7 @@ import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
 import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -160,8 +161,9 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     public void setCentro(CentroVaccinale centroVaccinale) {
+        Util util = new Util();
         this.centroVaccinale = centroVaccinale;
-        nomeCentroText.setText(centroVaccinale.getNome());
+        nomeCentroText.setText(util.lowercaseNotFirst(centroVaccinale.getNome()));
     }
 
     private void reset() {

@@ -12,7 +12,6 @@ import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -48,46 +47,6 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public CentroVaccinale pickCentro(String query) throws IOException {
-
-        CentroVaccinale centroVaccinale = null;
-
-        out.println("pickCentro");
-        out.println(query);
-
-        while (true) {
-
-            String nome = in.readLine();
-
-            if(nome.equals("exit"))
-                break;
-            else {
-                Tipologia tipologia = Tipologia.valueOf(in.readLine());
-                Qualificatore qualificatore = Qualificatore.valueOf(in.readLine());
-                String strada = in.readLine();
-                String civico = in.readLine();
-                String comune = in.readLine();
-                String provincia = in.readLine();
-                String cap = in.readLine();
-
-                centroVaccinale = new CentroVaccinale(
-                        nome,
-                        new Indirizzo(
-                                qualificatore,
-                                strada,
-                                civico,
-                                comune,
-                                provincia,
-                                cap
-                        ),
-                        tipologia
-                );
-            }
-        }
-        return centroVaccinale;
-    }
-
-    @Override
     public ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException {
 
         ArrayList<Sintomo> sintomi = new ArrayList<>();
@@ -104,8 +63,6 @@ public class Proxy implements IComandiClient{
             else {
                 int idevento = Integer.parseInt(in.readLine());
                 String descrizione = in.readLine();
-                System.out.println(idevento);
-                System.out.println(descrizione);
                 sintomi.add(new Sintomo(
                         idevento,
                         nomeSintomo,
@@ -120,21 +77,22 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
-    public ArrayList<String> getCentri(String query) throws IOException, SQLException {
-        ArrayList<String> centriVaccinali = new ArrayList<>();
+    public ArrayList<String> getSingleValues(String query, String columnLabel) throws IOException {
+        ArrayList<String> values = new ArrayList<>();
 
-        out.println("searchCentri");
+        out.println("getSingleValues");
         out.println(query);
+        out.println(columnLabel);
 
         while (true) {
-            String mex = in.readLine();
-            if (mex.equals("exit"))
+            String value = in.readLine();
+            if (value.equals("exit"))
                 break;
             else {
-                centriVaccinali.add(mex);
+                values.add(value);
             }
         }
-        return centriVaccinali;
+        return values;
     }
 
     @Override

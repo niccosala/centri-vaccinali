@@ -92,7 +92,7 @@ public class CercaController extends Controller implements Initializable{
     public void mostraCentriVaccinali() throws IOException, SQLException {
 
         if(filtraNomeRadio.isSelected()) {
-            String nome = util.lowercaseNotFirst(nomeTextField.getText().trim());
+            String nome = nomeTextField.getText().trim();
 
             if(nome.isBlank()) {
                 showWarningDialog("Campi mancanti", "Inserire il nome del centro per effettuare la ricerca");
@@ -101,7 +101,7 @@ public class CercaController extends Controller implements Initializable{
 
             //ricerca per nome
             proxy = new Proxy();
-            String query = "SELECT * FROM centrivaccinali WHERE nome LIKE '%" + nome + "%'";
+            String query = "SELECT * FROM centrivaccinali WHERE nome LIKE '%" + nome.toLowerCase() + "%'";
             centrivaccinali = proxy.filter(query);
 
             if(centrivaccinali.size() == 0)
@@ -111,7 +111,7 @@ public class CercaController extends Controller implements Initializable{
             for (CentroVaccinale centro: centrivaccinali)
                 data.add(
                         "\"" +
-                                centro.getNome() + "\"  •  " +
+                                util.lowercaseNotFirst(centro.getNome()) + "\"  •  " +
                                 centro.getIndirizzo().getComune() + "  •  " +
                                 centro.getTipologia()
                 );
@@ -142,7 +142,7 @@ public class CercaController extends Controller implements Initializable{
             for (CentroVaccinale centro: centrivaccinali)
                 data.add(
                         "\"" +
-                                centro.getNome() + "\"  •  " +
+                                util.lowercaseNotFirst(centro.getNome()) + "\"  •  " +
                                 centro.getIndirizzo().getComune() + "  •  " +
                                 centro.getTipologia()
                 );
@@ -176,7 +176,7 @@ public class CercaController extends Controller implements Initializable{
             for (CentroVaccinale centro: centrivaccinali)
                 data.add(
                         "\"" +
-                                centro.getNome() + "\"  •  " +
+                                util.lowercaseNotFirst(centro.getNome()) + "\"  •  " +
                                 centro.getIndirizzo().getComune() + "  •  " +
                                 centro.getTipologia()
                 );

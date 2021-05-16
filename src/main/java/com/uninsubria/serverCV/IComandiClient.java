@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public interface IComandiClient {
 
-    CentroVaccinale pickCentro(String query) throws IOException;
     ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException;
-    ArrayList<String> getCentri(String query) throws IOException, SQLException;
+    //ArrayList<Vaccinato> getVaccinati(String query) throws IOException, SQLException;
+    ArrayList<String> getSingleValues(String query, String columnLabel) throws IOException, SQLException;
     ArrayList<Segnalazione> getSegnalazione (String query) throws IOException;
     ArrayList<Vaccinato> getVaccinati(String query) throws IOException, SQLException;
     UtenteRegistrato login(String query, String user) throws IOException;

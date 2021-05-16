@@ -23,33 +23,6 @@ public class DBhelper implements IComandiServer {
         this.connection = connection;
     }
 
-
-    @Override
-    public void pickCentro() throws IOException, SQLException {
-        String query = in.readLine();
-        System.out.println(query);
-        Statement stmt= connection.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
-
-        try {
-            while (rs.next()) {
-                out.println(rs.getString("nome"));
-                out.println(rs.getString("tipologia"));
-                out.println(rs.getString("qualificatore"));
-                out.println(rs.getString("strada"));
-                out.println(rs.getString("civico"));
-                out.println(rs.getString("comune"));
-                out.println(rs.getString("provincia"));
-                out.println(rs.getString("cap"));
-            }
-            out.println("exit");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @Override
     public void getSintomi() throws IOException, SQLException {
         String query= in.readLine();
@@ -76,6 +49,7 @@ public class DBhelper implements IComandiServer {
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
+
         try {
             while (rs.next()) {
                 out.println(rs.getString("centrovaccinale"));
@@ -93,14 +67,16 @@ public class DBhelper implements IComandiServer {
     }
 
     @Override
-    public void getCentri() throws IOException, SQLException {
+    public void getSingleValues() throws IOException, SQLException {
         String query= in.readLine();
+        String columnLabel = in.readLine();
+        System.out.println(columnLabel);
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         try {
             while (rs.next()) {
-                out.println(rs.getString("nome"));
+                out.println(rs.getString(columnLabel));
             }
             out.println("exit");
         }

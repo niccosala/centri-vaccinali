@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class RegistraCittadinoController extends Controller {
 
@@ -66,13 +67,11 @@ public class RegistraCittadinoController extends Controller {
             return;
         }
 
-        // controllo id univoco
-        if(id.matches("^[a-zA-Z]+$")) {
-            showWarningDialog("ID univoco errato", "l'ID univoco di vaccinazione viene fornito dall'operatore ed è formato da sole cifre");
+        //controllo id univoco
+        if(!isCorrectID(id)) {
+            showWarningDialog("ID univoco errato", "L'ID univoco di vaccinazione viene fornito dall'operatore ed è \nformato da sole cifre");
             return;
         }
-
-        int IDvaccinazione = Integer.parseInt(id);
 
         String insertAsUtente = "INSERT INTO utentiregistrati VALUES('"+user+"','"+password+"','"+CF+"','"+nome+"','"+cognome+"')";
         Proxy proxyUtenti = new Proxy();
@@ -80,11 +79,13 @@ public class RegistraCittadinoController extends Controller {
 
         Thread.sleep(100);
 
+        int IDvaccinazione = Integer.parseInt(id);
         String insertAsCittadino = "INSERT INTO cittadiniregistrati VALUES('"+user+"','"+email+"','"+IDvaccinazione+"')";
         Proxy proxyCittadini = new Proxy();
         proxyCittadini.insertDb(insertAsCittadino);
 
         reset();
+        showSuccessDialog("Registrazione andata a buon fine", "Ti sei correttamente registrato");
     }
 
     public void reset() {
@@ -95,6 +96,21 @@ public class RegistraCittadinoController extends Controller {
         fieldEmail.clear();
         fieldID.clear();
         fieldPassword.clear();
+    }
+
+    private boolean isCorrectID(String id) throws IOException {
+
+        if(id.matches("^[a-zA-Z]+$"))
+            return false;
+
+        int IDvaccinazione = Integer.parseInt(id);
+        ArrayList<String> ids;
+        String query = "SELECT * FROM idunivoci WHERE idvacc = '"+IDvaccinazione+"'";
+
+        Proxy proxy = new Proxy();
+        ids = proxy.getSingleValues(query, "idvacc");
+
+        return !ids.isEmpty();
     }
 
     @Override

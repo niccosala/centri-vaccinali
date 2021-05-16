@@ -88,13 +88,11 @@ public class Skeleton extends Thread  {
                 break;
                 case "populateCentriVaccinali" : dBhelper.populateCentriVaccinali();
                 break;
-                case "pickCentro" : dBhelper.pickCentro();
-                break;
                 case "filter" : dBhelper.filter();
                 break;
                 case "searchSintomi" : dBhelper.getSintomi();
                 break;
-                case "searchCentri" : dBhelper.getCentri();
+                case "getSingleValues" : dBhelper.getSingleValues();
                 break;
                 case "login" : dBhelper.login();
                 break;
