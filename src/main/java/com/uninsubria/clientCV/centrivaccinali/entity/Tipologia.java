@@ -6,6 +6,5 @@ Sala      Niccolò   742545   VA
 package com.uninsubria.clientCV.centrivaccinali.entity;
 
 public enum Tipologia {
-
     OSPEDALIERO, HUB, AZIENDALE
 }

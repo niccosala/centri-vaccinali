@@ -21,7 +21,7 @@
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>
         </Text>
-        <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;" text="Cerca" textFill="#d13981">
+        <Button id="btnCerca" fx:id="btnCerca" alignment="CENTER" layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#switchToCercaScene" prefWidth="220.0" style="-fx-background-color: #d13981; -fx-background-radius: 30;" text="Cerca" textFill="#ffffff">
             <font>
                 <Font name="Microsoft Sans Serif" size="18.0" />
             </font>

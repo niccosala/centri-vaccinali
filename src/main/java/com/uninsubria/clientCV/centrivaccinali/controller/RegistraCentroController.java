@@ -85,11 +85,10 @@ public class RegistraCentroController extends Controller implements Initializabl
         }
 
         // controllo civico
-        if(civico.length()  > 3) {
+        if(civico.length()  > 5) {
             showWarningDialog("Errore nei dati inseriti", "Il numero civico inserito è errato");
             return;
         }
-
 
         String query = "INSERT INTO centrivaccinali VALUES('"
                 + nomeCentro + "', '"
@@ -102,11 +101,14 @@ public class RegistraCentroController extends Controller implements Initializabl
                 + cap + "')";
 
         Proxy proxy = new Proxy();
+        Proxy proxy1 = new Proxy();
 
         if (centroExist())
             showWarningDialog("Centro già esistente", "Il centro che si sta cercando di inserire è già stato registrato");
-        else
+        else {
             proxy.insertDb(query);
+            proxy1.populateCentriVaccinali(nomeCentro);
+        }
 
         reset();
     }

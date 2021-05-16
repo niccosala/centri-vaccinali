@@ -12,6 +12,7 @@ import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -149,12 +150,14 @@ public class Proxy implements IComandiClient{
             if (centroVaccinale.equals("exit"))
                 break;
             else {
+                String userid = in.readLine();
                 String sintomo = in.readLine();
                 int severita = Integer.parseInt(in.readLine());
                 String descrizione = in.readLine();
 
                 segnalazioni.add(new Segnalazione(
                         centroVaccinale,
+                        userid,
                         sintomo,
                         severita,
                         descrizione
@@ -165,17 +168,49 @@ public class Proxy implements IComandiClient{
     }
 
     @Override
+    public ArrayList<Vaccinato> getVaccinati(String query) throws IOException, SQLException {
+        ArrayList<Vaccinato> vaccinati = new ArrayList<>();
+
+        out.println("getVaccinati");
+        out.println(query);
+
+        while (true) {
+            String nomecittadino = in.readLine();
+
+            if (nomecittadino.equals("exit"))
+                break;
+            else {
+                String cognomecittadino = in.readLine();
+                String codfisc = in.readLine();
+                String vaccino = in.readLine();
+                System.out.println(nomecittadino+cognomecittadino+codfisc+vaccino);
+                int idvacc = Integer.parseInt(in.readLine());
+
+                vaccinati.add(new Vaccinato(
+                        nomecittadino,
+                        cognomecittadino,
+                        codfisc,
+                        null,
+                        null,
+                        Vaccino.valueOf(vaccino),
+                        idvacc
+                ));
+            }
+        }
+        return vaccinati;
+    }
+
+    @Override
     public void insertDb(String query) throws IOException, SQLException {
         out.println("insertDb");
         out.println(query);
     }
 
     @Override
-    public void populateCentriVaccinali(String query, String nomeCentro) throws IOException, SQLException {
+    public void populateCentriVaccinali(String nomeCentro) throws IOException, SQLException {
         out.println("populateCentriVaccinali");
         out.println(nomeCentro);
-        out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvaccino SERIAL)");
-        out.println(query);
+        out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvacc SMALLINT)");
     }
 
     @Override
@@ -289,4 +324,3 @@ public class Proxy implements IComandiClient{
         return isOperatore;
     }
 }
-

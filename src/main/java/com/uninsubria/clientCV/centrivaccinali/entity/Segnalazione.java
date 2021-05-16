@@ -8,13 +8,15 @@ package com.uninsubria.clientCV.centrivaccinali.entity;
 public class Segnalazione {
 
     private int severita;
-    private String descrizione, centroVaccinale, sintomo;
+    private String userid, descrizione, centroVaccinale, sintomo;
 
     public Segnalazione(String centroVaccinale,
+                        String userid,
                         String sintomo,
                         int severita,
                         String descrizione) {
 
+        this.userid = userid;
         this.descrizione = descrizione;
         this.sintomo = sintomo;
         this.centroVaccinale = centroVaccinale;
@@ -47,5 +49,13 @@ public class Segnalazione {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

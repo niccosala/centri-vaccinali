@@ -7,6 +7,7 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
+import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
 import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
@@ -21,7 +22,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,6 +35,7 @@ public class SegnalaController extends Controller implements Initializable {
     private UtenteRegistrato utente;
     private CentroVaccinale centroVaccinale;
     private Map<String, Integer> idevento;
+    private boolean isNew = true;
 
     public static final int MAX_CHARS = 256;
 
@@ -88,13 +89,19 @@ public class SegnalaController extends Controller implements Initializable {
         String descrizione = textAreaAggiuntive.getText().trim();
         String sintomo = sintomoComboBox.getValue();
         int severita = (int) severitaSlider.getValue();
+        String query;
 
         if(descrizione.isBlank() || sintomoComboBox.getValue() == null) {
             showWarningDialog("Campi mancanti", "Inserire tutti i campi richiesti");
             return;
         }
 
-        String query = "INSERT INTO segnalazione (idevento, centrovaccinale, severita, descrizione) VALUES('"+idevento.get(sintomo)+"', '"+nomeCentro+"', '"+severita+"','"+descrizione+"')";
+        if(isNew)
+            query = "INSERT INTO segnalazione (idevento, userid, centrovaccinale, severita, descrizione) VALUES("+idevento.get(sintomo)+", '"+utente.getUsername()+"', '"+nomeCentro+"', "+severita+",'"+descrizione+"')";
+        else
+            query = "UDATE segnalazione SET idevento = "+idevento.get(sintomo)+", severita = "+severita+", descrizione = '"+descrizione+"' WHERE userid = '"+utente.getUsername()+"'";
+
+        System.out.println(query);
         Proxy proxy;
 
         try {
@@ -104,6 +111,7 @@ public class SegnalaController extends Controller implements Initializable {
             throwables.printStackTrace();
         }
         reset();
+        isNew = false;
         showSuccessDialog("Successo", "Segnalazione avvenuta con successo!");
     }
 
@@ -129,6 +137,26 @@ public class SegnalaController extends Controller implements Initializable {
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
         btnRegistrati.setDisable(true);
+
+        Proxy proxy;
+        ArrayList<Segnalazione> segnalazione;
+
+        try {
+            proxy = new Proxy();
+            String query = "SELECT * FROM segnalazione join eventiavversi on (eventiavversi.idevento = segnalazione.idevento) WHERE userid = '" + utente.getUsername() + "'";
+            segnalazione = proxy.getSegnalazione(query);
+
+            if (segnalazione.size() > 0) {
+                showWarningDialog("Hai già rilasciato una segnalazione", "Se modifichi la tua segnalazione, quella precedente verrà rimossa");
+                sintomoComboBox.setValue(segnalazione.get(0).getSintomo());
+                severitaSlider.setValue(segnalazione.get(0).getSeverita());
+                textAreaAggiuntive.setText(segnalazione.get(0).getDescrizione());
+                showDescrizioneSintomo();
+                isNew = false;
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void setCentro(CentroVaccinale centroVaccinale) {
@@ -145,7 +173,6 @@ public class SegnalaController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         String query = "SELECT * FROM eventiavversi";
         ArrayList<Sintomo> sintomi;
         Proxy proxy;

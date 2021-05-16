@@ -72,13 +72,14 @@ public class DBhelper implements IComandiServer {
 
     @Override
     public void getSegnalazione() throws IOException, SQLException {
-        String query= in.readLine();
+        String query = in.readLine();
         System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         try {
             while (rs.next()) {
                 out.println(rs.getString("centrovaccinale"));
+                out.println(rs.getString("userid"));
                 out.println(rs.getString("sintomo"));
                 out.println(rs.getString("severita"));
                 out.println(rs.getString("descrizione"));
@@ -110,8 +111,30 @@ public class DBhelper implements IComandiServer {
     }
 
     @Override
+    public void getVaccinati() throws IOException, SQLException {
+        String query = in.readLine();
+        System.out.println(query);
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        try {
+            while (rs.next()) {
+                out.println(rs.getString("nomecittadino"));
+                out.println(rs.getString("cognomecittadino"));
+                out.println(rs.getString("codfisc"));
+                out.println(rs.getString("vaccino"));
+                out.println(rs.getString("idvacc"));
+            }
+            out.println("exit");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void insertDb() throws IOException, SQLException {
-        String query= in.readLine();
+        String query = in.readLine();
         Statement stmt = connection.createStatement();
         try {
             stmt.executeUpdate(query);
@@ -124,10 +147,9 @@ public class DBhelper implements IComandiServer {
     public void populateCentriVaccinali() throws IOException, SQLException {
         String nomeCentro = in.readLine();
         String createTableQuery= in.readLine();
-        String insertVaccinatedUserQuery= in.readLine();
+        System.out.println(createTableQuery);
 
         Statement stmt = connection.createStatement();
-        Statement stmt1= connection.createStatement();
         try {
             DatabaseMetaData dbm = connection.getMetaData();
             // check if "vaccinati_nomecentro" table exist
@@ -136,7 +158,6 @@ public class DBhelper implements IComandiServer {
                 // Table does no exists
                 stmt.executeUpdate(createTableQuery);
             }
-            stmt1.executeUpdate(insertVaccinatedUserQuery);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -220,4 +241,5 @@ public class DBhelper implements IComandiServer {
         out.close();
         socket.close();
     }
+
 }

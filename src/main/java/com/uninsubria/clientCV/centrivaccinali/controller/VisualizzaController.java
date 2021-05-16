@@ -9,6 +9,9 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
+import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.centrivaccinali.entity.Vaccinato;
+import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import javafx.event.ActionEvent;
@@ -24,7 +27,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class VisualizzaController extends Controller  {
 
@@ -56,6 +61,23 @@ public class VisualizzaController extends Controller  {
     }
 
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
+        CittadinoRegistrato cittadino = (CittadinoRegistrato)utente;
+        String query = "SELECT * FROM vaccinati_" + centroVaccinale.getNome() + " WHERE idvacc = " + cittadino.getIdVaccinazione();
+        System.out.println(query);
+        Proxy proxy;
+
+        try {
+            proxy = new Proxy();
+            ArrayList<Vaccinato> vaccinati = proxy.getVaccinati(query);
+
+            if(vaccinati.isEmpty()) {
+                showWarningDialog("Non sei registrato a questo centro vaccinale", "Puoi segnalare eventi avversi solo presso il centro vaccinale in cui ti è stato somministrato il vaccino");
+                return;
+            }
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+
         FXMLLoader loader = new
                 FXMLLoader(CentriVaccinali.class.getClassLoader().getResource(path + "Segnala.fxml"));
         Parent root = loader.load();
@@ -93,6 +115,7 @@ public class VisualizzaController extends Controller  {
         String query = "SELECT * FROM centrivaccinali WHERE nome = '" + centro + "'";
         String querySegnalazione = "SELECT * FROM segnalazione join eventiavversi on (eventiavversi.idevento = segnalazione.idevento) WHERE centrovaccinale = '" + centro + "'";
         StringBuilder descrizioni = new StringBuilder();
+        StringBuilder severita = new StringBuilder();
         int totaleSegnalazioni = 0;
         ArrayList<Segnalazione> segnalazioni = new ArrayList<>();
 
@@ -107,8 +130,24 @@ public class VisualizzaController extends Controller  {
         }
 
         for (Segnalazione s : segnalazioni) {
-            descrizioni.append(s.getSintomo()).append("\nIntensità: ").append(s.getSeverita()).append("\n\n");
+            for(int i = 1; i <= 5; i++) {
+                if (i <= s.getSeverita())
+                    severita.append("◆");
+                else
+                    severita.append("◇");
+            }
+
+            descrizioni
+                    .append("Sintomo: ")
+                    .append(s.getSintomo())
+                    .append("\nSeverità: ")
+                    .append(severita)
+                    .append("\nDescrizione: ")
+                    .append(s.getDescrizione())
+                    .append("\n\n");
             totaleSegnalazioni += s.getSeverita();
+
+            severita.delete(0, severita.length());
         }
 
         nomeCentroText.setText(centroVaccinale.getNome());
@@ -119,8 +158,8 @@ public class VisualizzaController extends Controller  {
 
         double media = ((double) totaleSegnalazioni) / segnalazioni.size();
         if (Double.isNaN(media))
-            mediaSeverita.setText("0.0 / 5");
+            mediaSeverita.setText("0,0 / 5,00");
         else
-            mediaSeverita.setText(String.format("%.02f", media) + " / 5");
+            mediaSeverita.setText(String.format("%.02f", media) + " / 5,00");
     }
 }

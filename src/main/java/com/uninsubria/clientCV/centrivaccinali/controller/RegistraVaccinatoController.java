@@ -87,7 +87,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
         String query = "INSERT INTO vaccinati_"+centrovaccinale+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"')";
         Proxy proxy = new Proxy();
-        proxy.populateCentriVaccinali(query, centrovaccinale);
+        proxy.insertDb(query);
 
         showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato \ncon ID univoco " + util.randomUUID(16, 4, '-'));
         reset();

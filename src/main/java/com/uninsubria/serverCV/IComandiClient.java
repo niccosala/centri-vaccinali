@@ -8,6 +8,7 @@ package com.uninsubria.serverCV;
 import com.uninsubria.clientCV.centrivaccinali.entity.CentroVaccinale;
 import com.uninsubria.clientCV.centrivaccinali.entity.Segnalazione;
 import com.uninsubria.clientCV.centrivaccinali.entity.Sintomo;
+import com.uninsubria.clientCV.centrivaccinali.entity.Vaccinato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
 import java.io.IOException;
@@ -20,9 +21,10 @@ public interface IComandiClient {
     ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException;
     ArrayList<String> getCentri(String query) throws IOException, SQLException;
     ArrayList<Segnalazione> getSegnalazione (String query) throws IOException;
+    ArrayList<Vaccinato> getVaccinati(String query) throws IOException, SQLException;
     UtenteRegistrato login(String query, String user) throws IOException;
     void insertDb(String query) throws IOException, SQLException;
-    void populateCentriVaccinali(String query, String nomeTabella) throws IOException, SQLException;
+    void populateCentriVaccinali(String nomeTabella) throws IOException, SQLException;
     ArrayList<CentroVaccinale> filter(String query) throws IOException, SQLException;
     void close() throws IOException;
 }

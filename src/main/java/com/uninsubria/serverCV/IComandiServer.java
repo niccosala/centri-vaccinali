@@ -17,6 +17,7 @@ public interface IComandiServer {
     void getSintomi() throws IOException, SQLException;
     void getSegnalazione() throws IOException, SQLException;
     void getCentri() throws IOException, SQLException;
+    void getVaccinati() throws IOException, SQLException;
     void insertDb() throws IOException, SQLException;
     void populateCentriVaccinali() throws IOException, SQLException;
     void filter() throws IOException, SQLException;
