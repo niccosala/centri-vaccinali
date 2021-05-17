@@ -24,6 +24,9 @@ public class Skeleton extends Thread  {
     private Socket socket;
     private String username, password;
 
+    private final int PORT = 7070;
+    private final String DB_NAME = "cv";
+
     public Skeleton(Socket socket, Semaphore semaphore, String username, String password) {
         this.socket = socket;
         this.username = username;
@@ -44,7 +47,9 @@ public class Skeleton extends Thread  {
             e2.printStackTrace();
         }
         try (Connection c = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:7070/cv", username, password)) {
+                "jdbc:postgresql://localhost:" + PORT + "/" + DB_NAME,
+                username,
+                password)) {
             System.out.println("Connessione riuscita!");
 
             try {
