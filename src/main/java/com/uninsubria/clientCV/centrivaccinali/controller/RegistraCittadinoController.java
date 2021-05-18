@@ -67,9 +67,29 @@ public class RegistraCittadinoController extends Controller {
             return;
         }
 
-        //controllo id univoco
+        // controllo id univoco
         if(!isCorrectID(id)) {
             showWarningDialog("ID univoco errato", "L'ID univoco di vaccinazione viene fornito dall'operatore ed è \nformato da sole cifre");
+            return;
+        }
+
+        String checkUsername = "SELECT userid FROM utentiregistrati WHERE userid = '" + user + "'";
+        Proxy proxyCheckUsername = new Proxy();
+        ArrayList<String> users = proxyCheckUsername.getSingleValues(checkUsername, "userid");
+
+        // controllo username db
+        if(!users.isEmpty()) {
+            showWarningDialog("Scegli un username diverso", "L'username selezionato è gia stato usato da un altro utente");
+            return;
+        }
+
+        // controllo idunivoco e codicefiscale db
+        String checkIdUnivoco = "SELECT idvacc FROM idunivoci WHERE idvacc = " + id + " AND codicefiscale = '" + CF + "'";
+        Proxy proxyCheckId = new Proxy();
+        ArrayList<String> ids = proxyCheckId.getSingleValues(checkIdUnivoco, "idvacc");
+
+        if(ids.isEmpty()) {
+            showWarningDialog("ID univoco e/o codice fiscale errati", "L'ID univoco e/o il codice fiscale forniti non sono corretti.\nSi ricorda di registrarsi con l'ID univoco fornito dall'operatore\nal momento della vaccinazione e di controllare il codice\nfiscale inserito");
             return;
         }
 
