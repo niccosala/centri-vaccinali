@@ -11,5 +11,5 @@ public class ServerInfo {
     static final String PG_USERNAME = "postgres";
     static final String PG_PASSWORD = "pass";
     static final String DB_NAME = "cv";
-    static final String IP_SERVER = "127.0.0.1";
+    static final String IP_SERVER = "localhost";
 }
