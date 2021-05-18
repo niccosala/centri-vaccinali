@@ -33,5 +33,5 @@ public class ServerInfo {
     /**
      * The Ip server.
      */
-    static final String IP_SERVER = "127.0.0.1";
+    static final String IP_SERVER = "localhost";
 }

@@ -139,6 +139,7 @@ public class RegistraCentroController extends Controller implements Initializabl
         else {
             proxy.insertDb(query);
             proxy1.populateCentriVaccinali(nomeCentro);
+            showSuccessDialog("Successo", "Centro registrato correttamente!");
         }
 
         reset();
