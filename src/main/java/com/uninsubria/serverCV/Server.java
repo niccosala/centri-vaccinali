@@ -15,15 +15,15 @@ import java.util.concurrent.Semaphore;
 
 /**
  * The type Server.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public class Server {
 
     /**
      * The entry point of application.
-     *
-     * @author Franchi Matteo 740760 VA
-     * @author Magaudda Giovanni 740962 VA
-     * @author Sala Niccolò 742545 VA
      *
      * @param args the input arguments
      * @throws IOException            the io exception

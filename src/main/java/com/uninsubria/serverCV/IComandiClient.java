@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public interface IComandiClient {
 
     /**
-     * Gets sintomi.
+     * Gets sintomi from DB.
      *
      * @param query the query
      * @return the sintomi
@@ -35,7 +35,7 @@ public interface IComandiClient {
     ArrayList<Sintomo> getSintomi(String query) throws IOException, SQLException;
 
     /**
-     * Gets single values.
+     * Gets requested single values from DB.
      *
      * @param query       the query
      * @param columnLabel the column label
@@ -46,7 +46,7 @@ public interface IComandiClient {
     ArrayList<String> getSingleValues(String query, String columnLabel) throws IOException, SQLException;
 
     /**
-     * Gets segnalazione.
+     * Gets segnalazione from DB.
      *
      * @param query the query
      * @return the segnalazione
@@ -55,7 +55,7 @@ public interface IComandiClient {
     ArrayList<Segnalazione> getSegnalazione (String query) throws IOException;
 
     /**
-     * Gets vaccinati.
+     * Gets vaccinati from DB.
      *
      * @param query the query
      * @return the vaccinati
@@ -75,7 +75,7 @@ public interface IComandiClient {
     UtenteRegistrato login(String query, String user) throws IOException;
 
     /**
-     * Insert db.
+     * Insert into DB.
      *
      * @param query the query
      * @throws IOException  the io exception
@@ -103,7 +103,7 @@ public interface IComandiClient {
     ArrayList<CentroVaccinale> filter(String query) throws IOException, SQLException;
 
     /**
-     * Close.
+     * Close connection.
      *
      * @throws IOException the io exception
      */

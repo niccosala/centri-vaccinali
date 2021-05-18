@@ -52,7 +52,7 @@ public class LoginController extends Controller {
     }
 
     /**
-     * Verify login.
+     * Verify login: check the correctness of the fields and the compliance of the constraints in the db.
      *
      * @param event the event
      * @throws IOException the io exception
@@ -84,7 +84,7 @@ public class LoginController extends Controller {
     }
 
     /**
-     * Reset.
+     * Reset fields.
      */
     public void reset() {
         usernameTextField.clear();

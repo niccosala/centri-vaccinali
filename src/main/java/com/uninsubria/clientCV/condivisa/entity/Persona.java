@@ -7,6 +7,10 @@ package com.uninsubria.clientCV.condivisa.entity;
 
 /**
  * The type Persona.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public abstract class Persona {
 
@@ -53,4 +57,5 @@ public abstract class Persona {
     public String getCF() {
         return CF;
     }
+
 }

@@ -7,6 +7,10 @@ package com.uninsubria.clientCV.condivisa.entity;
 
 /**
  * The type Utente registrato.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public class UtenteRegistrato extends Persona {
 
@@ -66,4 +70,5 @@ public class UtenteRegistrato extends Persona {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

@@ -140,7 +140,7 @@ public class VisualizzaController extends Controller  {
     }
 
     /**
-     * Sets centro.
+     * Sets current CentroVaccinale.
      *
      * @param centro the centro
      */
@@ -198,4 +198,5 @@ public class VisualizzaController extends Controller  {
         else
             mediaSeverita.setText(String.format("%.02f", media) + " / 5,00");
     }
+
 }

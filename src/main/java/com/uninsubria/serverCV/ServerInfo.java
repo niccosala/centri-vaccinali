@@ -14,24 +14,30 @@ package com.uninsubria.serverCV;
  * @author Sala Niccolò 742545 VA
  */
 public class ServerInfo {
+
     /**
      * The Port.
      */
     static final int PORT = 7070;
+
     /**
      * The Pg username.
      */
     static final String PG_USERNAME = "postgres";
+
     /**
      * The Pg password.
      */
     static final String PG_PASSWORD = "pass";
+
     /**
      * The Db name.
      */
     static final String DB_NAME = "cv";
+
     /**
      * The Ip server.
      */
     static final String IP_SERVER = "localhost";
+
 }

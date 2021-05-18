@@ -10,12 +10,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
 /**
- * The type Centri vaccinali.
+ * Contains the Main of the application
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public class CentriVaccinali extends Application {
 

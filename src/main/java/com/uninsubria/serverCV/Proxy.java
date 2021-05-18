@@ -289,7 +289,7 @@ public class Proxy implements IComandiClient{
     }
 
     /**
-     * Gets socket.
+     * Gets current socket.
      *
      * @return the socket
      */
@@ -298,7 +298,7 @@ public class Proxy implements IComandiClient{
     }
 
     /**
-     * Gets operatore.
+     * Check if is operatore.
      *
      * @return the operatore
      */

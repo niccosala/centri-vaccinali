@@ -24,7 +24,7 @@ public interface IComandiServer {
     int PORT = 8888;
 
     /**
-     * Gets sintomi.
+     * Gets sintomi from DB.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -32,7 +32,7 @@ public interface IComandiServer {
     void getSintomi() throws IOException, SQLException;
 
     /**
-     * Gets segnalazione.
+     * Gets segnalazione from DB.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -40,7 +40,7 @@ public interface IComandiServer {
     void getSegnalazione() throws IOException, SQLException;
 
     /**
-     * Gets single values.
+     * Gets requested single values from DB.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -48,7 +48,7 @@ public interface IComandiServer {
     void getSingleValues() throws IOException, SQLException;
 
     /**
-     * Gets vaccinati.
+     * Gets vaccinati from DB.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -56,7 +56,7 @@ public interface IComandiServer {
     void getVaccinati() throws IOException, SQLException;
 
     /**
-     * Insert db.
+     * Insert into DB.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -88,7 +88,7 @@ public interface IComandiServer {
     void login() throws IOException, SQLException;
 
     /**
-     * Close.
+     * Close connection.
      *
      * @param socket the socket
      * @throws IOException the io exception

@@ -66,7 +66,7 @@ public class RegistraCittadinoController extends Controller {
     }
 
     /**
-     * Registra cittadino.
+     * Register new Cittadino.
      *
      * @throws IOException          the io exception
      * @throws SQLException         the sql exception
@@ -141,7 +141,7 @@ public class RegistraCittadinoController extends Controller {
     }
 
     /**
-     * Reset.
+     * Reset fields.
      */
     public void reset() {
         fieldNome.clear();
@@ -172,4 +172,5 @@ public class RegistraCittadinoController extends Controller {
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
     }
+
 }

@@ -80,7 +80,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     }
 
     /**
-     * Registra vaccinato.
+     * Register new Vaccinato.
      *
      * @throws ParseException       the parse exception
      * @throws IOException          the io exception
@@ -138,9 +138,8 @@ public class RegistraVaccinatoController extends Controller implements Initializ
             showWarningDialog("Errore", "Abbiamo trovato un utente vaccinato con lo stesso\ncodice fiscale");
     }
 
-
     /**
-     * Reset.
+     * Reset fields.
      */
     public void reset() {
         fieldNome.clear();
@@ -222,4 +221,5 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         }
         return idvacc;
     }
+
 }

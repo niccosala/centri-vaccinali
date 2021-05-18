@@ -40,7 +40,7 @@ public class Util {
     }
 
     /**
-     * Cf is valid boolean.
+     * Cf is valid: check if given CF is valid.
      *
      * @param CF the cf
      * @return the boolean
@@ -63,63 +63,5 @@ public class Util {
 
         return str.substring(0, 1).toUpperCase() + str.substring(1, str.length()).toLowerCase();
     }
-
-
-    /**
-     * Random char char.
-     *
-     * @return the char
-     */
-    public char randomChar(){
-        return ALPHABET.charAt(rng.nextInt(ALPHABET.length()));
-    }
-
-
-    /**
-     * Random uuid string.
-     *
-     * @param length     the length
-     * @param spacing    the spacing
-     * @param spacerChar the spacer char
-     * @return the string
-     */
-//possibilità di generare sempre due ID diversi è dello 99.99999999999999999987%
-    public String randomUUID(int length, int spacing, char spacerChar){
-        StringBuilder sb = new StringBuilder();
-        int spacer = 0;
-        while(length > 0){
-            if(spacer == spacing){
-                sb.append(spacerChar);
-                spacer = 0;
-            }
-            length--;
-            spacer++;
-            sb.append(randomChar());
-        }
-        return sb.toString();
-    }
-
-    /**
-     * Random uuid 16 string.
-     *
-     * @return the string
-     */
-    public String randomUUID16() {
-        byte[] unique = new byte[2];
-        new SecureRandom().nextBytes(unique);
-
-        converBytesToHex(unique);
-
-        return unique.toString();
-    }
-
-    private String converBytesToHex(byte[] bytes) {
-        StringBuilder result = new StringBuilder();
-        for (byte tmp : bytes)
-            result.append(String.format("%02x", tmp));
-
-        return result.toString();
-    }
-
 
 }

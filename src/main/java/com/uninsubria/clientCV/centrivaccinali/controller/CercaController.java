@@ -197,7 +197,7 @@ public class CercaController extends Controller implements Initializable{
     }
 
     /**
-     * Reset.
+     * Reset fields.
      */
     public void reset() {
         nomeTextField.clear();

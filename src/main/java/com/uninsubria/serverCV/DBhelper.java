@@ -13,6 +13,10 @@ import java.sql.*;
 
 /**
  * The type D bhelper.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public class DBhelper implements IComandiServer {
 

@@ -76,7 +76,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     }
 
     /**
-     * Registra centro.
+     * Register new CentroVaccinale.
      *
      * @throws IOException  the io exception
      * @throws SQLException the sql exception
@@ -146,7 +146,7 @@ public class RegistraCentroController extends Controller implements Initializabl
     }
 
     /**
-     * Reset.
+     * Reset fields.
      */
     public void reset() {
         fieldNome.clear();
@@ -209,4 +209,5 @@ public class RegistraCentroController extends Controller implements Initializabl
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
     }
+
 }

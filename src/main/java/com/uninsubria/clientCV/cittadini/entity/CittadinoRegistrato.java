@@ -9,6 +9,10 @@ import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
 /**
  * The type Cittadino registrato.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
  */
 public class CittadinoRegistrato extends UtenteRegistrato {
 
@@ -75,4 +79,5 @@ public class CittadinoRegistrato extends UtenteRegistrato {
     public void setIdVaccinazione(int idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
     }
+
 }

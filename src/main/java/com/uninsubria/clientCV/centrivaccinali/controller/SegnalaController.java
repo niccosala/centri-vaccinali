@@ -120,7 +120,7 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     /**
-     * Pubblica segnalazione.
+     * Insert into DB new segnalazione.
      *
      * @param event the event
      * @throws IOException the io exception
@@ -205,7 +205,7 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     /**
-     * Sets centro.
+     * Sets current CentroVaccinale.
      *
      * @param centroVaccinale the centro vaccinale
      */
@@ -247,7 +247,7 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     /**
-     * Check char number.
+     * Check char number (must be <= 256).
      *
      * @param event the event
      */
@@ -255,4 +255,5 @@ public class SegnalaController extends Controller implements Initializable {
         textAreaAggiuntive.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= MAX_CHARS ? change : null));
     }
+
 }

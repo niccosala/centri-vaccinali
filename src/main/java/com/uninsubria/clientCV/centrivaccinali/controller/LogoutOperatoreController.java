@@ -23,11 +23,8 @@ public class LogoutOperatoreController extends Controller {
 
     private UtenteRegistrato utente;
 
-    /**
-     * The Welcome text field.
-     */
     @FXML
-    Text welcomeTextField;
+    private Text welcomeTextField;
 
     /**
      * Switch to registra centro scene.
@@ -64,4 +61,5 @@ public class LogoutOperatoreController extends Controller {
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
     }
+
 }

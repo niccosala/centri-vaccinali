@@ -34,7 +34,7 @@ public abstract class Controller {
     public static final String path = "com/uninsubria/layout/";
 
     /**
-     * Change scene.
+     * Change scene: to switch from a scene to another.
      *
      * @param layout the layout
      * @param event  the event
@@ -51,10 +51,10 @@ public abstract class Controller {
     }
 
     /**
-     * Change scene and set values.
+     * Change scene and set values: to switch from a scene to another passing the current user.
      *
      * @param layout the layout
-     * @param utente the utente
+     * @param utente the user
      * @param event  the event
      * @throws IOException the io exception
      */
@@ -121,7 +121,7 @@ public abstract class Controller {
     }
 
     /**
-     * Sets utente.
+     * Sets the current user.
      *
      * @param utente the utente
      */
