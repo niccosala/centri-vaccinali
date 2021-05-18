@@ -17,9 +17,9 @@ public class Server {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        final int PORT = 5432;
+        final int PORT = 7070;
         final String PG_USERNAME = "postgres";
-        final String PG_PASSWORD = "admin";
+        final String PG_PASSWORD = "pass";
         final String DB_NAME = "cv";
 
         Semaphore sem= new Semaphore(100);
