@@ -21,13 +21,14 @@ public class Server {
         final String PG_USERNAME = "postgres";
         final String PG_PASSWORD = "pass";
         final String DB_NAME = "cv";
+        final String IP_SERVER = "192.168.1.195";
 
         Semaphore sem= new Semaphore(100);
         ServerSocket server = new ServerSocket(IComandiServer.PORT);
 
         do {
             System.out.println("Connessione al server in corso...");
-        } while(!tryConnection(PG_USERNAME, PG_PASSWORD, PORT, DB_NAME));
+        } while(!tryConnection(PG_USERNAME, PG_PASSWORD, IP_SERVER, PORT, DB_NAME));
 
         try {
             System.out.println("Started " + server);
@@ -42,11 +43,11 @@ public class Server {
         }
     }
 
-    private static Boolean tryConnection(String user, String password, int port, String dbname) throws ClassNotFoundException {
+    private static Boolean tryConnection(String user, String password, String ip, int port, String dbname) throws ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         try {
             Connection c = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:" + port + "/" + dbname + "?&useUnicode=true&characterEncoding=utf8", user, password);
+                    "jdbc:postgresql://" + ip + ":" + port + "/" + dbname + "?&useUnicode=true&characterEncoding=utf8", user, password);
         }
         catch (SQLException e) {
             return false;
