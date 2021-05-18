@@ -13,6 +13,13 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * The type Logout cittadino controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class LogoutCittadinoController extends Controller {
 
     @FXML
@@ -22,18 +29,42 @@ public class LogoutCittadinoController extends Controller {
 
     private UtenteRegistrato utente;
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to login scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLoginScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Login.fxml", utente, event);
     }

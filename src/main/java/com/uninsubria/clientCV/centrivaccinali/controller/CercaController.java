@@ -29,6 +29,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * The type Cerca controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class CercaController extends Controller implements Initializable{
 
     private UtenteRegistrato utente;
@@ -50,14 +57,32 @@ public class CercaController extends Controller implements Initializable{
     @FXML
     private ListView<String> centriListView;
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
             changeSceneAndSetValues("Login.fxml", null, event);
@@ -65,6 +90,12 @@ public class CercaController extends Controller implements Initializable{
             changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to visualizza scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
 
         if(centriListView.getSelectionModel().getSelectedItem() == null) {
@@ -89,6 +120,12 @@ public class CercaController extends Controller implements Initializable{
 
     }
 
+    /**
+     * Mostra centri vaccinali.
+     *
+     * @throws IOException  the io exception
+     * @throws SQLException the sql exception
+     */
     public void mostraCentriVaccinali() throws IOException, SQLException {
 
         if(filtraNomeRadio.isSelected()) {
@@ -150,12 +187,18 @@ public class CercaController extends Controller implements Initializable{
         }
     }
 
+    /**
+     * Enable filtering.
+     */
     public void enableFiltering () {
         nomeTextField.setDisable(filtraComuneRadio.isSelected());
         comuneTextField.setDisable(filtraNomeRadio.isSelected());
         tipologiaComboBox.setDisable(filtraNomeRadio.isSelected());
     }
 
+    /**
+     * Reset.
+     */
     public void reset() {
         nomeTextField.clear();
         comuneTextField.clear();

@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * The type Centri vaccinali.
+ */
 public class CentriVaccinali extends Application {
 
     @Override
@@ -31,6 +34,11 @@ public class CentriVaccinali extends Application {
         stage.show();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch();
     }

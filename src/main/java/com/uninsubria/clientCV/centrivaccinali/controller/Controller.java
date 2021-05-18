@@ -19,10 +19,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * The type Controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public abstract class Controller {
 
+    /**
+     * The constant path.
+     */
     public static final String path = "com/uninsubria/layout/";
 
+    /**
+     * Change scene.
+     *
+     * @param layout the layout
+     * @param event  the event
+     * @throws IOException the io exception
+     */
     public void changeScene(String layout, ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
@@ -33,6 +50,14 @@ public abstract class Controller {
         stage.show();
     }
 
+    /**
+     * Change scene and set values.
+     *
+     * @param layout the layout
+     * @param utente the utente
+     * @param event  the event
+     * @throws IOException the io exception
+     */
     public void changeSceneAndSetValues(String layout, UtenteRegistrato utente, ActionEvent event) throws IOException {
         FXMLLoader loader = new
                 FXMLLoader(CentriVaccinali.class.getClassLoader().getResource(path + layout));
@@ -54,6 +79,12 @@ public abstract class Controller {
         stage.show();
     }
 
+    /**
+     * Show warning dialog.
+     *
+     * @param title the title
+     * @param body  the body
+     */
     public void showWarningDialog(String title, String body) {
         Alert warningDialog = new Alert(Alert.AlertType.WARNING, "", ButtonType.CLOSE);
         warningDialog.setHeaderText(title);
@@ -61,6 +92,12 @@ public abstract class Controller {
         warningDialog.show();
     }
 
+    /**
+     * Show success dialog.
+     *
+     * @param title the title
+     * @param body  the body
+     */
     public void showSuccessDialog(String title, String body) {
         Alert warningDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CLOSE);
         warningDialog.setHeaderText(title);
@@ -68,6 +105,11 @@ public abstract class Controller {
         warningDialog.show();
     }
 
+    /**
+     * Sets up combo box.
+     *
+     * @param comboBox the combo box
+     */
     public void setUpComboBox(ComboBox<String> comboBox) {
         comboBox.setStyle("-fx-font: 13px \"Microsoft Sans Serif\";" +
                 "    -fx-border-radius: 30;\n" +
@@ -78,5 +120,10 @@ public abstract class Controller {
                 "    -fx-background-color: rgba(255,255,255,0.75);");
     }
 
+    /**
+     * Sets utente.
+     *
+     * @param utente the utente
+     */
     public abstract void setUtente(UtenteRegistrato utente);
 }

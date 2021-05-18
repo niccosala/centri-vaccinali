@@ -11,12 +11,22 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.*;
 
+/**
+ * The type D bhelper.
+ */
 public class DBhelper implements IComandiServer {
 
     private BufferedReader in;
     private PrintWriter out;
     private Connection connection;
 
+    /**
+     * Instantiates a new D bhelper.
+     *
+     * @param in         the in
+     * @param out        the out
+     * @param connection the connection
+     */
     public DBhelper (BufferedReader in, PrintWriter out, Connection connection) {
         this.in = in;
         this.out = out;

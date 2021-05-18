@@ -29,6 +29,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The type Visualizza controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class VisualizzaController extends Controller  {
 
     private UtenteRegistrato utente;
@@ -43,14 +50,32 @@ public class VisualizzaController extends Controller  {
     @FXML
     private TextArea labelSegnalazioni;
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
             changeSceneAndSetValues("Login.fxml", null, event);
@@ -58,6 +83,12 @@ public class VisualizzaController extends Controller  {
             changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to segnala scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
         CittadinoRegistrato cittadino = (CittadinoRegistrato)utente;
         String query = "SELECT * FROM vaccinati_" + centroVaccinale.getNome() + " WHERE idvacc = " + cittadino.getIdVaccinazione();
@@ -108,6 +139,11 @@ public class VisualizzaController extends Controller  {
             }
     }
 
+    /**
+     * Sets centro.
+     *
+     * @param centro the centro
+     */
     public void setCentro(String centro) {
         Proxy proxy, proxy1;
         Util util = new Util();

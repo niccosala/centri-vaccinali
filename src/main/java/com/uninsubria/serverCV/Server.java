@@ -13,8 +13,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.Semaphore;
 
+/**
+ * The type Server.
+ */
 public class Server {
 
+    /**
+     * The entry point of application.
+     *
+     * @author Franchi Matteo 740760 VA
+     * @author Magaudda Giovanni 740962 VA
+     * @author Sala Niccolò 742545 VA
+     *
+     * @param args the input arguments
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Semaphore sem= new Semaphore(100);

@@ -16,6 +16,13 @@ import java.sql.SQLException;
 import java.util.concurrent.Semaphore;
 import java.io.*;
 
+/**
+ * The type Skeleton.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class Skeleton extends Thread  {
 
     private BufferedReader in = null;
@@ -24,6 +31,14 @@ public class Skeleton extends Thread  {
     private Socket socket;
     private String username, password;
 
+    /**
+     * Instantiates a new Skeleton.
+     *
+     * @param socket    the socket
+     * @param semaphore the semaphore
+     * @param username  the username
+     * @param password  the password
+     */
     public Skeleton(Socket socket, Semaphore semaphore, String username, String password) {
         this.socket = socket;
         this.username = username;

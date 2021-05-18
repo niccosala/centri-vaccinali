@@ -17,6 +17,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The type Registra cittadino controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class RegistraCittadinoController extends Controller {
 
     @FXML
@@ -28,18 +35,43 @@ public class RegistraCittadinoController extends Controller {
     private UtenteRegistrato utente;
     private Util util = new Util();
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to login scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLoginScene(ActionEvent event) throws IOException {
         changeScene("Login.fxml", event);
     }
 
+    /**
+     * Registra cittadino.
+     *
+     * @throws IOException          the io exception
+     * @throws SQLException         the sql exception
+     * @throws InterruptedException the interrupted exception
+     */
     public void registraCittadino() throws IOException, SQLException, InterruptedException {
         String nome = fieldNome.getText();
         String cognome = fieldCognome.getText();
@@ -108,6 +140,9 @@ public class RegistraCittadinoController extends Controller {
         showSuccessDialog("Registrazione andata a buon fine", "Ti sei correttamente registrato");
     }
 
+    /**
+     * Reset.
+     */
     public void reset() {
         fieldNome.clear();
         fieldCognome.clear();

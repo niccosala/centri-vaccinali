@@ -15,6 +15,13 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * The type Proxy.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class Proxy implements IComandiClient{
 
     private final Socket socket;
@@ -22,6 +29,11 @@ public class Proxy implements IComandiClient{
     private PrintWriter out = null;
     private boolean isOperatore = false;
 
+    /**
+     * Instantiates a new Proxy.
+     *
+     * @throws IOException the io exception
+     */
     public Proxy() throws IOException {
 
         InetAddress addr = InetAddress.getByName(null);
@@ -276,10 +288,20 @@ public class Proxy implements IComandiClient{
         socket.close();
     }
 
+    /**
+     * Gets socket.
+     *
+     * @return the socket
+     */
     public Socket getSocket() {
         return socket;
     }
 
+    /**
+     * Gets operatore.
+     *
+     * @return the operatore
+     */
     public boolean getOperatore() {
         return isOperatore;
     }

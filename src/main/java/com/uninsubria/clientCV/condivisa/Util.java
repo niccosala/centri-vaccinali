@@ -10,11 +10,24 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Util.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class Util {
 
     private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private final Random rng = new SecureRandom();
 
+    /**
+     * Email is valid boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
     public boolean emailIsValid(String email) {
 
         String EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -26,12 +39,24 @@ public class Util {
         return matcher.matches();
     }
 
+    /**
+     * Cf is valid boolean.
+     *
+     * @param CF the cf
+     * @return the boolean
+     */
     public boolean cfIsValid(String CF) {
         return CF.matches("^(?:[A-Z][AEIOU][AEIOUX]|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}(?:[\\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]" +
                 "|[15MR][\\dLMNP-V]|[26NS][0-8LMNP-U])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM]|[AC-EHLMPR-T][26NS][9V])|(?:[02468LNQSU][048LQU]|" +
                 "[13579MPRTV][26NS])B[26NS][9V])(?:[A-MZ][1-9MNP-V][\\dLMNP-V]{2}|[A-M][0L](?:[1-9MNP-V][\\dLMNP-V]|[0L][1-9MNP-V]))[A-Z]+$");
     }
 
+    /**
+     * Lowercase not first string.
+     *
+     * @param str the str
+     * @return the string
+     */
     public String lowercaseNotFirst(String str) {
         if (str.isBlank())
             return "";
@@ -40,13 +65,25 @@ public class Util {
     }
 
 
-
+    /**
+     * Random char char.
+     *
+     * @return the char
+     */
     public char randomChar(){
         return ALPHABET.charAt(rng.nextInt(ALPHABET.length()));
     }
 
 
-    //possibilità di generare sempre due ID diversi è dello 99.99999999999999999987%
+    /**
+     * Random uuid string.
+     *
+     * @param length     the length
+     * @param spacing    the spacing
+     * @param spacerChar the spacer char
+     * @return the string
+     */
+//possibilità di generare sempre due ID diversi è dello 99.99999999999999999987%
     public String randomUUID(int length, int spacing, char spacerChar){
         StringBuilder sb = new StringBuilder();
         int spacer = 0;
@@ -62,6 +99,11 @@ public class Util {
         return sb.toString();
     }
 
+    /**
+     * Random uuid 16 string.
+     *
+     * @return the string
+     */
     public String randomUUID16() {
         byte[] unique = new byte[2];
         new SecureRandom().nextBytes(unique);

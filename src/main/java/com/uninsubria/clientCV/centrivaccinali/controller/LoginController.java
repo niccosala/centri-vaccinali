@@ -15,6 +15,13 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/**
+ * The type Login controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class LoginController extends Controller {
 
     @FXML
@@ -24,14 +31,32 @@ public class LoginController extends Controller {
 
     private UtenteRegistrato utente;
 
+    /**
+     * Accedi come ospite.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void accediComeOspite (ActionEvent event) throws IOException {
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException{
         changeSceneAndSetValues("RegistraCittadino.fxml", null, event);
     }
 
+    /**
+     * Verify login.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void verifyLogin(ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordField.getText();
@@ -58,6 +83,9 @@ public class LoginController extends Controller {
         }
     }
 
+    /**
+     * Reset.
+     */
     public void reset() {
         usernameTextField.clear();
         passwordField.clear();

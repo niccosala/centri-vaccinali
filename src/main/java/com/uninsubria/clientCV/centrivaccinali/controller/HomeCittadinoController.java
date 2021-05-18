@@ -13,6 +13,13 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * The type Home cittadino controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class HomeCittadinoController extends Controller{
 
     @FXML
@@ -22,10 +29,22 @@ public class HomeCittadinoController extends Controller{
 
     private UtenteRegistrato utente;
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
             changeSceneAndSetValues("Login.fxml", null, event);
@@ -33,6 +52,12 @@ public class HomeCittadinoController extends Controller{
             changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeScene("RegistraCittadino.fxml", event);
     }

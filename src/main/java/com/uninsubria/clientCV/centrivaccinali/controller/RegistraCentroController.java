@@ -24,6 +24,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * The type Registra centro controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class RegistraCentroController extends Controller implements Initializable {
 
     @FXML
@@ -38,18 +45,42 @@ public class RegistraCentroController extends Controller implements Initializabl
     private Util util = new Util();
 
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("LogoutOperatore.fxml", utente, event);
     }
 
+    /**
+     * Switch to registra centro scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistraCentroScene(ActionEvent event) throws IOException {
        changeSceneAndSetValues("RegistraCentro.fxml", utente, event);
     }
 
+    /**
+     * Switch to registra vaccinato scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistraVaccinatoScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraVaccinato.fxml", utente, event);
     }
 
+    /**
+     * Registra centro.
+     *
+     * @throws IOException  the io exception
+     * @throws SQLException the sql exception
+     */
     public void registraCentro() throws IOException, SQLException {
         String nomeCentro = fieldNome.getText().trim();
         String qualificatore = qualificatoreComboBox.getValue();
@@ -113,6 +144,9 @@ public class RegistraCentroController extends Controller implements Initializabl
         reset();
     }
 
+    /**
+     * Reset.
+     */
     public void reset() {
         fieldNome.clear();
         qualificatoreComboBox.setValue(null);

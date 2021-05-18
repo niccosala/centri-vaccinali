@@ -31,6 +31,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * The type Segnala controller.
+ *
+ * @author Franchi Matteo 740760 VA
+ * @author Magaudda Giovanni 740962 VA
+ * @author Sala Niccolò 742545 VA
+ */
 public class SegnalaController extends Controller implements Initializable {
 
     private UtenteRegistrato utente;
@@ -38,6 +45,9 @@ public class SegnalaController extends Controller implements Initializable {
     private Map<String, Integer> idevento;
     private boolean isNew = true;
 
+    /**
+     * The constant MAX_CHARS.
+     */
     public static final int MAX_CHARS = 256;
 
     @FXML
@@ -53,14 +63,32 @@ public class SegnalaController extends Controller implements Initializable {
     @FXML
     private Label descrizioneSintomo;
 
+    /**
+     * Switch to cerca scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToCercaScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("Cerca.fxml", utente, event);
     }
 
+    /**
+     * Switch to registrati scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToRegistratiScene(ActionEvent event) throws IOException {
         changeSceneAndSetValues("RegistraCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to logout scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToLogoutScene(ActionEvent event) throws IOException {
         if(utente == null)
             changeSceneAndSetValues("Login.fxml", null, event);
@@ -68,6 +96,12 @@ public class SegnalaController extends Controller implements Initializable {
             changeSceneAndSetValues("LogoutCittadino.fxml", utente, event);
     }
 
+    /**
+     * Switch to visualizza scene.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void switchToVisualizzaScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new
                 FXMLLoader(CentriVaccinali.class.getClassLoader().getResource(path + "Visualizza.fxml"));
@@ -85,6 +119,12 @@ public class SegnalaController extends Controller implements Initializable {
         stage.show();
     }
 
+    /**
+     * Pubblica segnalazione.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void pubblicaSegnalazione(ActionEvent event) throws IOException {
         String nomeCentro = centroVaccinale.getNome();
         String descrizione = textAreaAggiuntive.getText().trim();
@@ -117,6 +157,9 @@ public class SegnalaController extends Controller implements Initializable {
         switchToVisualizzaScene(event);
     }
 
+    /**
+     * Show descrizione sintomo.
+     */
     public void showDescrizioneSintomo() {
         String sintomoCombo = sintomoComboBox.getValue();
         String query = "SELECT * FROM eventiavversi WHERE sintomo = '" + sintomoCombo + "'";
@@ -161,6 +204,11 @@ public class SegnalaController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Sets centro.
+     *
+     * @param centroVaccinale the centro vaccinale
+     */
     public void setCentro(CentroVaccinale centroVaccinale) {
         Util util = new Util();
         this.centroVaccinale = centroVaccinale;
@@ -198,6 +246,11 @@ public class SegnalaController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Check char number.
+     *
+     * @param event the event
+     */
     public void checkCharNumber(KeyEvent event) {
         textAreaAggiuntive.setTextFormatter(new TextFormatter<String>(change ->
                 change.getControlNewText().length() <= MAX_CHARS ? change : null));
