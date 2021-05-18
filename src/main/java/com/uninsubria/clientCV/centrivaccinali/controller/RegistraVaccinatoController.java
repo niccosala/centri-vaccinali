@@ -84,19 +84,23 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String data = date.toString();
         Date myDate = formatter.parse(data);
         java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
-        Random r = new Random();
-        int idunivoco = r.nextInt(Short.MAX_VALUE);
 
-        String query = "INSERT INTO vaccinati_"+centrovaccinale.toLowerCase()+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idunivoco+"')";
-        Proxy proxy = new Proxy();
-        proxy.insertDb(query);
+        int idvacc = generateUniqueID();
 
-        String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idunivoco+"','"+sqlDate+"', '"+CF+"')";
-        Proxy proxy1 = new Proxy();
-        proxy1.insertDb(insertIntoIdunivoci);
+        if(isNewVaccinato(CF)) {
+            String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idvacc+"','"+sqlDate+"', '"+CF+"')";
+            Proxy proxy1 = new Proxy();
+            proxy1.insertDb(insertIntoIdunivoci);
 
-        showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato con ID univoco " + idunivoco);
-        reset();
+            String query = "INSERT INTO vaccinati_"+centrovaccinale.toLowerCase()+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idvacc+"')";
+            Proxy proxy = new Proxy();
+            proxy.insertDb(query);
+
+            showSuccessDialog("Cittadino registrato", "Cittadino correttamente registrato con ID univoco " + idvacc);
+            reset();
+        }
+        else
+            showWarningDialog("Errore", "Abbiamo trovato un utente vaccinato con lo stesso\ncodice fiscale");
     }
 
 
@@ -129,6 +133,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
             centrivaccinaliComboBox.getItems().addAll(nomiCentri);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -136,5 +141,47 @@ public class RegistraVaccinatoController extends Controller implements Initializ
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
         welcomeTextField.setText("Ciao, " + utente.getUsername());
+    }
+
+    private boolean isNewVaccinato(String codfisc) {
+
+        String getCFquery = "SELECT codicefiscale FROM idunivoci WHERE codicefiscale = '"+codfisc+"'";
+        ArrayList<String> tmpCF = new ArrayList<>();
+
+        Proxy proxyCF;
+
+        try {
+            proxyCF = new Proxy();
+            tmpCF = proxyCF.getSingleValues(getCFquery, "codicefiscale");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tmpCF.isEmpty();
+    }
+
+    private int generateUniqueID() {
+        ArrayList<String> tmpID = new ArrayList<>();
+        Random r = new Random();
+        int idvacc = -1;
+        int counter = 1;
+        Proxy proxyID;
+
+        while(true) {
+            idvacc = r.nextInt(Short.MAX_VALUE);
+            String getIDquery = "SELECT idvacc FROM idunivoci WHERE idvacc = '"+idvacc+"'";
+            try {
+                proxyID = new Proxy();
+                tmpID = proxyID.getSingleValues(getIDquery, "idvacc");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Tentativo numero " + counter + ": " + idvacc);
+
+            if (tmpID.isEmpty())
+                break;
+
+            counter++;
+        }
+        return idvacc;
     }
 }

@@ -24,7 +24,7 @@ public class Skeleton extends Thread  {
     private Socket socket;
     private String username, password;
 
-    private final int PORT = 7070;
+    private final int PORT = 5432;
     private final String DB_NAME = "cv";
 
     public Skeleton(Socket socket, Semaphore semaphore, String username, String password) {

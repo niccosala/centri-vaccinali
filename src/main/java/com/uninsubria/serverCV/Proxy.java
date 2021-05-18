@@ -158,6 +158,7 @@ public class Proxy implements IComandiClient{
         return vaccinati;
     }
 
+
     @Override
     public void insertDb(String query) throws IOException, SQLException {
         out.println("insertDb");
