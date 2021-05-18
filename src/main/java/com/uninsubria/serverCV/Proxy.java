@@ -168,7 +168,17 @@ public class Proxy implements IComandiClient{
     public void populateCentriVaccinali(String nomeCentro) throws IOException, SQLException {
         out.println("populateCentriVaccinali");
         out.println(nomeCentro);
-        out.println("create table vaccinati_" + nomeCentro + " ( nomecittadino varchar(50), cognomecittadino varchar(50), codfisc varchar(50) PRIMARY KEY, data DATE, vaccino varchar(20), idvacc SMALLINT)");
+        out.println("CREATE TABLE vaccinati_" + nomeCentro +
+                " (" +
+                "nomecittadino VARCHAR(50), " +
+                "cognomecittadino VARCHAR(50), " +
+                "codicefiscale VARCHAR(50), " +
+                "data DATE, vaccino VARCHAR(20), " +
+                "idvacc SMALLINT, " +
+                "PRIMARY KEY(codicefiscale), " +
+                "FOREIGN KEY(idvacc) REFERENCES idunivoci(idvacc), " +
+                "FOREIGN KEY(codicefiscale) REFERENCES idunivoci(codicefiscale)" +
+                ")");
     }
 
     @Override
