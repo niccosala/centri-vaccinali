@@ -10,6 +10,7 @@ C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubr
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\CercaController.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\HomeOperatoreController.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\LogoutOperatoreController.java
+C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\serverCV\ServerInfo.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\serverCV\Skeleton.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\RegistraVaccinatoController.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\HomeCittadinoController.java
@@ -19,7 +20,6 @@ C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubr
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\SegnalaController.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\LoginController.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\entity\Segnalazione.java
-C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\condivisa\IDGenerator.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\controller\Controller.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\centrivaccinali\entity\Qualificatore.java
 C:\Users\magau\IdeaProjects\JavaProjects\LaboratorioB\src\main\java\com\uninsubria\clientCV\condivisa\entity\Persona.java

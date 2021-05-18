@@ -69,8 +69,6 @@ public class Proxy implements IComandiClient{
                         descrizione
                 ));
             }
-
-            System.out.println(nomeSintomo);
         }
 
         return sintomi;
@@ -141,7 +139,6 @@ public class Proxy implements IComandiClient{
                 String cognomecittadino = in.readLine();
                 String codfisc = in.readLine();
                 String vaccino = in.readLine();
-                System.out.println(nomecittadino+cognomecittadino+codfisc+vaccino);
                 int idvacc = Integer.parseInt(in.readLine());
 
                 vaccinati.add(new Vaccinato(
@@ -223,13 +220,11 @@ public class Proxy implements IComandiClient{
 
     @Override
     public UtenteRegistrato login(String query, String User) throws IOException {
-        System.out.println("STEP 1");
         out.println("login");
         out.println(query);
         out.println(User);
 
         boolean find = Boolean.parseBoolean(in.readLine());
-        System.out.println("Found? " + find);
 
         if(!find)
             return null;
@@ -249,7 +244,6 @@ public class Proxy implements IComandiClient{
                         username,
                         password
                 );
-                System.out.println("op: " + u.getUsername());
                 return u;
             }
             else {
@@ -261,8 +255,6 @@ public class Proxy implements IComandiClient{
                 String email = in.readLine();
                 int idvacc = Integer.parseInt(in.readLine());
 
-                System.out.println(nome + " " + cognome + " " + CF + " " + email + " " + username + " " + password);
-
                 CittadinoRegistrato u = new CittadinoRegistrato(
                         nome,
                         cognome,
@@ -272,7 +264,6 @@ public class Proxy implements IComandiClient{
                         password,
                         idvacc
                 );
-                System.out.println("reg: " + u.getNome() + " " + u.getCognome() + " " + u.getCF() + " " + u.getEmail() + " " + u.getUsername() + " " + u.getPassword() + u.getIdVaccinazione());
                 return u;
             }
         }

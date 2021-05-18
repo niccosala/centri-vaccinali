@@ -17,26 +17,23 @@ public class Server {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        final int PORT = 7070;
-        final String PG_USERNAME = "postgres";
-        final String PG_PASSWORD = "pass";
-        final String DB_NAME = "cv";
-        final String IP_SERVER = "192.168.1.195";
-
         Semaphore sem= new Semaphore(100);
         ServerSocket server = new ServerSocket(IComandiServer.PORT);
 
         do {
             System.out.println("Connessione al server in corso...");
-        } while(!tryConnection(PG_USERNAME, PG_PASSWORD, IP_SERVER, PORT, DB_NAME));
+        } while(!tryConnection(ServerInfo.PG_USERNAME,
+                ServerInfo.PG_PASSWORD,
+                ServerInfo.IP_SERVER,
+                ServerInfo.PORT,
+                ServerInfo.DB_NAME));
 
         try {
             System.out.println("Started " + server);
 
             while(true) {
                 Socket socket = server.accept();
-                System.out.println("Connection accepted: ");
-                new Skeleton(socket, sem, PG_USERNAME, PG_PASSWORD);
+                new Skeleton(socket, sem, ServerInfo.PG_USERNAME, ServerInfo.PG_PASSWORD);
             }
         } catch(Exception e)  {
             e.printStackTrace();

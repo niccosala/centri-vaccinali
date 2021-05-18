@@ -85,7 +85,7 @@ public class SegnalaController extends Controller implements Initializable {
         stage.show();
     }
 
-    public void pubblicaSegnalazione() throws IOException {
+    public void pubblicaSegnalazione(ActionEvent event) throws IOException {
         String nomeCentro = centroVaccinale.getNome();
         String descrizione = textAreaAggiuntive.getText().trim();
         String sintomo = sintomoComboBox.getValue();
@@ -114,6 +114,7 @@ public class SegnalaController extends Controller implements Initializable {
         reset();
         isNew = false;
         showSuccessDialog("Successo", "Segnalazione avvenuta con successo!");
+        switchToVisualizzaScene(event);
     }
 
     public void showDescrizioneSintomo() {

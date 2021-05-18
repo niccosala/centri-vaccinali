@@ -54,7 +54,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         changeSceneAndSetValues("LogoutOperatore.fxml", utente, event);
     }
 
-    public void registraVaccinato() throws ParseException, IOException, SQLException {
+    public void registraVaccinato() throws ParseException, IOException, SQLException, InterruptedException {
         String nome = fieldNome.getText();
         String cognome = fieldCognome.getText();
         String CF = fieldCodiceFiscale.getText();
@@ -91,6 +91,8 @@ public class RegistraVaccinatoController extends Controller implements Initializ
             String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idvacc+"', '"+CF+"')";
             Proxy proxy1 = new Proxy();
             proxy1.insertDb(insertIntoIdunivoci);
+
+            Thread.sleep(100);
 
             String query = "INSERT INTO vaccinati_"+centrovaccinale.toLowerCase()+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idvacc+"')";
             Proxy proxy = new Proxy();

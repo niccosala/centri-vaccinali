@@ -26,7 +26,6 @@ public class DBhelper implements IComandiServer {
     @Override
     public void getSintomi() throws IOException, SQLException {
         String query= in.readLine();
-        System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         try {
@@ -46,7 +45,6 @@ public class DBhelper implements IComandiServer {
     @Override
     public void getSegnalazione() throws IOException, SQLException {
         String query = in.readLine();
-        System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -70,8 +68,6 @@ public class DBhelper implements IComandiServer {
     public void getSingleValues() throws IOException, SQLException {
         String query= in.readLine();
         String columnLabel = in.readLine();
-        System.out.println(columnLabel);
-        System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         try {
@@ -89,7 +85,6 @@ public class DBhelper implements IComandiServer {
     @Override
     public void getVaccinati() throws IOException, SQLException {
         String query = in.readLine();
-        System.out.println(query);
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -97,7 +92,7 @@ public class DBhelper implements IComandiServer {
             while (rs.next()) {
                 out.println(rs.getString("nomecittadino"));
                 out.println(rs.getString("cognomecittadino"));
-                out.println(rs.getString("codfisc"));
+                out.println(rs.getString("codicefiscale"));
                 out.println(rs.getString("vaccino"));
                 out.println(rs.getString("idvacc"));
             }
@@ -123,7 +118,6 @@ public class DBhelper implements IComandiServer {
     public void populateCentriVaccinali() throws IOException, SQLException {
         String nomeCentro = in.readLine();
         String createTableQuery= in.readLine();
-        System.out.println(createTableQuery);
 
         Statement stmt = connection.createStatement();
         try {
@@ -146,11 +140,9 @@ public class DBhelper implements IComandiServer {
         Statement stmt = connection.createStatement();
 
         ResultSet rs = stmt.executeQuery(query);
-        System.out.println("query-rset: " + query);
         boolean isRegistered = false;
         if(rs.next())
             isRegistered = true;
-        System.out.println("registrato: " + isRegistered);
 
         if(isRegistered) {
             String query1 = "SELECT * FROM cittadiniregistrati JOIN utentiregistrati ON cittadiniregistrati.userid = utentiregistrati.userid WHERE utentiregistrati.userid = '" + user + "'";
@@ -187,7 +179,6 @@ public class DBhelper implements IComandiServer {
     @Override
     public void filter() throws IOException, SQLException {
         String query= in.readLine();
-        System.out.println(query);
         Statement stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
