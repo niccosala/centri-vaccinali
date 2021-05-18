@@ -88,7 +88,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         int idvacc = generateUniqueID();
 
         if(isNewVaccinato(CF)) {
-            String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idvacc+"','"+sqlDate+"', '"+CF+"')";
+            String insertIntoIdunivoci = "INSERT INTO idunivoci VALUES('"+idvacc+"', '"+CF+"')";
             Proxy proxy1 = new Proxy();
             proxy1.insertDb(insertIntoIdunivoci);
 
