@@ -5,12 +5,14 @@ Sala      Niccolò   742545   VA
  */
 package com.uninsubria.clientCV.centrivaccinali;
 
+import com.uninsubria.clientCV.condivisa.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 /**
@@ -23,7 +25,7 @@ import java.util.Objects;
 public class CentriVaccinali extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
 
         Parent root = FXMLLoader.load(
                 Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
@@ -35,6 +37,9 @@ public class CentriVaccinali extends Application {
         stage.setResizable(false);
         stage.setTitle("Centri Vaccinali");
         stage.show();
+
+        Util util = new Util();
+        util.populateDatabase();
     }
 
     /**

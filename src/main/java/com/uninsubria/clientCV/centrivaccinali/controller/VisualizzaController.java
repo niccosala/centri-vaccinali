@@ -90,10 +90,10 @@ public class VisualizzaController extends Controller  {
      * @throws IOException the io exception
      */
     public void switchToSegnalaScene(ActionEvent event) throws IOException {
-        CittadinoRegistrato cittadino = (CittadinoRegistrato)utente;
-        String query = "SELECT * FROM vaccinati_" + centroVaccinale.getNome() + " WHERE idvacc = " + cittadino.getIdVaccinazione();
-        System.out.println(query);
         Proxy proxy;
+        Util util = new Util();
+        CittadinoRegistrato cittadino = (CittadinoRegistrato)utente;
+        String query = "SELECT * FROM vaccinati_" + util.formatTableName(centroVaccinale.getNome()) + " WHERE idvacc = " + cittadino.getIdVaccinazione();
 
         try {
             proxy = new Proxy();

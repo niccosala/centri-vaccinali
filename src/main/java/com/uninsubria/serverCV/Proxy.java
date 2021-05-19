@@ -7,6 +7,7 @@ package com.uninsubria.serverCV;
 
 import com.uninsubria.clientCV.centrivaccinali.entity.*;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 
 import java.io.*;
@@ -176,9 +177,10 @@ public class Proxy implements IComandiClient{
 
     @Override
     public void populateCentriVaccinali(String nomeCentro) throws IOException, SQLException {
+        Util util = new Util();
         out.println("populateCentriVaccinali");
         out.println(nomeCentro);
-        out.println("CREATE TABLE vaccinati_" + nomeCentro +
+        out.println("CREATE TABLE vaccinati_" + util.formatTableName(nomeCentro) +
                 " (" +
                 "nomecittadino VARCHAR(50), " +
                 "cognomecittadino VARCHAR(50), " +
