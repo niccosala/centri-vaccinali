@@ -59,7 +59,7 @@ public class Skeleton extends Thread  {
             e2.printStackTrace();
         }
         try (Connection c = DriverManager.getConnection(
-                "jdbc:postgresql://" + ServerInfo.IP_SERVER + ":" + ServerInfo.PORT + "/" + ServerInfo.DB_NAME,
+                "jdbc:postgresql://" + ServerInfo.IP_SERVER + ":" + ServerInfo.DB_PORT + "/" + ServerInfo.DB_NAME,
                 username,
                 password)) {
 

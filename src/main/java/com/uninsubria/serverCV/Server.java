@@ -39,7 +39,7 @@ public class Server {
         } while(!tryConnection(ServerInfo.PG_USERNAME,
                 ServerInfo.PG_PASSWORD,
                 ServerInfo.IP_SERVER,
-                ServerInfo.PORT,
+                ServerInfo.DB_PORT,
                 ServerInfo.DB_NAME));
 
         try {

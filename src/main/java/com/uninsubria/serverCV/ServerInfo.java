@@ -18,7 +18,7 @@ public class ServerInfo {
     /**
      * The Port.
      */
-    static final int PORT = 7070;
+    static final int DB_PORT = 7070;
 
     /**
      * The Pg username.
