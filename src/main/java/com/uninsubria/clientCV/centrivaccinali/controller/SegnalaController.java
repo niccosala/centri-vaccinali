@@ -120,7 +120,7 @@ public class SegnalaController extends Controller implements Initializable {
     }
 
     /**
-     * Insert into DB new segnalazione.
+     * Insert into DB new Segnalazione.
      *
      * @param event the event
      * @throws IOException the io exception

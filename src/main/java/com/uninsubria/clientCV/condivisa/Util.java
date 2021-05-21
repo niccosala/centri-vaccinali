@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The type Util.
+ * Util class contains multiple tools used into the application
  *
  * @author Franchi Matteo 740760 VA
  * @author Magaudda Giovanni 740962 VA

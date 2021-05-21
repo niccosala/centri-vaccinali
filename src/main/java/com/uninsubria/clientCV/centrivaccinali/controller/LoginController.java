@@ -32,12 +32,12 @@ public class LoginController extends Controller {
     private UtenteRegistrato utente;
 
     /**
-     * Accedi come ospite.
+     * Login as guest, no username or password required. Functionalities are limited
      *
      * @param event the event
      * @throws IOException the io exception
      */
-    public void accediComeOspite (ActionEvent event) throws IOException {
+    public void loginAsGuest(ActionEvent event) throws IOException {
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
