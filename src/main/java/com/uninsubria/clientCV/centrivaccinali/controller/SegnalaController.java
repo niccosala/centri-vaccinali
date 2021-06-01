@@ -192,7 +192,7 @@ public class SegnalaController extends Controller implements Initializable {
             segnalazione = proxy.getSegnalazione(query);
 
             if (segnalazione.size() > 0) {
-                showWarningDialog("Hai già rilasciato una segnalazione", "Se modifichi la tua segnalazione, quella precedente verrà rimossa");
+                showWarningDialog("Hai già rilasciato una segnalazione", "Se modifichi la tua segnalazione, quella precedente \nverrà rimossa");
                 sintomoComboBox.setValue(segnalazione.get(0).getSintomo());
                 severitaSlider.setValue(segnalazione.get(0).getSeverita());
                 textAreaAggiuntive.setText(segnalazione.get(0).getDescrizione());

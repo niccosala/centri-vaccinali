@@ -135,7 +135,7 @@ public class RegistraCentroController extends Controller implements Initializabl
         Proxy proxy1 = new Proxy();
 
         if (centroExist())
-            showWarningDialog("Centro già esistente", "Il centro che si sta cercando di inserire è già stato registrato");
+            showWarningDialog("Centro già esistente", "Il centro che si sta cercando di \ninserire è già stato registrato");
         else {
             proxy.insertDb(query);
             proxy1.populateCentriVaccinali(nomeCentro);
