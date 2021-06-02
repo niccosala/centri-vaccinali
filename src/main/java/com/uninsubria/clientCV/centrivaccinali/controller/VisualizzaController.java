@@ -100,7 +100,7 @@ public class VisualizzaController extends Controller  {
             ArrayList<Vaccinato> vaccinati = proxy.getVaccinati(query);
 
             if(vaccinati.isEmpty()) {
-                showWarningDialog("Non sei registrato a questo centro vaccinale", "Puoi segnalare eventi avversi solo presso il centro vaccinale in cui ti è stato somministrato il vaccino");
+                showWarningDialog("Non sei registrato a questo centro vaccinale", "Puoi segnalare eventi avversi solo presso il centro \nvaccinale in cui ti è stato somministrato il vaccino");
                 return;
             }
         } catch (IOException | SQLException e) {

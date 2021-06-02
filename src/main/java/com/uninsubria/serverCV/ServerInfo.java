@@ -7,7 +7,7 @@ Sala      Niccolò   742545   VA
 package com.uninsubria.serverCV;
 
 /**
- * The type Server info.
+ * Server details
  *
  * @author Franchi Matteo 740760 VA
  * @author Magaudda Giovanni 740962 VA

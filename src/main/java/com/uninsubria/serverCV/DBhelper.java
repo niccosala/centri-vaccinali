@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.sql.*;
 
 /**
- * The type D bhelper.
+ * DBhelper provides all the database functionalities
  *
  * @author Franchi Matteo 740760 VA
  * @author Magaudda Giovanni 740962 VA
@@ -25,7 +25,7 @@ public class DBhelper implements IComandiServer {
     private Connection connection;
 
     /**
-     * Instantiates a new D bhelper.
+     * Instantiates a new DBbhelper.
      *
      * @param in         the in
      * @param out        the out

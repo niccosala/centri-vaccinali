@@ -94,6 +94,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
         String vaccino = vaccinoComboBox.getValue();
         String centrovaccinale = centrivaccinaliComboBox.getValue();
         LocalDate date = fieldData.getValue();
+        Util util = new Util();
 
         //generic controls
         if(nome.isBlank() || cognome.isBlank() || CF.isBlank()
@@ -127,7 +128,7 @@ public class RegistraVaccinatoController extends Controller implements Initializ
 
             Thread.sleep(100);
 
-            String query = "INSERT INTO vaccinati_"+centrovaccinale.toLowerCase()+" VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idvacc+"')";
+            String query = "INSERT INTO vaccinati_" + util.formatTableName(centrovaccinale.toLowerCase()) + " VALUES('"+nome+"', '"+cognome+"','"+CF+"','"+sqlDate+"','"+vaccino+"', '"+idvacc+"')";
             Proxy proxy = new Proxy();
             proxy.insertDb(query);
 

@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 
 /**
- * The interface Comandi server.
+ * The interface Comandi server: server commands available
  *
  * @author Franchi Matteo 740760 VA
  * @author Magaudda Giovanni 740962 VA

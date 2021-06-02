@@ -37,8 +37,7 @@ public class Proxy implements IComandiClient{
      */
     public Proxy() throws IOException {
 
-        InetAddress addr = InetAddress.getByName(null);
-        socket = new Socket(addr, IComandiServer.PORT);
+        socket = new Socket("192.168.185.198", IComandiServer.PORT);
 
         try {
             in = new BufferedReader(
@@ -167,7 +166,6 @@ public class Proxy implements IComandiClient{
         }
         return vaccinati;
     }
-
 
     @Override
     public void insertDb(String query) throws IOException, SQLException {

@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * The interface Comandi client.
+ * The interface Comandi client: client commands available
  *
  * @author Franchi Matteo 740760 VA
  * @author Magaudda Giovanni 740962 VA

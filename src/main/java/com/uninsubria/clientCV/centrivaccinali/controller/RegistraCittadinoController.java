@@ -111,7 +111,7 @@ public class RegistraCittadinoController extends Controller {
 
         // controllo username db
         if(!users.isEmpty()) {
-            showWarningDialog("Scegli un username diverso", "L'username selezionato è gia stato usato da un altro utente");
+            showWarningDialog("Scegli un username diverso", "L'username selezionato è gia stato usato da un \naltro utente");
             return;
         }
 
