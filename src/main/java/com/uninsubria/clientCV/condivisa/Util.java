@@ -10,10 +10,8 @@ import com.uninsubria.serverCV.Proxy;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,9 +24,6 @@ import java.util.regex.Pattern;
  * @author Sala Niccolò 742545 VA
  */
 public class Util {
-
-    private static final String ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    private final Random rng = new SecureRandom();
 
     /**
      * Email is valid boolean.
