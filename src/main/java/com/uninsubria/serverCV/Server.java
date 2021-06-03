@@ -11,6 +11,7 @@ import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -34,8 +35,24 @@ public class Server {
         Semaphore sem= new Semaphore(100);
         ServerSocket server = new ServerSocket(IComandiServer.PORT);
 
+        int counter = 0;
+
         do {
+
+            if(counter > 0)
+                System.out.println("Credenziali errate, riprovare");
+
             System.out.println("Connessione al server in corso...");
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print(" > inserisci indirizzo IP a cui ci si vuole connettere: ");
+            ServerInfo.IP_SERVER = scanner.nextLine();
+            System.out.print(" > inserisci l'username del DB: ");
+            ServerInfo.PG_USERNAME = scanner.nextLine();
+            System.out.print(" > inserisci la password del DB: ");
+            ServerInfo.PG_PASSWORD = scanner.nextLine();
+
+            counter++;
         } while(!tryConnection(ServerInfo.PG_USERNAME,
                 ServerInfo.PG_PASSWORD,
                 ServerInfo.IP_SERVER,

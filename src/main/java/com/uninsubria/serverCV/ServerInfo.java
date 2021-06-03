@@ -6,6 +6,8 @@ Sala      Niccolò   742545   VA
 
 package com.uninsubria.serverCV;
 
+import java.util.Scanner;
+
 /**
  * Server details
  *
@@ -23,12 +25,12 @@ public class ServerInfo {
     /**
      * The Pg username.
      */
-    static final String PG_USERNAME = "postgres";
+    static String PG_USERNAME = "postgres";
 
     /**
      * The Pg password.
      */
-    static final String PG_PASSWORD = "pass";
+    static String PG_PASSWORD = "pass";
 
     /**
      * The Db name.
@@ -38,6 +40,6 @@ public class ServerInfo {
     /**
      * The Ip server.
      */
-    static final String IP_SERVER = "localhost";
+    static String IP_SERVER = "localhost";
 
 }
