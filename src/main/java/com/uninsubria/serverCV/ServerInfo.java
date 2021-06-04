@@ -6,8 +6,6 @@ Sala      Niccolò   742545   VA
 
 package com.uninsubria.serverCV;
 
-import java.util.Scanner;
-
 /**
  * Server details
  *
@@ -40,6 +38,6 @@ public class ServerInfo {
     /**
      * The Ip server.
      */
-    static String IP_SERVER = "localhost";
+    public static String IP_SERVER = "localhost";
 
 }
