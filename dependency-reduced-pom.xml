@@ -39,7 +39,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.uninsubria.clientCV.centrivaccinali.NewMain</mainClass>
+                  <mainClass>com.uninsubria.clientCV.centrivaccinali.Launcher</mainClass>
                 </transformer>
               </transformers>
             </configuration>

@@ -1,5 +1,4 @@
 com\uninsubria\serverCV\DBhelper.class
-com\uninsubria\clientCV\centrivaccinali\NewMain.class
 com\uninsubria\serverCV\ServerInfo.class
 com\uninsubria\clientCV\centrivaccinali\CentriVaccinali.class
 com\uninsubria\clientCV\centrivaccinali\entity\Indirizzo.class
@@ -17,11 +16,13 @@ com\uninsubria\serverCV\Proxy.class
 com\uninsubria\clientCV\centrivaccinali\controller\VisualizzaController.class
 com\uninsubria\clientCV\centrivaccinali\entity\Segnalazione.class
 com\uninsubria\clientCV\centrivaccinali\entity\Vaccino.class
+com\uninsubria\clientCV\centrivaccinali\Launcher.class
 com\uninsubria\clientCV\centrivaccinali\controller\RegistraCittadinoController.class
 com\uninsubria\clientCV\condivisa\Util.class
 com\uninsubria\clientCV\centrivaccinali\entity\Sintomo.class
 com\uninsubria\clientCV\centrivaccinali\controller\HomeOperatoreController.class
 com\uninsubria\clientCV\centrivaccinali\entity\Qualificatore.class
+com\uninsubria\clientCV\centrivaccinali\controller\ImpostazioneConnessioneController.class
 com\uninsubria\clientCV\cittadini\entity\CittadinoRegistrato.class
 com\uninsubria\clientCV\centrivaccinali\entity\CentroVaccinale.class
 com\uninsubria\clientCV\centrivaccinali\entity\EventoAvverso.class
