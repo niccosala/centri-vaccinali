@@ -48,7 +48,11 @@ public class LoginController extends Controller {
      * @param event the event
      * @throws IOException the io exception
      */
-    public void loginAsGuest(ActionEvent event) throws IOException {
+    public void loginAsGuest(ActionEvent event) throws IOException, SQLException {
+
+        if(!tryConnection())
+            return;
+
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
@@ -72,7 +76,11 @@ public class LoginController extends Controller {
      * @param event the event
      * @throws IOException the io exception
      */
-    public void switchToRegistratiScene(ActionEvent event) throws IOException{
+    public void switchToRegistratiScene(ActionEvent event) throws IOException, SQLException {
+
+        if(!tryConnection())
+            return;
+
         changeSceneAndSetValues("RegistraCittadino.fxml", null, event);
     }
 
