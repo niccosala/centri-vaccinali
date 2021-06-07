@@ -37,10 +37,6 @@ public class CentriVaccinali extends Application {
         stage.setResizable(false);
         stage.setTitle("Centri Vaccinali");
         stage.show();
-
-        Util util = new Util();
-        util.populateDatabase();
-
     }
 
     /**

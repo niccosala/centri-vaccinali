@@ -7,6 +7,7 @@ package com.uninsubria.clientCV.centrivaccinali.controller;
 
 import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
+import com.uninsubria.clientCV.condivisa.Util;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
 import com.uninsubria.serverCV.ServerInfo;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Objects;
 
 /**
@@ -80,7 +82,7 @@ public class LoginController extends Controller {
      * @param event the event
      * @throws IOException the io exception
      */
-    public void verifyLogin(ActionEvent event) throws IOException {
+    public void verifyLogin(ActionEvent event) throws IOException, SQLException {
 
         if(!tryConnection())
             return;
@@ -123,7 +125,7 @@ public class LoginController extends Controller {
         this.utente = utente;
     }
 
-    public boolean tryConnection() throws IOException {
+    public boolean tryConnection() throws IOException, SQLException {
         boolean connected;
 
         connected = pingHost(ServerInfo.IP_SERVER, ServerInfo.PORT);
@@ -132,6 +134,10 @@ public class LoginController extends Controller {
             goToConnectionSettings();
             return false;
         }
+
+        Util util = new Util();
+        util.populateDatabase();
+
         return true;
 
     }
