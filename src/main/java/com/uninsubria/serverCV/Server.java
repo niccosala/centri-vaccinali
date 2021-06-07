@@ -33,7 +33,7 @@ public class Server {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Semaphore sem= new Semaphore(100);
-        ServerSocket server = new ServerSocket(IComandiServer.PORT);
+        ServerSocket server = new ServerSocket(ServerInfo.PORT);
 
         int counter = 0;
 

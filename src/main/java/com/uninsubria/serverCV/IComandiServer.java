@@ -19,11 +19,6 @@ import java.sql.SQLException;
 public interface IComandiServer {
 
     /**
-     * The constant PORT.
-     */
-    int PORT = 8888;
-
-    /**
      * Gets sintomi from DB.
      *
      * @throws IOException  the io exception

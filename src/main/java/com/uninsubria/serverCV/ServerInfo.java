@@ -31,6 +31,11 @@ public class ServerInfo {
     static String PG_PASSWORD = "pass";
 
     /**
+     * The server port.
+     */
+    public static int PORT = 8888;
+
+    /**
      * The Db name.
      */
     static final String DB_NAME = "cv";

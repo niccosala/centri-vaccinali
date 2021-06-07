@@ -5,15 +5,24 @@ Sala      Niccolò   742545   VA
  */
 package com.uninsubria.clientCV.centrivaccinali.controller;
 
+import com.uninsubria.clientCV.centrivaccinali.CentriVaccinali;
 import com.uninsubria.clientCV.cittadini.entity.CittadinoRegistrato;
 import com.uninsubria.clientCV.condivisa.entity.UtenteRegistrato;
 import com.uninsubria.serverCV.Proxy;
+import com.uninsubria.serverCV.ServerInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.util.Objects;
 
 /**
  * The type Login controller.
@@ -41,6 +50,20 @@ public class LoginController extends Controller {
         changeSceneAndSetValues("HomeCittadino.fxml", null, event);
     }
 
+    public void goToConnectionSettings() throws IOException {
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(CentriVaccinali.class.getClassLoader().getResource(
+                        "com/uninsubria/layout/ImpostazioniConnessione.fxml")));
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setTitle("Impostazioni connessione");
+        stage.show();
+    }
+
     /**
      * Switch to registrati scene.
      *
@@ -58,6 +81,10 @@ public class LoginController extends Controller {
      * @throws IOException the io exception
      */
     public void verifyLogin(ActionEvent event) throws IOException {
+
+        if(!tryConnection())
+            return;
+
         String username = usernameTextField.getText();
         String password = passwordField.getText();
 
@@ -95,4 +122,27 @@ public class LoginController extends Controller {
     public void setUtente(UtenteRegistrato utente) {
         this.utente = utente;
     }
+
+    public boolean tryConnection() throws IOException {
+        boolean connected;
+
+        connected = pingHost(ServerInfo.IP_SERVER, ServerInfo.PORT);
+
+        if (!connected) {
+            goToConnectionSettings();
+            return false;
+        }
+        return true;
+
+    }
+
+    private static boolean pingHost(String host, int port) {
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(host, port), 1500);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
 }

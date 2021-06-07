@@ -37,7 +37,7 @@ public class Proxy implements IComandiClient{
      */
     public Proxy() throws IOException {
 
-        socket = new Socket(ServerInfo.IP_SERVER, IComandiServer.PORT);
+        socket = new Socket(ServerInfo.IP_SERVER, ServerInfo.PORT);
 
         try {
             in = new BufferedReader(

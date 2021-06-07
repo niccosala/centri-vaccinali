@@ -116,5 +116,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
         </Button>
+      <Button id="btnReset" layoutX="736.0" layoutY="558.0" mnemonicParsing="false" onAction="#goToConnectionSettings" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: silver; -fx-border-radius: 30; -fx-border-width: 1.5; -fx-alignment: center;" text="Impostazioni Connessione" textAlignment="CENTER" textFill="#d13981">
+         <font>
+            <Font name="Microsoft Sans Serif" size="11.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="8.0" right="8.0" top="5.0" />
+         </padding>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </Pane>
