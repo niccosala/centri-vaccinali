@@ -45,8 +45,6 @@ public class Server {
             System.out.println("Connessione al server in corso...");
             Scanner scanner = new Scanner(System.in);
 
-            System.out.print(" > inserisci indirizzo IP a cui ci si vuole connettere: ");
-            ServerInfo.IP_SERVER = scanner.nextLine();
             System.out.print(" > inserisci l'username del DB: ");
             ServerInfo.PG_USERNAME = scanner.nextLine();
             System.out.print(" > inserisci la password del DB: ");
